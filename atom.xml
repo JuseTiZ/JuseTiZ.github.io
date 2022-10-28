@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-28T02:49:26.487Z</updated>
+  <updated>2022-10-28T06:50:21.167Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2022/10/28/hello-plog/"/>
     <id>http://example.com/2022/10/28/hello-plog/</id>
     <published>2022-10-27T16:00:00.000Z</published>
-    <updated>2022-10-28T02:49:26.487Z</updated>
+    <updated>2022-10-28T06:50:21.167Z</updated>
     
     <content type="html"><![CDATA[<p>算是花了好一些功夫终于算是把这个 Blog 弄得还算看的过去。</p><p>今后好好地把一些有用的内容塞进来吧，顺便随缘修改一些 Blog 的布局让它更好看些。</p><p>不过由于所讲的内容都会比较正经，所以姑且是能把 Blog 弄得正式一些是正式一些。</p><h2 id="今后打算用-Blog-记录些什么？"><a href="#今后打算用-Blog-记录些什么？" class="headerlink" title="今后打算用 Blog 记录些什么？"></a>今后打算用 Blog 记录些什么？</h2><ul><li>生活小琐碎</li><li>学习记录</li><li>生信心得</li><li>软件介绍</li></ul><h2 id="是谁让你有了建个-Blog-的想法？"><a href="#是谁让你有了建个-Blog-的想法？" class="headerlink" title="是谁让你有了建个 Blog 的想法？"></a>是谁让你有了建个 Blog 的想法？</h2><p>我的<a href="https://robust-vase.github.io/">一个学数学的朋友</a>。</p><h2 id="想说些什么？"><a href="#想说些什么？" class="headerlink" title="想说些什么？"></a>想说些什么？</h2><p>生物是坑，但是一个很有魅力的坑，希望在探索的路上与诸君共勉！</p><blockquote><p>当这颗行星依照固定的万有引力定律回旋周行时，就从如此简单的发端发展出无穷的最美丽最惊人的类型，并且仍在继续发展中，这生命观里蕴有一种恢宏。    ———— Darwin</p></blockquote>]]></content>
     
@@ -37,6 +37,8 @@
     
     
     <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    <category term="生活" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/%E7%94%9F%E6%B4%BB/"/>
     
     
   </entry>
