@@ -4,12 +4,18 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2022/10/27/hello-world/"/>
-      <url>/2022/10/27/hello-world/</url>
+      <title>Hello Blog</title>
+      <link href="/2022/10/28/hello-plog/"/>
+      <url>/2022/10/28/hello-plog/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<p>算是花了好一些功夫终于算是把这个 Blog 弄得还算看的过去。</p><p>今后好好地把一些有用的内容塞进来吧，顺便随缘修改一些 Blog 的布局让它更好看些。</p><p>不过由于所讲的内容都会比较正经，所以姑且是能把 Blog 弄得正式一些是正式一些。</p><h2 id="今后打算用-Blog-记录些什么？"><a href="#今后打算用-Blog-记录些什么？" class="headerlink" title="今后打算用 Blog 记录些什么？"></a>今后打算用 Blog 记录些什么？</h2><ul><li>生活小琐碎</li><li>学习记录</li><li>生信心得</li><li>软件介绍</li></ul><h2 id="是谁让你有了建个-Blog-的想法？"><a href="#是谁让你有了建个-Blog-的想法？" class="headerlink" title="是谁让你有了建个 Blog 的想法？"></a>是谁让你有了建个 Blog 的想法？</h2><p>我的<a href="https://robust-vase.github.io/">一个学数学的朋友</a>。</p><h2 id="想说些什么？"><a href="#想说些什么？" class="headerlink" title="想说些什么？"></a>想说些什么？</h2><p>生物是坑，但是一个很有魅力的坑，希望在探索的路上与诸君共勉！</p><blockquote><p>当这颗行星依照固定的万有引力定律回旋周行时，就从如此简单的发端发展出无穷的最美丽最惊人的类型，并且仍在继续发展中，这生命观里蕴有一种恢宏。    ———— Darwin</p></blockquote>]]></content>
       
+      
+      <categories>
+          
+          <category> 杂谈 </category>
+          
+      </categories>
       
       
     </entry>
