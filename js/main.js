@@ -729,6 +729,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
+
   const unRefreshFn = function () {
     window.addEventListener('resize', () => {
       adjustMenu(false)
@@ -744,7 +745,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.refreshFn = function () {
     initAdjust()
-
     if (GLOBAL_CONFIG_SITE.isPost) {
       GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice()
       GLOBAL_CONFIG.relativeDate.post && relativeDate(document.querySelectorAll('#post-meta time'))
