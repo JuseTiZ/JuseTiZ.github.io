@@ -1,4 +1,4 @@
-.pace {
+<html><head></head><body>.pace {
 	-webkit-pointer-events: none;
 	pointer-events: none;
 
@@ -194,4 +194,4 @@
 
 .pace.pace-inactive {
 	display: none;
-}
+}</body></html>

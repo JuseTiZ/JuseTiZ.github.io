@@ -1,21 +1,21 @@
-/* 主页所有文章页面背景 */
-#aside_content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
+<html><head></head><body>/* 主页所有文章页面背景 */
+#aside_content .card-widget, #recent-posts&gt;.recent-post-item, .layout_page&gt;div:first-child:not(.recent-posts), .layout_post&gt;#page, .layout_post&gt;#post, .read-mode .layout_post&gt;#post{
     /* 以下代表透明度为0.5 */
     background: rgba(255,255,255,.9);
 }
 /*侧边栏页面*/
-#aside-content>.card-widget  {
+#aside-content&gt;.card-widget  {
 	background: rgba(255,255,255,.9);
 }
-#aside-content>.sticky_layout>.card-widget{
+#aside-content&gt;.sticky_layout&gt;.card-widget{
 	background: rgba(255,255,255,.9);
 }
 /*分类页面*/
-.layout>#page{
+.layout&gt;#page{
 	
 	background: rgba(255,255,255,.9);
 }
 /*时间轴页面*/
-.layout>#archive{
+.layout&gt;#archive{
 	background: rgba(255,255,255,.9);
-}
+}</body></html>
