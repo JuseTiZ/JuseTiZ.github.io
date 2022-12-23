@@ -9,4 +9,13 @@
 
 #recent-posts .recent-post-item{
     background: rgba(255,255,255,.9);
+}
+
+
+/* 页脚与头图透明 */
+#footer {
+  background: rgba(0,0,0,.8);
+}
+#page-header {
+  background: transparent !important;
 }</body></html>
