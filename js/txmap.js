@@ -29,7 +29,7 @@ function getDistance(e1, n1, e2, n2) {
 
 function showWelcome() {
 
-    let dist = getDistance(113.391786, 23.067691, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
+    let dist = getDistance(113.9539, 22.8016, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
@@ -39,13 +39,13 @@ function showWelcome() {
             posdesc = "よろしく，一起去看樱花吗";
             break;
         case "美国":
-            posdesc = "自由美利坚，xx每一天!";
+            posdesc = "Let us live in peace!";
             break;
         case "英国":
             posdesc = "想同你一起夜乘伦敦眼";
             break;
         case "俄罗斯":
-            posdesc = "干了这瓶伏特加苏卡！";
+            posdesc = "干了这瓶伏特加！";
             break;
         case "法国":
             posdesc = "C'est La Vie";
@@ -73,7 +73,7 @@ function showWelcome() {
                     posdesc = "山势巍巍成壁垒，天下雄关。铁马金戈由此向，无限江山。";
                     break;
                 case "山西省":
-                    posdesc = "展开坐具长三尺，已占山河五百余。";
+                    posdesc = "山西刀削面！还有我的可爱女友~";
                     break;
                 case "内蒙古自治区":
                     posdesc = "天苍苍，野茫茫，风吹草低见牛羊。";
@@ -135,7 +135,7 @@ function showWelcome() {
                     posdesc = "井邑白云间，岩城远带山。";
                     break;
                 case "江西省":
-                    posdesc = "落霞与孤鹜齐飞，秋水共长天一色，还有好吃的宁都肉丸。";
+                    posdesc = "滕王阁、脐橙和好吃的肉丸！";
                     break;
                 case "山东省":
                     posdesc = "遥望齐州九点烟，一泓海水杯中泻。";
@@ -147,7 +147,7 @@ function showWelcome() {
                     posdesc = "74751，长沙斯塔克。";
                     break;
                 case "广东省":
-                    posdesc = "美食集结之地，Juse学习住所。";
+                    posdesc = "Juse 的母校在这里。";
                     break;
                 case "广西壮族自治区":
                     posdesc = "桂林山水甲天下。";
@@ -215,11 +215,9 @@ function showWelcome() {
     try {
         //自定义文本和需要放的位置
         document.getElementById("welcome-info").innerHTML =
-            `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离中大约 <span style="color:var(--theme-color)">${dist}</span> 公里，当前的IP地址为： <span style="color:var(--theme-color)">${ip}</span>， ${posdesc}</b>`;
+            `<b><center>🎉 欢迎信息 🎉</center></b>&emsp;&emsp;欢迎来自 <b>${pos}</b> 的小伙伴，<b>${timeChange}</b>您现在距离<b>中大</b>约 <b>${dist}</b> 公里，<b>${posdesc}</b>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
-
 }
-
 window.onload = showWelcome;
