@@ -88,7 +88,7 @@ function showWelcome() {
                     posdesc = "很喜欢哈尔滨大剧院。";
                     break;
                 case "上海市":
-                    posdesc = "众所周知，中国只有两个城市。";
+                    posdesc = "你知道吗？原神是一款...";
                     break;
                 case "江苏省":
                     switch (ipLoacation.result.ad_info.city) {
@@ -121,7 +121,7 @@ function showWelcome() {
                             posdesc = "刚正不阿包青天。";
                             break;
                         case "洛阳市":
-                            posdesc = "洛阳牡丹甲天下。";
+                            posdesc = "九朝古都正是在下。";
                             break;
                         default:
                             posdesc = "可否带我品尝河南烩面啦？";
@@ -147,7 +147,7 @@ function showWelcome() {
                     posdesc = "74751，长沙斯塔克。";
                     break;
                 case "广东省":
-                    posdesc = "Juse 的母校在这里。";
+                    posdesc = "SYSU 在这里。";
                     break;
                 case "广西壮族自治区":
                     posdesc = "桂林山水甲天下。";
@@ -186,7 +186,7 @@ function showWelcome() {
                     posdesc = "我在这头，大陆在那头。";
                     break;
                 case "香港特别行政区":
-                    posdesc = "永定贼有残留地鬼嚎，迎击光非岁玉。";
+                    posdesc = "我觉得你应该是翻墙过来的。";
                     break;
                 case "澳门特别行政区":
                     posdesc = "性感荷官，在线发牌。";
@@ -209,7 +209,7 @@ function showWelcome() {
     else if (date.getHours() >= 13 && date.getHours() < 15) timeChange = "<span>下午好</span>，懒懒地睡个午觉吧！";
     else if (date.getHours() >= 15 && date.getHours() < 16) timeChange = "<span>三点几啦</span>，饮茶先啦！";
     else if (date.getHours() >= 16 && date.getHours() < 19) timeChange = "<span>夕阳无限好！</span>";
-    else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>晚上好</span>，夜生活嗨起来！";
+    else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>晚上好</span>，嗨起来！";
     else timeChange = "夜深了，早点休息，少熬夜。";
 
     try {
