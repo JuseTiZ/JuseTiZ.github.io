@@ -36,16 +36,16 @@ function showWelcome() {
     //根据国家、省份、城市信息自定义欢迎语
     switch (ipLoacation.result.ad_info.nation) {
         case "日本":
-            posdesc = "よろしく，一起去看樱花吗";
+            posdesc = "故乡的撒库拉开了，一起去看吗";
             break;
         case "美国":
-            posdesc = "Let us live in peace!";
+            posdesc = "China!";
             break;
         case "英国":
-            posdesc = "想同你一起夜乘伦敦眼";
+            posdesc = "见识下真正的日不落吧。";
             break;
         case "俄罗斯":
-            posdesc = "干了这瓶伏特加！";
+            posdesc = "苏卡！";
             break;
         case "法国":
             posdesc = "C'est La Vie";
@@ -64,7 +64,7 @@ function showWelcome() {
             ip = ipLoacation.result.ip;
             switch (ipLoacation.result.ad_info.province) {
                 case "北京市":
-                    posdesc = "北——京——欢迎你~~~";
+                    posdesc = "京爷v50看看实力！";
                     break;
                 case "天津市":
                     posdesc = "讲段相声吧。";
@@ -165,7 +165,7 @@ function showWelcome() {
                     posdesc = "玉龙飞舞云缠绕，万仞冰川直耸天。";
                     break;
                 case "西藏自治区":
-                    posdesc = "躺在茫茫草原上，仰望蓝天。";
+                    posdesc = "欢迎来到世界最高城。";
                     break;
                 case "陕西省":
                     posdesc = "来份臊子面加馍。";
