@@ -220,4 +220,5 @@ function showWelcome() {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
 }
+
 window.onload = showWelcome;
