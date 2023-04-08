@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JuseKit（一） —— 提取最长转录本</title>
+      <link href="/2023/04/06/JuseKit%EF%BC%88%E4%B8%80%EF%BC%89%20%E2%80%94%E2%80%94%20%E6%8F%90%E5%8F%96%E6%9C%80%E9%95%BF%E8%BD%AC%E5%BD%95%E6%9C%AC/"/>
+      <url>/2023/04/06/JuseKit%EF%BC%88%E4%B8%80%EF%BC%89%20%E2%80%94%E2%80%94%20%E6%8F%90%E5%8F%96%E6%9C%80%E9%95%BF%E8%BD%AC%E5%BD%95%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从学习生信到现在我也算写过不少脚本了，但是总感觉只能在 linux 上运行少了一些味道。这一段时间，在学习 PyQt5 后我终于实现了自己的第一个小目标：让自己的脚本能在 Windows 上运行并且看上去有模有样！</p><p>虽然它真的不咋样，但作为 Juse 的处女作，我在此正式将其命名为 JuseKit</p><p>它的全称将是：<strong>JU</strong>st a <strong>SE</strong>quence tool<strong>KI</strong>t for <strong>T</strong>ranscriptomics</p><p>不同于其他的生信软件，这个软件将着重于一些非常基本的功能，并且以全中文进行编写。<del>（其实就是能力尚且不足有待继续进步）</del></p><blockquote><p>已有的生信软件一直以来只能用一个简单且粗暴的词来形容：高端大气上档次。如今，我将亲自定义简陋朴素接地气。</p><p>—— Juse</p></blockquote><p>这篇文会分享我完成的第一个基本功能：提取最长转录本。</p><p>以后可能会逐渐完善的功能：</p><ul><li><p>根据 id 提取序列。</p></li><li><p>对序列的 id 进行各种处理。</p></li><li><p>串联序列并得到分区信息。</p></li><li><p>批量 RBH 得到一对一直系同源基因。</p></li><li><p>各种小游戏</p></li><li><p>……</p></li></ul><p>俗话说的好，饼不能画太大不然会撑死人。下载地址：<a href="https://github.com/JuseTiZ/JuseKit/releases/tag/JuseKit">https://github.com/JuseTiZ/JuseKit/releases/tag/JuseKit</a></p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="基本应用"><a href="#基本应用" class="headerlink" title="基本应用"></a>基本应用</h2><p>首先，它目前只有那么一个简陋的页面：</p><p><img src="/pic2/jk1.png"></p><p>因为其他的页面我压根还没开始做，毕竟做成了再发出来就记录不了自己的成长了，因此我做完第一个功能并进行调试确认无误就直接想着记录一下<del>（水一篇文章）</del>。</p><p>首先，默认情况下它是提取 Trinity 组装中的最长转录本的，因此基因标识是锁定为 <code>_i</code> 了的，后文将提到怎么活用基因标识。</p><p><img src="/pic2/jk2.png"></p><p>输入 fasta 的方法有两个，一个是通过文本框直接输入，一个是读取文件，当文本框中存在文本同时又读取了文件时，JuseKit 将会以读取文件为准进行处理，也就是说后者的优先级更高。</p><p>输出文件的名称默认是 <code>longest_contig.fasta</code> ，可以自定义修改（你可别给我改空了）。注意：</p><ul><li>文件的路径和输入文件一致。当通过文本框直接输入时，它将会诞生在 <code>.exe</code> 所在文件夹下。</li><li>当通过文本框直接输入时，若存在报错则说明你的序列出现问题或者你输出文件没填，此时你输入的序列会存在于 <code>.exe</code> 所在文件夹的 <code>tmp.fa</code> 中。</li><li>如果你是通过文本框直接输入，那么一定要留意最后一个序列结尾是否有换行符，如果没有一定要加上哦！</li></ul><p>准备好后点击运行，将会产生对应的输出文件，来看一看实际操作：</p><p><img src="/pic2/jk3.png"></p><h2 id="进阶应用"><a href="#进阶应用" class="headerlink" title="进阶应用"></a>进阶应用</h2><p><em>自定义基因标识是什么意思？它有什么用？</em></p><p>默认提取的文件中，不同的 isoform 是长这样的：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;TRINITY_DN16889_c0_g2_i1</span><br><span class="line">ABCDEF</span><br><span class="line">&gt;TRINITY_DN16889_c0_g2_i2</span><br><span class="line">ABCDEFG</span><br></pre></td></tr></tbody></table></figure><p>这里，它们的基因部分是 <code>TRINITY_DN16889_c0_g2</code> ，不同的 isoform 可以由 <code>_i</code> 标识。</p><p>如果我们要提取其他的 “最长”，例如古早的 Trinity 组装版本：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;TRI_1_20_2014_NORM_comp1_c0_seq1</span><br><span class="line">ABCDEF</span><br><span class="line">&gt;TRI_1_20_2014_NORM_comp1_c0_seq2</span><br><span class="line">ABCDEFG</span><br></pre></td></tr></tbody></table></figure><p>可以看到，基因部分由 <code>TRI_1_20_2014_NORM_comp1_c0</code> 标识，不同 isoform 由 <code>_seq</code> 标识。</p><p>这时可以通过自定义基因标识，提取这种形式的最长转录本。</p><p><img src="/pic2/jk4.png"></p><p>同理也适用于 Transdecoder 预测出来的最长蛋白（或 CDS）提取（<code>.p</code>）和 MitoFinder 跑出来的多条线粒体 contig（<code>_mtDNA_contig</code>）。</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Contig 示例</span><br><span class="line">&gt;TRINITY_DN100033_c0_g2_i4.p1</span><br><span class="line">&gt;TRINITY_DN100033_c0_g2_i4.p2</span><br><span class="line">&gt;xxx_mtDNA_contig_1</span><br><span class="line">&gt;xxx_mtDNA_contig_2</span><br></pre></td></tr></tbody></table></figure><p><em>清除输入文件是什么意思？它有什么用？</em></p><p>Juse：？</p><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>很显然，这个软件目前的大小根本没法匹配上它的功能，原因在于现在的大小主要来源于 PyQt5 的封装，也就是说现在框架已经搭好，但也仅有框架而没有内容。</p><p>我会争取将这些功能慢慢完善，让它成为一个具有更广适用性的软件，希望能够帮助到某些盆友，当然我个人认为最大的可能是自娱自乐<del>（乐，乐死了）</del>。</p><p>如果这个软件帮助到您了，您可以给它一个小小的 Star 聊表支持，或者在您汇报的时候引一下 <a href="https://github.com/JuseTiZ/JuseKit/">https://github.com/JuseTiZ/JuseKit/</a> ，想必看着还是非常高端大气上档次的。</p><p>说起来很好笑，关于取名这一事，我问了下 ChatGPT，它给的意见是：</p><p><strong>J</strong>uxtaposed <strong>U</strong>tility for <strong>S</strong>equence <strong>E</strong>xploration and <strong>K</strong>nowledge <strong>I</strong>ntegration in <strong>T</strong>ranscriptomics</p><p>但是它看上去实在是太装了，感觉不如我的。</p></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JuseKit </tag>
+            
+            <tag> 转录组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>文献分享篇（一）—— 系统发育转录组学是否靠谱？</title>
       <link href="/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/"/>
       <url>/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/</url>
@@ -221,11 +248,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -258,11 +285,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -293,11 +320,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -328,11 +355,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -363,11 +390,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -427,11 +454,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -460,11 +487,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
