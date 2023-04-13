@@ -1,22 +1,72 @@
 <html><head></head><body>.content-inner&gt;#post {
-    /* 以下代表透明度为0.5 可以自行修改*/
     background: rgba(255,255,255,1);
+}
+
+[data-theme="dark"] .content-inner&gt;#post {
+    background: rgba(0,0,0,1);
 }
 
 #aside-content .card-widget{
     background: rgba(255,255,255,.9);
 }
 
+[data-theme="dark"] #aside-content .card-widget{
+    background: rgba(0,0,0,.8);
+}
 
 #recent-posts .recent-post-item{
     background: rgba(255,255,255,.9);
 }
 
+[data-theme="dark"] #recent-posts .recent-post-item{
+    background: rgba(0,0,0,.8);
+}
 
-/* 页脚与头图透明 */
+[data-theme="dark"] #catalog_magnet .magnet_item{
+    background: rgba(0,0,0,.8);
+}
+
+[data-theme="dark"] #welcome-info{
+    background: rgba(0,0,0,.8);
+}
+
+[data-theme="dark"] #catalog_magnet .magnet_link{
+    color: white;
+}
+
+
+[data-theme="dark"] #web_bg {
+    position: fixed;
+    z-index: -999;
+    width: 100%;
+    height: 100%;
+    background: url(/pic/sygx.png);
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 #footer {
   background: rgba(0,0,0,.8);
 }
+
 #page-header {
   background: transparent !important;
+}
+
+[data-theme="dark"] #footer::before {
+  background: transparent !important;
+}
+[data-theme="dark"] #page-header::before {
+    background: transparent !important;
+    background-color: rgba(0,0,0,0.4) !important;
+}
+
+[data-theme="dark"] #web_bg::before, [data-theme="dark"] #footer::before, [data-theme="dark"] #page-header::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    content: '';
 }</body></html>
