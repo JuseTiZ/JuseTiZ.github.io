@@ -6,7 +6,7 @@
   <link href="https://jusetiz.github.io/atom.xml" rel="self"/>
   
   <link href="https://jusetiz.github.io/"/>
-  <updated>2023-05-06T08:14:06.930Z</updated>
+  <updated>2023-05-14T08:14:09.823Z</updated>
   <id>https://jusetiz.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JuseKit（五） —— 用于系统发育分析的序列过滤</title>
+    <link href="https://jusetiz.github.io/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/"/>
+    <id>https://jusetiz.github.io/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/</id>
+    <published>2023-05-14T08:15:00.000Z</published>
+    <updated>2023-05-14T08:14:09.823Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>貌似距离上次更新已经有一段时日了，这一段时间忙完了各种事儿（特指答辩），也算迎来了本科生涯的最后一段悠闲时光。正好趁着这股兴致，把新的 Jusekit 文章给肝出来。</p><p>同样，这次更新事实上已经在很久前就已经完成，如果有人关注的话事实上应该能发现一个多星期前就 Github 上就已经躺着最新版本了 😀。</p><p>已有功能的相关教程请见：<a href="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">Juseの软件开发</a></p><h2 id="本次更新变动"><a href="#本次更新变动" class="headerlink" title="本次更新变动"></a>本次更新变动</h2><ul><li>新增序列过滤功能。</li><li>序列串联输出的 log 文件新增 gap 信息。</li><li>新增了部分按钮选择文件时的后缀选项。</li></ul><h2 id="目前的功能进度"><a href="#目前的功能进度" class="headerlink" title="目前的功能进度"></a>目前的功能进度</h2><ul><li>提取最长转录本。<em>（已实现）</em></li><li>根据 id 提取序列。<em>（已实现）</em></li><li>对序列的 id 进行各种处理。<em>（已实现）</em></li><li>串联序列并得到分区信息。<em>（已实现）</em></li><li>批量改后缀。<em>（已实现）</em></li><li>批量进行序列格式转换。<em>（已实现）</em></li><li>批量提取 Orthofinder 的 orthogroup 对应的 CDS 序列。<em>（已实现）</em></li><li>批量进行序列的物种数和长度过滤。<em>（已实现）</em></li></ul><p>叠盾警告⚠：本软件解释权归属 Juse 所有，本软件能走多远具体得看 Juse 能坚持多久。</p><p>下载地址：<a href="https://github.com/JuseTiZ/JuseKit/releases">https://github.com/JuseTiZ/JuseKit/releases</a></p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="应用教程"><a href="#应用教程" class="headerlink" title="应用教程"></a>应用教程</h2><p>本文主要着重于这次更新新增的功能，其他模块请走<a href="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">这里</a>。</p><h3 id="序列过滤功能"><a href="#序列过滤功能" class="headerlink" title="序列过滤功能"></a>序列过滤功能</h3><p>为什么需要这个功能？众所周知，串联建树已经成为了越来越多系统发育学研究者的选择，多个基因的联合建树能够揭示出准确的系统发育关系，不过这个过程中也需要一定的筛选和过滤。</p><p>比如说，如果某个基因的比对太短，那么它可能根本无法提供什么有价值的信息。亦或者是某个比对所包含的物种数量过少，某条序列的 gap 占比过多等……</p><p>这些时候，舍弃某些不符合要求的比对和序列，保留下那些信息量足够的基因进行串联建树，一方面可以提高系统发育分析的分辨率，另一方面也可以提高后续相关软件的运行效率等。</p><p>基于此，我在 Jusekit 中加入了 <code>序列过滤</code> 功能，以实现以上具体想法。</p><blockquote><p>这些过滤都是有文献依据的哦，所以不用过于担心。</p><p>—— Juse</p></blockquote><p>操作流程如下：</p><p><img src="/pic2/sf1.png"></p><p>各个过滤参数的含义：</p><ul><li>比对最短长度：默认为 <code>80</code>，若比对的长度小于 <code>80bp/aa</code> 则直接丢弃。</li><li>gap 符号：默认为 <code>-</code>，用于计算序列去除 gap 后的长度。</li><li>序列去除 gap 后最短长度：默认为 <code>80</code>，若比对中的序列去除 gap 后长度小于 <code>80bp/aa</code> 则丢弃。</li><li>物种标识：默认为 <code>@</code>，用于识别比对所包含的物种数量，物种标识的相关定义可看以往教程。</li><li>比对包含最少物种数量：默认为 <code>1</code>，当序列经过所有过滤后，所包含的物种低于该数时，丢弃该比对。该值可设置为 <code>研究中所包含的物种数 / 2</code> （常见的标准）。</li></ul><p>最后过滤的所有信息可以在输出文件夹的 <code>filter.log</code> 中查看。</p><h3 id="序列串联-log-新增-gap-率"><a href="#序列串联-log-新增-gap-率" class="headerlink" title="序列串联 log 新增 gap 率"></a>序列串联 log 新增 gap 率</h3><p>如题所示，在新更新的 Jusekit v0.6 中，序列串联后产生的 log 中将包含每个物种的 gap 率。</p><p><img src="/pic2/sf2.png"></p><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>事实上，我在博客中写的大多数文章貌似都包括了 <code>前言</code> <code>正文</code> <code>后记</code> 三个部分，每每写到这一部分时我心中的文艺之情都会盎然而生，使我由不得吐出一些怪话。但是这一次我的心中却意外平静，甚至乎思绪延伸，产生出这样一个想法：</p><p>为什么我每次都要这样循规蹈矩呢？既然写不出、不想写，那就不写罢！</p><p>然后我就说干就干了。</p><p>接下来是复制黏贴：</p><p>我会争取将这些功能慢慢完善，让它成为一个具有更广适用性的软件，希望能够帮助到某些盆友，当然我个人认为最大的可能是自娱自乐。</p><p>如果这个软件帮助到您了，您可以给它一个小小的 Star 聊表支持，或者在您汇报的时候引一下 <a href="https://github.com/JuseTiZ/JuseKit/">https://github.com/JuseTiZ/JuseKit/</a> ，想必看着还是非常高端大气上档次的。</p></body></html>]]></content>
+    
+    
+    <summary type="html">大多数生信软件都以高端为荣，不如来做个接地气的玩玩。</summary>
+    
+    
+    
+    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    
+    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>关于 PAML 的一二三事</title>
@@ -509,35 +532,6 @@
     
     
     <summary type="html">原始数据的质控与转录组组装，包括一些小知识例如如何判断数据受污染。</summary>
-    
-    
-    
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="生信" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
-    
-    
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
-    
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
-    
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
-    
-    <category term="比较转录组学" scheme="https://jusetiz.github.io/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>比较转录组分析（一）—— 前提及概要</title>
-    <link href="https://jusetiz.github.io/2022/11/01/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E5%89%8D%E6%8F%90%E5%8F%8A%E6%A6%82%E8%A6%81/"/>
-    <id>https://jusetiz.github.io/2022/11/01/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E5%89%8D%E6%8F%90%E5%8F%8A%E6%A6%82%E8%A6%81/</id>
-    <published>2022-11-01T07:00:00.000Z</published>
-    <updated>2023-03-02T05:29:16.075Z</updated>
-    
-    <content type="html"><![CDATA[<html><head></head><body><hr><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>生信分析的重头当然在于使用软件，但是我们应该认识到这一点 —— <u>并不是说会了一套流程就觉得已经掌握了生信</u>，我们应当清楚地知晓每一步的意义以及结果里包含了什么信息，我们能够从这些结果里获得哪些潜藏的生物学意义，而不是糊里糊涂地跑了一套流程了事。</p><p>为此，在很多方面我们还是应当具有基础的知识储备，而在跑流程的过程里也<strong>应当清楚自己在做什么，为什么</strong>。</p><p>在这里我就用这一篇幅不算大的文向友们简要介绍下我眼中的比较转录组分析是怎么样的还有一些自己的看法建议。</p><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>2022-11-14 补充了分析的流程图</p><p>2022-11-21 补充修改了部分内容</p><p>2022-12-01 补充修改了部分内容</p><h2 id="生物方面的理论知识"><a href="#生物方面的理论知识" class="headerlink" title="生物方面的理论知识"></a>生物方面的理论知识</h2><p>如果不知道自己对生物方面的知识了解到什么程度，我在这里可以举出几个比较转录组学流程分析中常见的术语：</p><ul><li>转录组、基因组</li><li>外显子、内含子、可变剪切</li><li>直系同源基因、旁系同源基因</li><li>系统发育关系、系统发育树（进化树）</li><li>同义替换、非同义替换</li></ul><p>不用完全理解，因为如果没有做过特别的学习，仅仅有个印象或者一知半解是很正常的，很多知识及细节都是在探索的过程里得到学习，但如果既不认识这些术语又没有任何其他的有关联想，那么我认为还是略微完善下对生物大纲的认知会有助于对分析流程的理解。</p><p>这里我推荐<a href="https://book.douban.com/subject/10602325/">艾伯特先生的细胞生物学精要</a>（作为整体框架的理解）和分子生物学方面的书籍（这方面的知识我主要是通过课程了解的，买的书只看了一半）。以我个人的狭隘之见，细胞生物学精要对于每个人来说都会是一本相当有趣的生物学科普书籍，或许以后我会单独出一篇文章介绍这本好书。</p><p>其他的如果要深入学习，可以考虑翟中和老师和王金发老师的细胞生物学以及王镜岩老师的生物化学，不过可能看起来都会比较晦涩乏味，因为涉及到的具体知识点太多<del>（偏应试教育那味）</del>，但读完肯定是能在生物知识方面精进不少的。</p><h2 id="信息方面的理论知识"><a href="#信息方面的理论知识" class="headerlink" title="信息方面的理论知识"></a>信息方面的理论知识</h2><p>这一方面每个人就应当非常清楚自己的定位了，说小一些无非就是会不会 linux、RStudio、Python 的操作（优先性依次递减）以及熟练到哪个程度。但往大了说事实上信息学方面的知识是庞大而复杂的，因此在分析的过程里多去了解学习一些信息学方面的知识也很好（比如说各种统计方法的原理、使用条件等，或者说一些名词概念比如假阳性、假阴性之类的）。这一点在之前的<a href="https://jusetiz.github.io/2022/10/29/%E7%94%9F%E4%BF%A1%E5%AF%BC%E8%AE%BA/">生信导论</a>文章中也有提及，因此这里就不多赘述。</p><p>补充：对于 <code>Python</code> 的基础入门，我推荐 <a href="https://book.douban.com/subject/35196328/">Python编程：从入门到实践（第2版）</a>。</p><h1 id="比较转录组概论"><a href="#比较转录组概论" class="headerlink" title="比较转录组概论"></a>比较转录组概论</h1><h2 id="什么是转录组"><a href="#什么是转录组" class="headerlink" title="什么是转录组"></a>什么是转录组</h2><p>转录的含义在<a href="https://baike.baidu.com/item/%E8%BD%AC%E5%BD%95/1503653">这里</a>。</p><p>对于转录组：</p><p>狭义上来说指的是生物的 mRNA 集合，这是<u>一般我们做真核生物转录组分析时涉及到的概念</u>。</p><p>广义上来说指的是生物所有转录产物的集合，包括但不限于 mRNA tRNA lncRNA rRNA miRNA snRNA 等等。</p><p>而如果从广义上出发，就会出现非常多样的转录组分析，感兴趣可以移步 <a href="http://www.bgitechsolutions.com/sequencing?class_id=3">BGI 的研究内容介绍</a>。</p><h2 id="什么是比较"><a href="#什么是比较" class="headerlink" title="什么是比较"></a>什么是比较</h2><p>众所周知，生物学的研究里大多强调 “对比” 这一概念，在分析的过程里，我们往往会采用不同的转录组进行相互比较从而得到有用的结果，比如说比较在正常状况下和受胁迫状况下的生物体转录组，根据其中的差异推测出其抗胁迫的机制，其他还有诸如系统发育亲缘关系远近在某种程度上也能算是物种之间的 “比较” 等。</p><p>网上对于 “比较转录组” 的定义多倾向于分析不同物种或亚种间 mRNA 序列差异进而探索近源物种间的亲缘关系，而无参转录组上的差异表达分析则被称作 “转录组的比较” 。但是我老板让我做的事里面，这俩东西是可以一起做的，更清晰点讲就是做了后者的工作以后还可以顺手把前者的工作给做了，因此在这里我就放在一起讨论。</p><h2 id="比较转录组的经典分析流程"><a href="#比较转录组的经典分析流程" class="headerlink" title="比较转录组的经典分析流程"></a>比较转录组的经典分析流程</h2><p>对于一般的实验及分析流程，我个人总结如下：</p><ul><li><p>湿实验部分 —— 采样、样本处理、 RNA 的提取及文库建立</p></li><li><p>送测获得单端或者双端的测序数据</p></li><li><p>干实验部分（以无参物种为例）</p><ul><li><p>原始数据质控</p></li><li><p>无参转录组拼接（有参物种后续一般使用其基因组进行）</p></li><li><p>转录组拼接质量检测以及污染序列去除</p></li><li><p>转录组注释（GO、nr、KEGG、Pfam、CAzy 等等…）</p><ul><li>一般而言 GO 注释最为常见</li></ul></li><li><p>定量分析（序列的比对以及转录本定量）</p></li><li><p>差异表达分析</p></li><li><p>富集分析</p></li><li><p>最常见的转录组分析仅为上述内容，事实上后续还可以进行更多的拓展，例如线粒体基因的提取和分析、系统发育树的建立和分析等等。</p></li></ul></li></ul><p>后续我会着重于干实验的部分进行心得分享。</p><p>为了更直观的展现过程，这里更新个流程图（部分为避免引起麻烦的地方已经用马赛克 &amp; 剪切处理）：</p><p><img src="/pic/example1.jpg"></p><p>除了图中所展示的软件以外，还有较多的画图技巧和统计技巧需要掌握，在之后的文里我也会给大家分享我的一些经验，主要涉及到的有 R、Python（写脚本）、GraphPad Prism 还有一些实用的画图网站。</p><h2 id="比较转录组分析能够做什么"><a href="#比较转录组分析能够做什么" class="headerlink" title="比较转录组分析能够做什么"></a>比较转录组分析能够做什么</h2><p>揭示生物的抗胁迫机制，揭示生物的系统发育关系及受选择基因。</p><p>通过所揭示的现象，进一步推测更上层的原因。</p><p>这个只能说<strong>主要得看你为了什么而做这些分析</strong>，而不是看分析后能做什么。</p><p>同时，虽然分析具有指向性，但是分析<strong>不是为了让我们得到想要的结果</strong>，出现很多意料之外的情况也是很正常的事。</p><p>此外也不能说分析的结果如此，真相就是如此，分析的结果只能提供一个见解，而不能得到一个定论。</p><blockquote><p>“Thus evolutionary achievements can be used as hints to suggest possible lines of research, but it is highly dangerous to trust them too much. **It is all too easy to make mistaken inferences unless the process involved is already very well understood.**“</p><p>—— Francis Crick, <em>What Mad Pursuit: A Personal View of Scientific Discovery</em> (1988)</p></blockquote><h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>下一次比较转录组分析的分享我将会略微介绍 <code>fastqc</code>、<code>cutadapter</code>、<code>trimmomatic</code> 等质控软件并详细介绍经典的转录组拼接软件 <code>Trinity</code> 。</p><p><strong>但是在之后的软件分享里我不会去介绍最基础的内容（因为网上关于软件安装和使用的教程真的一抓一大把，此外在每个软件的 github 官网上也会有所有命令及参数的介绍）</strong>，我会针对 <strong>“在已有流程分析基本经验的基础上”</strong> 去提一些进阶性意见，如有模糊不清之处还请度娘<del>（当然还是 Bing 更好使）</del>解决。</p><p>此外有个知乎老哥讲的<a href="https://zhuanlan.zhihu.com/p/222345339">比较转录组</a>介绍写的很好，里面提到的很多事情值得记一记，包括为何选择转录组而不选择基因组等等问题都有介绍，大家感兴趣也可以去看一看。</p><p>最后，保持对生物的热爱，保持对知识的追求，保持自己的诚恳，保持对未知的敬畏。</p><h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><h2 id="如果你觉得转录组分析真的好麻烦"><a href="#如果你觉得转录组分析真的好麻烦" class="headerlink" title="如果你觉得转录组分析真的好麻烦"></a>如果你觉得转录组分析真的好麻烦</h2><p>恰好这一段时间看到了一篇论文，讲的是他们那个团队研发了个转录组分析的平台，把一些常见的分析流程给 pipeline 化（不过主要也就是利用了现在 <code>Trinity</code> 完善的 pipeline 包装）了。</p><p>我看了下那个网站流程还是非常正式的，基本是把主要的无参转录组分析都给涵盖了进去，一些很关键的参数也可以根据实际情况和需求进行相应的调整，或许对于一些不是很想花费精力在软件学习上以及对计算机语言真的无感的人会很有帮助，如果感兴趣的话论文传送门在<a href="https://www.sciencedirect.com/science/article/pii/S2405844022015432">这里</a>，网站传送门在<a href="https://atap.psu.ac.th/index.php">这里</a>。当然我认为方便是方便，但弊端肯定还是有的，流程也并不算得上完美（但足够用并且节省了非常多本来应该用于学习生信的时间），建议各位友友们仔细思考权衡利弊。</p></body></html>]]></content>
-    
-    
-    <summary type="html">在开始比较转录组学分析方法分享之前的一些小小意见。</summary>
     
     
     

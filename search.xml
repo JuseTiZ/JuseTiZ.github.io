@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JuseKit（五） —— 用于系统发育分析的序列过滤</title>
+      <link href="/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/"/>
+      <url>/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>貌似距离上次更新已经有一段时日了，这一段时间忙完了各种事儿（特指答辩），也算迎来了本科生涯的最后一段悠闲时光。正好趁着这股兴致，把新的 Jusekit 文章给肝出来。</p><p>同样，这次更新事实上已经在很久前就已经完成，如果有人关注的话事实上应该能发现一个多星期前就 Github 上就已经躺着最新版本了 😀。</p><p>已有功能的相关教程请见：<a href="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">Juseの软件开发</a></p><h2 id="本次更新变动"><a href="#本次更新变动" class="headerlink" title="本次更新变动"></a>本次更新变动</h2><ul><li>新增序列过滤功能。</li><li>序列串联输出的 log 文件新增 gap 信息。</li><li>新增了部分按钮选择文件时的后缀选项。</li></ul><h2 id="目前的功能进度"><a href="#目前的功能进度" class="headerlink" title="目前的功能进度"></a>目前的功能进度</h2><ul><li>提取最长转录本。<em>（已实现）</em></li><li>根据 id 提取序列。<em>（已实现）</em></li><li>对序列的 id 进行各种处理。<em>（已实现）</em></li><li>串联序列并得到分区信息。<em>（已实现）</em></li><li>批量改后缀。<em>（已实现）</em></li><li>批量进行序列格式转换。<em>（已实现）</em></li><li>批量提取 Orthofinder 的 orthogroup 对应的 CDS 序列。<em>（已实现）</em></li><li>批量进行序列的物种数和长度过滤。<em>（已实现）</em></li></ul><p>叠盾警告⚠：本软件解释权归属 Juse 所有，本软件能走多远具体得看 Juse 能坚持多久。</p><p>下载地址：<a href="https://github.com/JuseTiZ/JuseKit/releases">https://github.com/JuseTiZ/JuseKit/releases</a></p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="应用教程"><a href="#应用教程" class="headerlink" title="应用教程"></a>应用教程</h2><p>本文主要着重于这次更新新增的功能，其他模块请走<a href="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">这里</a>。</p><h3 id="序列过滤功能"><a href="#序列过滤功能" class="headerlink" title="序列过滤功能"></a>序列过滤功能</h3><p>为什么需要这个功能？众所周知，串联建树已经成为了越来越多系统发育学研究者的选择，多个基因的联合建树能够揭示出准确的系统发育关系，不过这个过程中也需要一定的筛选和过滤。</p><p>比如说，如果某个基因的比对太短，那么它可能根本无法提供什么有价值的信息。亦或者是某个比对所包含的物种数量过少，某条序列的 gap 占比过多等……</p><p>这些时候，舍弃某些不符合要求的比对和序列，保留下那些信息量足够的基因进行串联建树，一方面可以提高系统发育分析的分辨率，另一方面也可以提高后续相关软件的运行效率等。</p><p>基于此，我在 Jusekit 中加入了 <code>序列过滤</code> 功能，以实现以上具体想法。</p><blockquote><p>这些过滤都是有文献依据的哦，所以不用过于担心。</p><p>—— Juse</p></blockquote><p>操作流程如下：</p><p><img src="/pic2/sf1.png"></p><p>各个过滤参数的含义：</p><ul><li>比对最短长度：默认为 <code>80</code>，若比对的长度小于 <code>80bp/aa</code> 则直接丢弃。</li><li>gap 符号：默认为 <code>-</code>，用于计算序列去除 gap 后的长度。</li><li>序列去除 gap 后最短长度：默认为 <code>80</code>，若比对中的序列去除 gap 后长度小于 <code>80bp/aa</code> 则丢弃。</li><li>物种标识：默认为 <code>@</code>，用于识别比对所包含的物种数量，物种标识的相关定义可看以往教程。</li><li>比对包含最少物种数量：默认为 <code>1</code>，当序列经过所有过滤后，所包含的物种低于该数时，丢弃该比对。该值可设置为 <code>研究中所包含的物种数 / 2</code> （常见的标准）。</li></ul><p>最后过滤的所有信息可以在输出文件夹的 <code>filter.log</code> 中查看。</p><h3 id="序列串联-log-新增-gap-率"><a href="#序列串联-log-新增-gap-率" class="headerlink" title="序列串联 log 新增 gap 率"></a>序列串联 log 新增 gap 率</h3><p>如题所示，在新更新的 Jusekit v0.6 中，序列串联后产生的 log 中将包含每个物种的 gap 率。</p><p><img src="/pic2/sf2.png"></p><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>事实上，我在博客中写的大多数文章貌似都包括了 <code>前言</code> <code>正文</code> <code>后记</code> 三个部分，每每写到这一部分时我心中的文艺之情都会盎然而生，使我由不得吐出一些怪话。但是这一次我的心中却意外平静，甚至乎思绪延伸，产生出这样一个想法：</p><p>为什么我每次都要这样循规蹈矩呢？既然写不出、不想写，那就不写罢！</p><p>然后我就说干就干了。</p><p>接下来是复制黏贴：</p><p>我会争取将这些功能慢慢完善，让它成为一个具有更广适用性的软件，希望能够帮助到某些盆友，当然我个人认为最大的可能是自娱自乐。</p><p>如果这个软件帮助到您了，您可以给它一个小小的 Star 聊表支持，或者在您汇报的时候引一下 <a href="https://github.com/JuseTiZ/JuseKit/">https://github.com/JuseTiZ/JuseKit/</a> ，想必看着还是非常高端大气上档次的。</p></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JuseKit </tag>
+            
+            <tag> 转录组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于 PAML 的一二三事</title>
       <link href="/2023/05/04/%E5%85%B3%E4%BA%8E%20PAML%20%E7%9A%84%E4%B8%80%E4%BA%8C%E4%B8%89%E4%BA%8B/"/>
       <url>/2023/05/04/%E5%85%B3%E4%BA%8E%20PAML%20%E7%9A%84%E4%B8%80%E4%BA%8C%E4%B8%89%E4%BA%8B/</url>
