@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>贝叶斯建树之 Mrbayes 篇</title>
+      <link href="/2023/07/06/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%BB%BA%E6%A0%91%E4%B9%8B%20Mrbayes%20%E7%AF%87/"/>
+      <url>/2023/07/06/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%BB%BA%E6%A0%91%E4%B9%8B%20Mrbayes%20%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<html><head></head><body><hr><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote><p>注意：该前言部分使用 ChatGPT4.0 生成并由 Juse 纠正总结。</p><p>问题：请介绍一下系统发育分析中的贝叶斯推断法（原理、优缺点等），并指出几个代表生信软件。</p></blockquote><p>在系统发育学中，贝叶斯推断是一种常用的统计方法，用于根据观测数据推断出物种间的系统发育关系。</p><p><strong>原理：</strong></p><p>贝叶斯推断的原理基于贝叶斯定理，该定理可以将先验概率和似然度结合起来，得到后验概率。</p><p>在系统发育分析中，贝叶斯推断法被用来估计种群或物种之间的演化关系。这种方法假设所有可能的树形图都存在某种先验概率，并使用蒙特卡洛马尔科夫链（MCMC）来在所有可能的树形图和其关联参数的空间中进行采样。每一步，系统会根据特定的概率提议一种新的树形图或参数，然后根据新的树形图或参数与当前状态的拟合度决定是否接受。</p><p><strong>优点：</strong></p><ol><li>贝叶斯推断提供了一种直观的方式来理解不确定性和证据的权重。因为后验概率可以直接解释为在给定数据下模型或参数的概率。</li><li>贝叶斯推断允许使用先验信息，有助于引导分析并提高准确性。</li></ol><p><strong>缺点：</strong></p><ol><li>计算复杂性高，尤其是对于大数据集。MCMC方法<strong>需要长时间的运行才能确保采样的充分性</strong>。</li><li>对先验概率的选择可能对结果有影响。不合理的先验可能会导致偏差的结果。</li></ol><p><strong>代表性生物信息学软件：</strong></p><ol><li>MrBayes：可能是最广泛使用的贝叶斯系统发育分析软件。它允许使用各种进化模型，并且可以并行处理以加快计算速度。</li><li>BEAST：通常用于分子时钟和历史进化的分析。它可以结合时间信息来推断系统发育树，并估计进化参数。</li><li>PhyloBayes：这是一个专门针对复杂模型的贝叶斯系统发育分析软件，常用于蛋白质序列的系统发育重建。</li></ol><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>关于 Mrbayes 的安装和运行原理介绍（最详尽版）：<a href="https://github.com/NBISweden/MrBayes/blob/develop/doc/manual/Manual_MrBayes_v3.2.pdf">Mrbayes Manual</a></p><p>该 manual 在 Mrbayes 的根目录下 <code>share/doc/mrbayes/Manual_MrBayes_v3.2.pdf</code> 也能找到。</p><p>很好很易懂的其他教程：<a href="http://www.chenlianfu.com/?p=1364">贝叶斯法构建进化树 from 陈连福</a></p><p>注意：请安装<strong>支持多线程的 MPI 版 Mrbayes</strong>。</p><p>本文将以<strong>尽量最简洁</strong>的方式介绍 Mrbayes 的运行及注意事项。</p><h2 id="运行方法"><a href="#运行方法" class="headerlink" title="运行方法"></a>运行方法</h2><p>所需要准备的文件及可用信息：</p><ul><li><code>nex</code> 格式的序列文件（不是 <code>fasta</code>）。</li><li>分区信息及对应模型（可选）。</li></ul><p>Mrbayes 也支持其他类型（例如形态学）数据的输入，但本文将侧重于序列数据（<code>DNA</code> or <code>蛋白</code>）的处理。</p><p><strong>①、</strong>使用多核运行 Mrbayes：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mpirun -np 10 mb</span></span><br></pre></td></tr></tbody></table></figure><p>命令中的 <code>10</code> 表示使用十个核，使用的核数量越多，运行速度越快。需要注意的是，如果 Mrbayes 耗尽了内存，分析会变得更慢很多。</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MrBayes &gt; log start filename = mrbayes.log;</span><br><span class="line">MrBayes &gt; execute xxx.nex</span><br></pre></td></tr></tbody></table></figure><p>一般来说，首先建议使用 <code>log start filename = mrbayes.log;</code> 命令将 Mrbayes 的所有屏幕输出储存到文件 <code>mrbayes.log</code> 中以便后续查阅，此后再通过 <code>execute xxx.nex</code> 读取序列文件。</p><p>此后的模型选择，如果没有相关的先验理解，那么可以先通过一些方法确定自己数据所适合的模型：</p><ul><li>Mrmodeltest2</li><li>IQTREE 的 ModelFinder</li><li>PartitionFinder2（仅适用于多基因串联超矩阵序列）</li></ul><p><strong>②、</strong>确定最佳模型后，输入相关参数，以 <code>GTR substitution model with gamma-distributed rate variation across sites and a proportion of invariable sites</code> 为例（多基因串联情况见后文）：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MrBayes &gt; lset nst=6 rates=invgamma</span><br></pre></td></tr></tbody></table></figure><p>接着设置运行参数，可以以下列参数<strong>作为参考</strong>：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MrBayes &gt; mcmcp append=no ngen=100000 printfreq=1000 samplefreq=1000 nchains=10 nruns=2 savebrlens=yes checkpoint=yes checkfreq=5000;</span><br></pre></td></tr></tbody></table></figure><p>各个参数的含义及设置参考：</p><ul><li><code>append=no</code>，表示<strong>新开始</strong>一个分析，如果之前已经运行过但因为某种原因中断，可以将其调整为 <code>append=yes</code> 从上一个检查点继续运行，需要搭配 <code>checkpoint=yes</code>。</li><li><code>ngen=100000</code>，表示分析总共迭代<strong>十万代</strong>，对于小数据集一般只需几万代就可以收敛，而大数据集可能则要数百万代才能收敛。可以根据自己的数据集调整，如果迭代完依旧未收敛 Mrbayes 会询问是否叠加次数。</li><li><code>printfreq=1000</code>，表示<strong>每一千代</strong>打印一次链状况到屏幕输出上。</li><li><code>samplefreq=1000</code>，表示<strong>每一千代</strong>采一次样，对于需要长时间才能收敛的大数据集而言可以将该值调高以降低采样频率，避免最终文件包含的树和参数信息过多。采样量为 <code>ngen/samplefreq</code>。</li><li><code>nchains=10</code>，表示每个运行使用<strong>十条链</strong>，总链数为 <code>nchains*nruns</code>。</li><li><code>nruns=2</code>，表示进行<strong>两个</strong>独立的分析，用于判断收敛情况。</li></ul><blockquote><p>链数跟 <code>nchains</code> 和 <code>nruns</code> 有关，所有的链会<strong>被平均分</strong>到各个核中，当每个分析中链数量大于 1 时（<code>nchains &gt; 1</code>）会设置一条冷链（其他均为热链），热链的存在在某些情况下对于收敛来说是必要的。在一些大数据集中热链越多收敛越快。因此设置合理的链数和内核数对于分析来说也很重要。</p><p>在 Mrbayes 的屏幕输出中，以圆括号框起来的即为热链，方括号框起来的为冷链，星号分离不同的分析。</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 -- [-8849.255] (-8762.724) (-8987.103) (-8764.951) * [-8802.317] ...</span><br></pre></td></tr></tbody></table></figure></blockquote><ul><li><p><code>savebrlens=yes</code>，表示<strong>记录分支长度</strong>。如果只关注树的拓扑结构且不需分支长度信息可以设置为 <code>no</code> 节省空间。</p></li><li><p><code>checkfreq=5000</code>，表示<strong>每五千代</strong>进行一次收敛诊断，输出 ASDSF，例：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Average standard deviation of split frequencies: 0.178972</span><br></pre></td></tr></tbody></table></figure></li></ul><p>在运行中及结束以后，有几个判断分析收敛程度的指标：</p><ul><li><strong>平均标准分歧</strong>（ASDSF），低于 0.01 时表明收敛良好。</li><li><strong>潜在似然</strong>（PSRF），在 <code>sump</code> 输出中出现，理想情况应该接近 1，若不是则说明可能仍未收敛。</li><li><strong>有效样本大小</strong>（ESS），在 <code>sump</code> 输出中出现，通常情况下以大于 200 作为样本量足够的标准（PhyloBayes 则为 300）。</li></ul><p>一般来说，三个指标都达标时我们才有充分的信心相信贝叶斯推断的结果足够可靠，以下是得到后两种信息的方法：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MrBayes &gt; sump relburnin=yes burninfrac=0.25;</span><br></pre></td></tr></tbody></table></figure><p>其中 <code>relburnin=yes</code> 表示使用比例，此处意为丢弃冷链中前 25% 的样本。</p><p>输出的结果中，<code>min ESS</code> 和 <code>PSRF</code> 两列即为上述要关注的两个指标。</p><p><strong>③、</strong>确保分析收敛后，可使用以下命令得到贝叶斯推断树：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MrBayes &gt; sumt conformat=Simple contype=Halfcompat relburnin=yes burninfrac=0.25;</span><br></pre></td></tr></tbody></table></figure><p>其中 <code>conformat=Simple</code> 时输出的树较为整洁，能被大多数的软件识别接受，另一种选项为 <code>Figtree</code>，会输出一个适用于 FigTree 程序的更丰富的树格式。<code>contype=Halfcompat</code> 表示半兼容计算共识树，较完全兼容（<code>Allcompat</code>）具有更多的可能性。</p><p>输出的树文件以 <code>.con.tre</code> 结尾，建议使用 Figtree 打开并转换为其他所需格式。</p><p>分享多基因串联处理方法前的一些建议：</p><ul><li>官方 manual 中有更多细节，包括在收敛困难时可以用于改善收敛情况的手段以及让程序的运行效率变得更高的方法等，遇到这些问题的时候可以在里面寻找到相应的解决方案。</li><li>Mrbayes 有运行示例，可以跟着做一遍。</li></ul><h2 id="多基因串联时的分区方法"><a href="#多基因串联时的分区方法" class="headerlink" title="多基因串联时的分区方法"></a>多基因串联时的分区方法</h2><p>需准备的软件：ModelFinder（IQTREE）。</p><p>首先通过下列命令寻找最佳的分区方案和对应进化模型：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">iqtree2 -s concatenation_ortho.fasta \</span></span><br><span class="line"><span class="language-bash">-spp IQ_partition.txt \</span></span><br><span class="line"><span class="language-bash">-m TESTMERGEONLY -mset mrbayes \</span></span><br><span class="line"><span class="language-bash">-nt AUTO -pre mybayes_aa</span></span><br></pre></td></tr></tbody></table></figure><p>此处，<code>-s</code> 指定串联得到的序列文件，<code>-spp</code> 指定对应分区文件，<code>-m</code> 和 <code>-mset</code> 将模型寻找限制在 Mrbayes 所具有的模型中并仅寻找最佳模型不进行建树。如果已有多个基因的比对文件但不知道怎么串联可见之前的文章：</p><ul><li>软件解决：<a href="https://jusetiz.github.io/2023/04/13/JuseKit%EF%BC%88%E4%B8%89%EF%BC%89%20%E2%80%94%E2%80%94%20%E4%B8%B2%E8%81%94%E5%BA%8F%E5%88%97%E3%80%81%E6%A0%B9%E6%8D%AEid%E6%8F%90%E5%8F%96%E5%BA%8F%E5%88%97%E3%80%81%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%B0%BE%E7%BC%80/">JuseKit（三） —— 串联序列部分</a></li><li>脚本解决：<a href="https://jusetiz.github.io/2023/01/29/%E7%94%A8%E4%BA%8E%20IQtree%20%E7%9A%84%E5%BA%8F%E5%88%97%E4%B8%B2%E8%81%94%E6%96%B9%E6%B3%95/">用于 IQtree 的序列串联方法</a></li></ul><p>运行结束后，最佳的分区方案和进化模型会出现在以 <code>.best_scheme.nex</code> 结尾的文件中，以上述代码示例为例即为 <code>mybayes_aa.best_scheme.nex</code>。</p><p>需要注意的是，该结果并没法直接套用于 Mrbayes 中，因此还需要进一步的转换，对此，我基于 Phylosuite 的源码（详情可见脚本中所给链接）编制了一个专门用于转换的脚本：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mf2mrbayes.py</span></span><br><span class="line"><span class="comment"># Author: Juse</span></span><br><span class="line"><span class="comment"># Transform result from modelfinder to format used in Mrbayes.</span></span><br><span class="line"><span class="comment"># Usage: python mf2mrbayes.py xxx.best_scheme.nex</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">mf_result = <span class="built_in">open</span>(sys.argv[<span class="number">1</span>],<span class="string">"r"</span>)</span><br><span class="line">abs_path = os.path.abspath(sys.argv[<span class="number">1</span>])</span><br><span class="line">op_path = os.path.dirname(abs_path)</span><br><span class="line"></span><br><span class="line">numPar = <span class="number">0</span></span><br><span class="line">numMol = <span class="number">0</span></span><br><span class="line">conPar = <span class="string">''</span></span><br><span class="line">conPar_set = []</span><br><span class="line">conMol = <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Reference: https://github.com/dongzhang0725/PhyloSuite/blob/master/PhyloSuite/src/Lg_Mrbayes.py</span></span><br><span class="line">dict_models = {<span class="string">"JC"</span>: <span class="string">"1"</span>, <span class="string">"F81"</span>: <span class="string">"1"</span>, <span class="string">"K80"</span>: <span class="string">"2"</span>, <span class="string">"HKY"</span>: <span class="string">"2"</span>, <span class="string">"TrNef"</span>: <span class="string">"6"</span>, <span class="string">"TrN"</span>: <span class="string">"6"</span>, <span class="string">"K81"</span>: <span class="string">"6"</span>,</span><br><span class="line">               <span class="string">"K81uf"</span>: <span class="string">"6"</span>, <span class="string">"K2P"</span>: <span class="string">"2"</span>, <span class="string">"JC69"</span>: <span class="string">"1"</span>, <span class="string">"HKY85"</span>: <span class="string">"2"</span>, <span class="string">"K3P"</span>: <span class="string">"6"</span>,</span><br><span class="line">               <span class="string">"TIMef"</span>: <span class="string">"6"</span>, <span class="string">"TIM"</span>: <span class="string">"6"</span>, <span class="string">"TVMef"</span>: <span class="string">"6"</span>, <span class="string">"TVM"</span>: <span class="string">"6"</span>, <span class="string">"SYM"</span>: <span class="string">"6"</span>, <span class="string">"GTR"</span>: <span class="string">"6"</span>, <span class="string">"TPM2"</span>: <span class="string">"6"</span>,</span><br><span class="line">               <span class="string">"TPM2uf"</span>: <span class="string">"6"</span>, <span class="string">"TPM3"</span>: <span class="string">"6"</span>, <span class="string">"TPM3uf"</span>: <span class="string">"6"</span>, <span class="string">"TIM2ef"</span>: <span class="string">"6"</span>, <span class="string">"TIM2"</span>: <span class="string">"6"</span>, <span class="string">"TIM3ef"</span>: <span class="string">"6"</span>,</span><br><span class="line">               <span class="string">"TIM3"</span>: <span class="string">"6"</span>}</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> mf_result:</span><br><span class="line">    <span class="comment"># 处理分区集信息</span></span><br><span class="line">    <span class="keyword">if</span> line.strip().startswith(<span class="string">'charset'</span>):</span><br><span class="line">        numPar += <span class="number">1</span></span><br><span class="line">        ParPos = line.split(<span class="string">'='</span>)[<span class="number">1</span>].strip()</span><br><span class="line">        conPar += <span class="string">f'charset subset<span class="subst">{numPar}</span> = <span class="subst">{ParPos}</span>\n'</span></span><br><span class="line">        conPar_set.append(<span class="string">f'subset<span class="subst">{numPar}</span>'</span>)</span><br><span class="line">    <span class="comment"># 处理分区模型信息</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="string">':'</span> <span class="keyword">in</span> line:</span><br><span class="line">        model_name = line.split(<span class="string">':'</span>)[<span class="number">0</span>].strip()</span><br><span class="line">        numMol += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'+G'</span> <span class="keyword">in</span> model_name <span class="keyword">and</span> <span class="string">'+I'</span> <span class="keyword">in</span> model_name:</span><br><span class="line">            rates = <span class="string">" rates=invgamma"</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">'+G'</span> <span class="keyword">in</span> model_name:</span><br><span class="line">            rates = <span class="string">" rates=gamma"</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">'+I'</span> <span class="keyword">in</span> model_name:</span><br><span class="line">            rates = <span class="string">" rates=propinv"</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            rates = <span class="string">''</span></span><br><span class="line">        model_used = model_name.split(<span class="string">'+'</span>)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> model_used <span class="keyword">in</span> dict_models:</span><br><span class="line">            <span class="comment"># nt序列</span></span><br><span class="line">            conMol += <span class="string">f'lset applyto=(<span class="subst">{numMol}</span>) nst=<span class="subst">{dict_models[model_used]}</span><span class="subst">{rates}</span>;\n'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># aa序列</span></span><br><span class="line">            conMol += <span class="string">f"lset applyto=(<span class="subst">{numMol}</span>)<span class="subst">{rates}</span>;\n"</span></span><br><span class="line">            conMol += <span class="string">f"prset applyto=(<span class="subst">{numMol}</span>) aamodelpr=fixed(<span class="subst">{model_used.lower()}</span>);\n"</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">'+F'</span> <span class="keyword">in</span> model_name:</span><br><span class="line">                conMol += <span class="string">f"prset applyto=(<span class="subst">{numMol}</span>) statefreqpr=fixed(empirical);\n"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成分区名</span></span><br><span class="line">parnam = <span class="string">f'partition Names = <span class="subst">{<span class="built_in">len</span>(conPar_set)}</span>:<span class="subst">{<span class="string">", "</span>.join(conPar_set)}</span>;\n'</span> \</span><br><span class="line">         <span class="string">f'set partition=Names;\n'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 汇总输出</span></span><br><span class="line">total_output = conPar + parnam + conMol</span><br><span class="line">total_output = total_output.replace(<span class="string">"amodelpr=fixed(jtt)"</span>, <span class="string">"amodelpr=fixed(jones)"</span>)</span><br><span class="line">total_output = total_output.replace(<span class="string">"  "</span>, <span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f'<span class="subst">{op_path}</span>/Mrbayes_par.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> t:</span><br><span class="line">    t.write(total_output)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">'Finished!'</span>)</span><br></pre></td></tr></tbody></table></figure><p>用法：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python mf2mrbayes.py mybayes_aa.best_scheme.nex</span></span><br></pre></td></tr></tbody></table></figure><p>请将脚本和最佳分区文件替换成自己的路径，脚本在 <a href="https://github.com/JuseTiZ/pythonscript">GitHub</a> 可下载。</p><blockquote><p>Juse 注：</p><p>注意！上述脚本中关于模型的选择不完全正确，例如 SYM 模型虽然与 GTR 模型基本相同，但它假设所有核苷酸的频率相等，而 GTR 模型则允许这些频率不等，因此事实上在选用纯粹的 SYM 模型时理应多加一项 <code>statefreqpr=fixed(equal)</code> 进行指定。</p><p>虽然说 GTR 相比之下更灵活更复杂，往往能更好的拟合数据，但是在一些情况下这也有可能导致过拟合问题，如果推测出来的最佳模型是 SYM 而不是 GTR，那么我们就有理由去怀疑以上述标准做的正确性。</p><p>幸运的是，这个问题仅在核苷酸数据集中出现，如果你使用的是蛋白序列数据，那么就不用担心模型选择的问题，因为这些已经在相对应的参数中直接进行了选择。</p></blockquote><p>运行后，在最佳分区文件的同一目录下会出现名为 <code>Mrbayes_par.txt</code> 的文件，里面记录了 Mrbayes 指定分区和进化模型所需键入的命令，将其替换 <em><strong>运行方法 ② 部分</strong></em> 中第一部分的代码即可。</p><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>Mrbayes 是一个操作较为复杂的系统发育推断软件，此外贝叶斯法本身也需要消耗大量计算资源，所以资源有限的情况下可以有限考虑更高效同时功能强大的最大似然法或其他方法。</p><p>此外，对于不同的数据集 Mrbayes 也会存在不同的表现，以个人经验来讲：</p><ul><li>对于小数据集，Mrbayes 会以极快的速度收敛，但是相比最大似然法依旧需要消耗更多时间。</li><li>就算收敛速度很快（ASDSF 低于 0.01 且 PSRF 接近 1），有效样本大小可能依旧不达标（可能这时所得到的树已经基本正确）。如果追求所有指标的达成可能会不得不添加一定的迭代次数。</li><li>对于大数据集，Mrbayes 可能会收敛的非常慢，这种现象随着数据缺失（gap 比例）增多而更明显。</li></ul><p>所以后面可能还会出一篇关于 PhyloBayes 的文章，它相比之下就操作更简单许多并且也有一些独特的优势。</p></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 生信 </category>
+          
+          <category> 建树 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生物信息学 </tag>
+            
+            <tag> 生信 </tag>
+            
+            <tag> 系统发育分析 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JuseKit（六） —— 绘制火山图</title>
       <link href="/2023/07/04/JuseKit%EF%BC%88%E5%85%AD%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%E7%81%AB%E5%B1%B1%E5%9B%BE/"/>
       <url>/2023/07/04/JuseKit%EF%BC%88%E5%85%AD%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%E7%81%AB%E5%B1%B1%E5%9B%BE/</url>
@@ -445,11 +478,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -482,11 +515,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -517,11 +550,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -552,11 +585,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -587,11 +620,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -651,11 +684,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -684,11 +717,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
