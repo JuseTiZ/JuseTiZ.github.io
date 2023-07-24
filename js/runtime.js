@@ -27,10 +27,10 @@ setInterval(() => {
     time[4] = nol(second);
   }
   if ((Number(time[2])<22) && (Number(time[2])>7)){
-    currentTimeHtml ="<img class='boardsign' src='https://img.shields.io/badge/%F0%9F%92%AA-Juse%20%E6%89%93%E5%B7%A5%E4%B8%AD-blue' title='为了科研加油吧'><div id='runtime'>" + time[0] + ' YEAR ' + time[1] + ' DAYS ' + time[2] + ' : ' + time[3] + ' : ' + time[4] + '</div>这个博客竟然已经运行了那么久了<br>以后也请多关照';
+    currentTimeHtml ="正值美好时光，为了科研加油！<br>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒<br>以后也请多关照';
   }
   else{
-    currentTimeHtml ="<img class='boardsign' src='https://img.shields.io/badge/%F0%9F%92%A4-Juse%20%E7%9D%A1%E7%9C%A0%E4%B8%AD-blue' title='摸鱼时间到了给自己放个假'><div id='runtime'>" + time[0] + ' YEAR ' + time[1] + ' DAYS ' + time[2] + ' : ' + time[3] + ' : ' + time[4] + '</div>这个博客竟然已经运行了那么久了<br>以后也请多关照';
+    currentTimeHtml ="摸鱼时间到了，给自己放个假~<br>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒<br>以后也请多关照';
   }
   document.getElementById("workboard").innerHTML = currentTimeHtml;
 }, 1000);
