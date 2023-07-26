@@ -26,11 +26,11 @@ setInterval(() => {
   if (second > 0) {
     time[4] = nol(second);
   }
-  if ((Number(time[2])<22) && (Number(time[2])>7)){
-    currentTimeHtml ="正值美好时光，为了科研加油！<br>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒<br>以后也请多关照';
+  if ((Number(time[2])<20) && (Number(time[2])>8)){
+    currentTimeHtml ="现在是工作时间，一起努力吧！<br><font size='3'>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒，以后也请多关照</font>';
   }
   else{
-    currentTimeHtml ="摸鱼时间到了，给自己放个假~<br>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒<br>以后也请多关照';
+    currentTimeHtml ="现在是休息时间，一起摸鱼吧！<br><font size='3'>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒，以后也请多关照</font>';
   }
   document.getElementById("workboard").innerHTML = currentTimeHtml;
 }, 1000);

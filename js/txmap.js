@@ -29,7 +29,7 @@ function getDistance(e1, n1, e2, n2) {
 
 function showWelcome() {
 
-    let dist = getDistance(113.9539, 22.8016, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
+    let dist = getDistance(113.298395, 23.096729, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
@@ -48,7 +48,7 @@ function showWelcome() {
             posdesc = "苏卡！";
             break;
         case "法国":
-            posdesc = "C'est La Vie";
+            posdesc = "纯良人投个降先🏳";
             break;
         case "德国":
             posdesc = "Die Zeit verging im Fluge.";
