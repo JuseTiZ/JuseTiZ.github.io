@@ -238,7 +238,7 @@ p {
 }
 
 #welcome-info {
-  background: linear-gradient(45deg, #b9f4f3, #e3fbf9);
+  background: rgba(73,177,245,0.2);
   border-radius: 18px;
   padding: 8px;
 }
@@ -304,4 +304,18 @@ p {
   display: none;
 }
 
+#pagination .page-number.current {
+    background-color: var(--btn-bg);
+    color: var(--white);
+}
+
+blockquote {
+    margin: 0 0 20px;
+    padding: 12px 15px;
+    background-color: var(--blockquote-bg);
+    color: var(--blockquote-color);
+    border: 1px solid #eee;
+    border-left: 3px solid #49b1f5;
+    border-radius: 3px;
+}
 </body></html>
