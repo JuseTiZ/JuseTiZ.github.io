@@ -241,6 +241,8 @@ p {
   background: rgba(73,177,245,0.2);
   border-radius: 18px;
   padding: 8px;
+  border: 1px solid #eee;
+  margin-top: 0.5rem;
 }
 
 #rightMenu {
