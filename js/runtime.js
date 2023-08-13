@@ -27,10 +27,10 @@ setInterval(() => {
     time[4] = nol(second);
   }
   if ((Number(time[2])<20) && (Number(time[2])>8)){
-    currentTimeHtml ="现在是工作时间，一起努力吧！<br><font size='3'>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒，以后也请多关照</font>';
+    currentTimeHtml ="<div class='juse-img'><img class='juseimg' src='https://img.shields.io/badge/Juse%F0%9F%94%8D-%E5%B7%A5%E4%BD%9C%E4%B8%AD%E2%9C%8A-blue' title='来一起工作吧伙计！~'></div><div class='juse-blog'>Juseの博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒，以后也请多关照</div>';
   }
   else{
-    currentTimeHtml ="现在是休息时间，一起摸鱼吧！<br><font size='3'>这个博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒，以后也请多关照</font>';
+    currentTimeHtml ="<div class='juse-img'><img class='juseimg' src='https://img.shields.io/badge/Juse%F0%9F%94%8D-%E6%91%B8%E9%B1%BC%E4%B8%AD%F0%9F%90%9F-blue' title='摸鱼时间到了放松下头脑！~'></div><div class='juse-blog'>Juseの博客已经运行了 " + time[0] + ' 年 ' + time[1] + ' 天 ' + time[2] + ' 小时 ' + time[3] + ' 分 ' + time[4] + ' 秒，以后也请多关照</div>';
   }
   document.getElementById("workboard").innerHTML = currentTimeHtml;
 }, 1000);
