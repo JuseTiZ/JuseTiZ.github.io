@@ -1,0 +1,35 @@
+<html><head></head><body>.text-module {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background-color: rgba(240, 240, 240, 0.8);
+    width: 300px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.text-module p {
+    font-size: 20px;
+    transition: opacity 1s, transform 1s; 
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+    filter: blur(5px);
+    border-radius: 15px;
+    border: 2px solid #888888;;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+    border-radius: 15px;
+    border: 2px solid #888888;;
+}</body></html>
