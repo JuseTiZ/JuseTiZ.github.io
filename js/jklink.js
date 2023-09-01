@@ -7,7 +7,8 @@ function generatePortalLinks(currentArticleId) {
         { id: 4, title: "JuseKit —— 序列格式转换以及 Orthogroup 的 cds 提取", url: "https://jusetiz.github.io/2023/04/26/JuseKit（四） —— 序列格式转换以及 Orthogroup 的 cds 提取" },
         { id: 5, title: "JuseKit —— 用于系统发育分析的序列过滤", url: "https://jusetiz.github.io/2023/05/14/JuseKit（五） —— 用于系统发育分析的序列过滤" },
         { id: 6, title: "JuseKit —— 绘制火山图", url: "https://jusetiz.github.io/2023/07/04/JuseKit（六） —— 绘制火山图" },
-        { id: 7, title: "JuseKit —— 绘制 GO 富集分析气泡图", url: "https://jusetiz.github.io/2023/08/04/JuseKit（七） —— 绘制 GO 富集分析气泡图" }
+        { id: 7, title: "JuseKit —— 绘制 GO 富集分析气泡图", url: "https://jusetiz.github.io/2023/08/04/JuseKit（七） —— 绘制 GO 富集分析气泡图" },
+        { id: 8, title: "JuseKit —— 计算转录组组装指标", url: "https://jusetiz.github.io/2023/08/04/JuseKit（八） —— 计算转录组组装指标" }
     ];
 
     var html = '<div class="portal">';

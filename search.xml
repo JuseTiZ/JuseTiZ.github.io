@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JuseKit（八） —— 计算转录组组装指标</title>
+      <link href="/2023/09/01/JuseKit%EF%BC%88%E5%85%AB%EF%BC%89%20%E2%80%94%E2%80%94%20%E8%AE%A1%E7%AE%97%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BB%84%E8%A3%85%E6%8C%87%E6%A0%87/"/>
+      <url>/2023/09/01/JuseKit%EF%BC%88%E5%85%AB%EF%BC%89%20%E2%80%94%E2%80%94%20%E8%AE%A1%E7%AE%97%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BB%84%E8%A3%85%E6%8C%87%E6%A0%87/</url>
+      
+        <content type="html"><![CDATA[<html><head></head><body><blockquote><div id="portalContainer"></div><script src="/js/jklink.js"></script><script> generatePortalLinks(8);</script></blockquote><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>JuseKit 故事传之开学第一天，我在课题组实验室搞新功能。</p><p>已有功能的相关教程请见：<a href="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">Juseの软件开发</a></p><p>本文所涉及功能借鉴了 Trinity 脚本的输出格式。</p><h2 id="本次更新变动"><a href="#本次更新变动" class="headerlink" title="本次更新变动"></a>本次更新变动</h2><ul><li>完善了部分报错提示。</li><li>完善了部分文本显示。</li><li>新增了转录组组装指标计算功能。</li></ul><h2 id="目前的功能进度"><a href="#目前的功能进度" class="headerlink" title="目前的功能进度"></a>目前的功能进度</h2><ul><li>提取最长转录本。</li><li>根据 id 提取序列。</li><li>对序列的 id 进行各种处理。</li><li>串联序列并得到分区信息。</li><li>批量进行序列格式转换。</li><li>批量提取 Orthofinder 的 orthogroup 对应的 CDS 序列。</li><li>批量进行序列的物种数和长度过滤。</li><li>火山图绘制。</li><li>气泡图绘制。</li><li>组装指标计算。</li></ul><p>叠盾警告⚠：本软件解释权归属 Juse 所有，本软件能走多远具体得看 Juse 能坚持多久。</p><p>下载地址：<a href="https://github.com/JuseTiZ/JuseKit/releases">https://github.com/JuseTiZ/JuseKit/releases</a></p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="转录组组装指标计算"><a href="#转录组组装指标计算" class="headerlink" title="转录组组装指标计算"></a>转录组组装指标计算</h2><p>本文主要着重于这次更新新增的功能，其他模块请走<a href="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">这里</a>。</p><h3 id="要求的数据"><a href="#要求的数据" class="headerlink" title="要求的数据"></a>要求的数据</h3><p>需要输入的数据为 <code>fasta</code> 格式的序列文件。</p><p>可通过将文件拖拽至文本框或者点击右侧按钮读取文件路径。</p><p>操作示例：</p><p><img src="/pic2/qc1.png"></p><p>结果文件会产生在序列文件的同一路径下，文件名为 <code>assem_qc.txt</code>。</p><p>目前返回的信息包括：</p><ul><li>基因数量</li><li>最大长度、最小长度和平均长度</li><li>Nxx 值</li><li>GC 含量</li></ul><p>以后视情况会继续完善这一功能，例如补充其他可以反应转录组组装质量的指标。</p><h3 id="进阶应用"><a href="#进阶应用" class="headerlink" title="进阶应用"></a>进阶应用</h3><p>这一部分就相当于取最长转录本，关于该概念可见以往文章。</p><p>此处我将使用 <code>_seq</code> 作为基因标识进行（老版 Trinity 的序列格式）：</p><p><img src="/pic2/qc2.png"></p><p>在指定基因标识后 JuseKit 会将每个基因的最长 Contig 作为其代表序列进行各指标计算。</p><p>如果在使用前后指标没有变化则说明该标识并不存在或者输入错误。</p><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>后记？这次啊，没有后记！</p><p>最后是复制黏贴：</p><p>我会争取将这些功能慢慢完善，让它成为一个具有更广适用性的软件，希望能够帮助到某些盆友，当然我个人认为最大的可能是自娱自乐。</p><p>如果这个软件帮助到您了，您可以给它一个小小的 Star 聊表支持，或者在您汇报的时候引一下 <a href="https://github.com/JuseTiZ/JuseKit/">https://github.com/JuseTiZ/JuseKit/</a> ，想必看着还是非常高端大气上档次的。</p></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JuseKit </tag>
+            
+            <tag> 转录组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于 js 在系列文章开头设置文章传送门（hexo + butterfly）</title>
       <link href="/2023/08/11/%E5%9F%BA%E4%BA%8E%20js%20%E5%9C%A8%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E4%BC%A0%E9%80%81%E9%97%A8/"/>
       <url>/2023/08/11/%E5%9F%BA%E4%BA%8E%20js%20%E5%9C%A8%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E4%BC%A0%E9%80%81%E9%97%A8/</url>
