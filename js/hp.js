@@ -3,7 +3,7 @@ const textModule = document.getElementById("textModule");
 const texts = [
                 '最大的希望：家人健康幸福',
                 '目前的计划：科研有所成就',
-                '当前的状态：忙于读书和家事',
+                '当前的状态：回到学校上学',
                 '现有的成就：谈了个可爱的女朋友',
               ];
 let currentIndex = 0;
