@@ -11,7 +11,7 @@ function generatePortalLinks(currentArticleId) {
     ];
 
     var html = '<div class="portal">';
-    html += '<h3>系列文章传送门</h3>';
+    html += '<h3>🚀🚀系列文章传送门🚀🚀</h3>';
     html += '<ul>';
     for (var i = 0; i < links.length; i++) {
         html += '<li>';
@@ -32,14 +32,23 @@ function generatePortalLinks(currentArticleId) {
         { title: "Astral 建树指南", url: "https://jusetiz.github.io/2023/06/23/Astral 建树指南" }, 
         { title: "贝叶斯建树之 Mrbayes 篇", url: "https://jusetiz.github.io/2023/07/06/贝叶斯建树之 Mrbayes 篇" }, 
         { title: "使用 IQTREE 计算一致性因子", url: "https://jusetiz.github.io/2023/07/07/使用 IQTREE 计算一致性因子" }, 
-        { title: "DiscoVista 可视化系统发育不一致", url: "https://jusetiz.github.io/2023/07/12/DiscoVista 可视化系统发育不一致" }
+        { title: "DiscoVista 可视化系统发育不一致", url: "https://jusetiz.github.io/2023/07/12/DiscoVista 可视化系统发育不一致" },
+        { title: "JuseKit 系列文章", url: "https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" }
     ];
 
-    html += '<div class="rltpt"><h3>相关文章传送门</h3>';
+    html += '<div class="rltpt"><h3>🏷️🏷️相关文章传送门🏷️🏷️</h3>';
     html += '<ul>';
     for (var i = 0; i < relatedlinks.length; i++) {
         html += '<li><a href="' + relatedlinks[i].url + '">' + relatedlinks[i].title + '</a></li>';
     }
+    html += '</ul></div>';
+
+    html += '<div class="warning"><h3>⚡⚡阅读前<strong>须知事项</strong>⚡⚡</h3>';
+    html += '<ul>';
+    html += '<li>根据文章内容进行数据操作前，若相关操作涉及到原数据文件的变动（不管是内容还是位置），请<strong>做好备份</strong>以避免不可逆的数据丢失或者数据损坏。</li>'
+    html += '<li>根据文章内容进行数据操作前，若相关操作涉及到大量文件，请<strong>选出一个小数据集（文件）</strong>进行试分析以确定是否能够正常运行并产生结果。</li>'
+    html += '<li>根据文章内容进行命令执行前，若相关命令涉及到内存、线程等参数（或者是 & 等执行多条命令的操作），请<strong>留意电脑或服务器是否能够承受足够负载（htop）</strong>。</li>'
+    html += '<li>文章中涉及到的脚本、命令参数等<strong>需根据实际情况进行修正</strong>，盲目抄代码不可取，重要的是适合自己的流程。</li>'
     html += '</ul></div>';
 
     document.getElementById('portalContainer').innerHTML = html;
