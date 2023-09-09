@@ -613,11 +613,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -650,11 +650,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -685,11 +685,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -720,11 +720,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -755,11 +755,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -819,11 +819,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
@@ -838,7 +838,7 @@
       <link href="/2022/11/01/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E5%89%8D%E6%8F%90%E5%8F%8A%E6%A6%82%E8%A6%81/"/>
       <url>/2022/11/01/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E5%89%8D%E6%8F%90%E5%8F%8A%E6%A6%82%E8%A6%81/</url>
       
-        <content type="html"><![CDATA[<html><head></head><body><hr><blockquote><div id="portalContainer"></div><script src="/js/ctlink.js"></script><script> generatePortalLinks(1);</script></blockquote><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>生信分析的重头当然在于使用软件，同样我们也应当清楚每一步的意义以及结果里包含了什么信息，我们能够从这些结果里获得哪些生物学意义，而不是糊里糊涂地跑了一套流程了事。</p><p>所以在很多方面我们还是应当具有基础的知识储备，在跑流程的过程里也<strong>应当清楚自己在做什么，为什么</strong>。</p><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>2022-11-14 补充了分析的流程图</p><p>2022-11-21 补充修改了部分内容</p><p>2022-12-01 补充修改了部分内容</p><p>2023-07-03 精简了内容</p><h2 id="所需理论知识"><a href="#所需理论知识" class="headerlink" title="所需理论知识"></a>所需理论知识</h2><ul><li>一些基本的生物学知识。</li><li>一些基本的统计学知识。</li><li>一些基本的编程知识。</li></ul><p>事实上并不是一定要知根知底才行，很多东西是可以边分析边学的，但是最基础的一些概念也要有，这里我推荐<a href="https://book.douban.com/subject/10602325/">艾伯特先生的细胞生物学精要</a>作为生物整体框架的理解，看完以后说不定能激发个人对生物的兴趣（😀）。而关于统计学方面的知识可能就看个人需求了，但是起码要清楚自己在分析中所使用的统计学方法的具体原理和假设啥的对不？</p><p>至于编程方面，主要就是 <code>Python</code> 和 <code>R</code>，学会这俩的加分项可是非常瞩目的。</p><p>补充：对于 <code>Python</code> 的基础入门，我推荐 <a href="https://book.douban.com/subject/35196328/">Python编程：从入门到实践（第2版）</a>。</p><p>补充：对于 <code>R</code> 的基础入门，我推荐 <a href="https://book.douban.com/subject/26785199/">R语言实战 第二版</a>（这里还涉及到了非常多的统计学知识，因此强烈推荐）。</p><h1 id="比较转录组概论"><a href="#比较转录组概论" class="headerlink" title="比较转录组概论"></a>比较转录组概论</h1><h2 id="什么是转录组"><a href="#什么是转录组" class="headerlink" title="什么是转录组"></a>什么是转录组</h2><p>狭义上来说指的是生物的 mRNA 集合，这是一般我们做真核生物转录组分析时涉及到的概念。</p><p>广义上来说指的是生物所有转录产物的集合，包括但不限于 <code>mRNA</code> <code>tRNA</code> <code>lncRNA</code> <code>rRNA</code> <code>miRNA</code> <code>snRNA</code> 等等。</p><p>而如果从广义上出发，就会出现非常多样的转录组分析，感兴趣可以移步 <a href="http://www.bgitechsolutions.com/sequencing?class_id=3">BGI 的研究内容介绍</a>。</p><h2 id="什么是比较"><a href="#什么是比较" class="headerlink" title="什么是比较"></a>什么是比较</h2><p>网上对于 “比较转录组” 的定义多倾向于分析不同物种或亚种间 mRNA 序列差异进而探索近源物种间的亲缘关系，而无参转录组上的差异表达分析则被称作 “转录组的比较” 。</p><p>但是事实上这俩是可以一起做的，因此在这里我就放在一起讨论。</p><h2 id="比较转录组的经典分析流程"><a href="#比较转录组的经典分析流程" class="headerlink" title="比较转录组的经典分析流程"></a>比较转录组的经典分析流程</h2><p>一般的实验及分析流程：</p><ul><li><p>湿实验</p></li><li><p>送测</p></li><li><p>干实验</p><ul><li>数据质控</li><li>转录组组装</li><li>质量检测</li><li>注释</li><li>差异表达分析</li><li>富集分析</li><li>更多拓展（基因家族、进化等相关问题）</li></ul></li></ul><h2 id="比较转录组分析能够做什么"><a href="#比较转录组分析能够做什么" class="headerlink" title="比较转录组分析能够做什么"></a>比较转录组分析能够做什么</h2><p>揭示抗胁迫机制、揭示系统发育关系、揭示受选择基因…</p><p>这个只能说<strong>主要得看为了什么而做这些分析</strong>，而不是看分析后能做什么。</p><p>同时，虽然分析具有指向性，但是分析<strong>不是为了得到想要的结果</strong>，出现很多意料之外的情况也是很正常的事。</p><p>此外也不能说分析的结果如此，真相就是如此，分析的结果只能提供一个见解，而不能得到一个定论。</p><blockquote><p>“Thus evolutionary achievements can be used as hints to suggest possible lines of research, but it is highly dangerous to trust them too much. **It is all too easy to make mistaken inferences unless the process involved is already very well understood.**“</p><p>—— Francis Crick, <em>What Mad Pursuit: A Personal View of Scientific Discovery</em> (1988)</p></blockquote><h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>有个知乎老哥讲的<a href="https://zhuanlan.zhihu.com/p/222345339">比较转录组</a>介绍写的很好，里面提到的很多事情值得记一记，包括为何选择转录组而不选择基因组等等问题都有介绍，大家感兴趣也可以去看一看。</p><h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><h2 id="如果你觉得转录组分析真的好麻烦"><a href="#如果你觉得转录组分析真的好麻烦" class="headerlink" title="如果你觉得转录组分析真的好麻烦"></a>如果你觉得转录组分析真的好麻烦</h2><p>恰好这一段时间看到了一篇论文，讲的是他们那个团队研发了个转录组分析的平台，把一些常见的分析流程给 pipeline 化了（主要是利用了现在 <code>Trinity</code> 完善的 pipeline 包装）。</p><p>我看了下流程还是非常正的，主要的无参转录组分析都有，一些关键参数也可根据实际需求进行相应调整，或许对于一些不是很想花费精力在软件学习上以及对计算机语言真的无感的人会很有帮助，如果感兴趣的话论文传送门在<a href="https://www.sciencedirect.com/science/article/pii/S2405844022015432">这里</a>，网站传送门在<a href="https://atap.psu.ac.th/index.php">这里</a>。</p><p>不过这个网站上没有的功能可能还是需要自学的 XD</p></body></html>]]></content>
+        <content type="html"><![CDATA[<html><head></head><body><hr><blockquote><div id="portalContainer"></div><script src="/js/ctlink.js"></script><script> generatePortalLinks(1);</script></blockquote><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>生信分析的重头当然在于使用软件，同样我们也应当清楚每一步的意义以及结果里包含了什么信息，我们能够从这些结果里获得哪些生物学意义，而不是糊里糊涂地跑了一套流程了事。</p><p>所以在很多方面我们还是应当具有基础的知识储备，在跑流程的过程里也<strong>应当清楚自己在做什么，为什么</strong>。</p><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p>2022-11-14 补充了分析的流程图</p><p>2022-11-21 补充修改了部分内容</p><p>2022-12-01 补充修改了部分内容</p><p>2023-07-03 精简了内容</p><h2 id="所需理论知识"><a href="#所需理论知识" class="headerlink" title="所需理论知识"></a>所需理论知识</h2><ul><li>一些基本的生物学知识。</li><li>一些基本的统计学知识。</li><li>一些基本的编程知识。</li></ul><p>事实上并不是一定要知根知底才行，很多东西是可以边分析边学的，但是最基础的一些概念也要有，这里我推荐<a href="https://book.douban.com/subject/10602325/">艾伯特先生的细胞生物学精要</a>作为生物整体框架的理解，看完以后说不定能激发个人对生物的兴趣（😀）。而关于统计学方面的知识可能就看个人需求了，但是起码要清楚自己在分析中所使用的统计学方法的具体原理和假设啥的对不？</p><p>至于编程方面，主要就是 <code>Python</code> 和 <code>R</code>，学会这俩的加分项可是非常瞩目的。</p><p>补充：对于 <code>Python</code> 的基础入门，我推荐 <a href="https://book.douban.com/subject/35196328/">Python编程：从入门到实践（第2版）</a>。</p><p>补充：对于 <code>R</code> 的基础入门，我推荐 <a href="https://book.douban.com/subject/26785199/">R语言实战 第二版</a>（这里还涉及到了非常多的统计学知识，因此强烈推荐）。</p><h1 id="比较转录组概论"><a href="#比较转录组概论" class="headerlink" title="比较转录组概论"></a>比较转录组概论</h1><h2 id="什么是转录组"><a href="#什么是转录组" class="headerlink" title="什么是转录组"></a>什么是转录组</h2><p>狭义上来说指的是生物的 mRNA 集合，这是一般我们做真核生物转录组分析时涉及到的概念。</p><p>广义上来说指的是生物所有转录产物的集合，包括但不限于 <code>mRNA</code> <code>tRNA</code> <code>lncRNA</code> <code>rRNA</code> <code>miRNA</code> <code>snRNA</code> 等等。</p><p>而如果从广义上出发，就会出现非常多样的转录组分析，感兴趣可以移步 <a href="http://www.bgitechsolutions.com/sequencing?class_id=3">BGI 的研究内容介绍</a>。</p><h2 id="什么是比较"><a href="#什么是比较" class="headerlink" title="什么是比较"></a>什么是比较</h2><p>网上对于 “比较转录组” 的定义多倾向于分析不同物种或亚种间 mRNA 序列差异进而探索近源物种间的亲缘关系，而无参转录组上的差异表达分析则被称作 “转录组的比较” 。</p><p>但是事实上许多涉及到基因表达分析的 paper 都会提到 Comparative transcriptome，随便举几个在 ScienceDirect 上搜的例子：</p><blockquote><p>Comparative transcriptome analysis of sensory genes from the antenna and abdomen of Quadrastichus mendeli Kim</p><p>Co-expression networks regulating cotton fiber initiation generated by comparative transcriptome analysis between fiberless XZ142FLM and GhVIN1i</p><p>Comparative transcriptome analysis of differentially expressed genes in Bradysia odoriphaga Yang et Zhang (Diptera: Sciaridae) at different acute stress temperatures</p></blockquote><p>而对于探索亲缘关系的转录组研究近些年也有个词在兴起，叫做系统发育转录组学（Phylotranscriptomics），不过大部分使用转录组进行系统发育分析的文章挂的关键词依然是 Phylogenomics 所以建议不要仅用前者作为关键词检索文献。</p><p>但说到底每个名词的定义终究是带有主观成分的，所以也不必掐的那么死板，重要的是心里要有个大致的概念和理解。对我来说这两种分析是可以一起做的，因此在这里我就放在一起讨论。</p><h2 id="比较转录组的经典分析流程"><a href="#比较转录组的经典分析流程" class="headerlink" title="比较转录组的经典分析流程"></a>比较转录组的经典分析流程</h2><p>一般的实验及分析流程：</p><ul><li><p>湿实验</p></li><li><p>送测</p></li><li><p>干实验</p><ul><li>数据质控</li><li>转录组组装</li><li>质量检测</li><li>注释</li><li>差异表达分析</li><li>富集分析</li><li>更多拓展（基因家族、进化等相关问题）</li></ul></li></ul><h2 id="比较转录组分析能够做什么"><a href="#比较转录组分析能够做什么" class="headerlink" title="比较转录组分析能够做什么"></a>比较转录组分析能够做什么</h2><p>揭示抗胁迫机制、揭示系统发育关系、揭示受选择基因…</p><p>这个只能说<strong>主要得看为了什么而做这些分析</strong>，而不是看分析后能做什么。</p><p>同时，虽然分析具有指向性，但是分析<strong>不是为了得到想要的结果</strong>，出现很多意料之外的情况也是很正常的事。</p><p>此外也不能说分析的结果如此，真相就是如此，分析的结果只能提供一个见解，而不能得到一个定论。</p><blockquote><p>“Thus evolutionary achievements can be used as hints to suggest possible lines of research, but it is highly dangerous to trust them too much. It is all too easy to make mistaken inferences unless the process involved is already very well understood.“</p><p>—— Francis Crick, <em>What Mad Pursuit: A Personal View of Scientific Discovery</em> (1988)</p></blockquote><h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>有个知乎老哥讲的<a href="https://zhuanlan.zhihu.com/p/222345339">比较转录组</a>介绍写的很好，里面提到的很多事情值得记一记，包括为何选择转录组而不选择基因组等等问题都有介绍，大家感兴趣也可以去看一看。</p><h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><h2 id="如果你觉得转录组分析真的好麻烦"><a href="#如果你觉得转录组分析真的好麻烦" class="headerlink" title="如果你觉得转录组分析真的好麻烦"></a>如果你觉得转录组分析真的好麻烦</h2><p>恰好这一段时间看到了一篇论文，讲的是他们那个团队研发了个转录组分析的平台，把一些常见的分析流程给 pipeline 化了（主要是利用了现在 <code>Trinity</code> 完善的 pipeline 包装）。</p><p>我看了下流程还是非常正的，主要的无参转录组分析都有，一些关键参数也可根据实际需求进行相应调整，或许对于一些不是很想花费精力在软件学习上以及对计算机语言真的无感的人会很有帮助，如果感兴趣的话论文传送门在<a href="https://www.sciencedirect.com/science/article/pii/S2405844022015432">这里</a>，网站传送门在<a href="https://atap.psu.ac.th/index.php">这里</a>。</p><p>虽然这个网站上没有涉及到的功能依然有很多，但随着生信领域的迅速发展，越来越多被打包好的 Pipeline 也在不断出现，这些 Pipeline 极大程度地降低了生信分析的难度，即便是一个刚入门的人只需要稍微了解就可以跑一套完整的流程，甚至乎许多顶刊在进行分析的时候也是用的其他研究者开发好的各种参数都进行了精挑细选的 Pipeline。就拿系统发育分析来说，Phylosuite 就是一个很好的例子。</p><p>综上，如果想要在短时间内取得不错的成果（以结果为导向）的话，也可以多看几篇文章，或许就能找到一个不错的 Pipeline（也有可能研究者会把 ta 的代码开源到 github 上，这种情况可以把代码扒过来换成自己的数据运行即可），找不到也并没有什么关系，至少也能学习到相关的方法和分析思路。</p><p>当然如开篇所说，跑流程的过程里也<strong>应当清楚自己在做什么，为什么</strong>。所以即便不想花时间学习各种跑命令和数据处理的方法，也还是需要了解跑的命令中每个参数是什么意思，有什么作用。针对自己的数据设计一个合理的参数，最后得到的结果才会更加清晰准确。</p></body></html>]]></content>
       
       
       <categories>
@@ -852,11 +852,11 @@
       
         <tags>
             
+            <tag> 转录组 </tag>
+            
             <tag> 生物信息学 </tag>
             
             <tag> 生信 </tag>
-            
-            <tag> 转录组 </tag>
             
             <tag> 比较转录组学 </tag>
             
