@@ -6,7 +6,7 @@
   <link href="https://jusetiz.github.io/atom.xml" rel="self"/>
   
   <link href="https://jusetiz.github.io/"/>
-  <updated>2023-10-09T01:45:50.134Z</updated>
+  <updated>2023-10-12T14:27:45.685Z</updated>
   <id>https://jusetiz.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python seaborn 绘制复杂多变量图（hexbin + 拟合直线）</title>
+    <link href="https://jusetiz.github.io/2023/10/12/Python%20seaborn%20%E7%BB%98%E5%88%B6%E5%A4%8D%E6%9D%82%E5%A4%9A%E5%8F%98%E9%87%8F%E5%9B%BE%EF%BC%88hexbin%20+%20%E6%8B%9F%E5%90%88%E7%9B%B4%E7%BA%BF%EF%BC%89/"/>
+    <id>https://jusetiz.github.io/2023/10/12/Python%20seaborn%20%E7%BB%98%E5%88%B6%E5%A4%8D%E6%9D%82%E5%A4%9A%E5%8F%98%E9%87%8F%E5%9B%BE%EF%BC%88hexbin%20+%20%E6%8B%9F%E5%90%88%E7%9B%B4%E7%BA%BF%EF%BC%89/</id>
+    <published>2023-10-12T01:35:00.000Z</published>
+    <updated>2023-10-12T14:27:45.685Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><p>当初作图时想往 <code>sns.pairplot</code> 里加些内容，搜索了解到 <code>sns.PairGrid</code> 可以更灵活地绘制多因素（多变量）关系图，遂在网上找相关教程，最后发现 CSDN 上的内容竟然都要付费，无奈转向 ChatGPT 求助，最后在 C 老师帮助下成功完成了自己的想法。</p><p>以上既是这篇文章的来源也是动机，这篇文章就来分享一下如何使用 <code>sns.PairGrid</code> 绘制更加复杂的多变量图，本文示例将是 <code>hexbin</code> + 拟合直线，但只要知道如何将图架构起来那么绘制其他类型的图也不会有问题。</p><p><code>sns.pairplot</code> 的详尽用法：</p><p><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn-pairplot">https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn-pairplot</a></p><p>一般的多变量图绘制：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模拟三个变量</span></span><br><span class="line">np.random.seed(<span class="number">114514</span>)</span><br><span class="line">a = np.random.randn(<span class="number">100</span>)</span><br><span class="line">b = a*<span class="number">0.7</span>+<span class="number">0.5</span>+np.random.rand(<span class="number">100</span>)</span><br><span class="line">c = b**<span class="number">2</span>-<span class="number">0.1</span>+np.random.rand(<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">data = {</span><br><span class="line">    <span class="string">'a'</span>: a,</span><br><span class="line">    <span class="string">'b'</span>: b,</span><br><span class="line">    <span class="string">'c'</span>: c</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line">sns.pairplot(df)</span><br></pre></td></tr></tbody></table></figure><p><img src="/pic2/sns1.png"></p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加一些参数，使对角变成核密度图</span></span><br><span class="line">sns.pairplot(df, diag_kind=<span class="string">"kde"</span>)</span><br></pre></td></tr></tbody></table></figure><p><img src="/pic2/sns2.png"></p><p>虽然说这个功能确实非常方便，但是它有个不足就在于其框架已经是设置好的，也就是说图形的变化都只能在已设置好的范围里进行。如果我想要进行其他的操作比如拟合直线或者给每一个图添加相关性标注，这时就只能寻找一个更加 “泛用” 的框架了。</p><p><code>sns.PairGrid</code> 就是理想之选，它允许我们自定义绘图参数并应用于对角线下、对角线和对角线上的部分，因此假如这里我们想要拟合直线，那么可以自定义绘图函数：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> spearmanr</span><br><span class="line"><span class="keyword">from</span> statsmodels.nonparametric.smoothers_lowess <span class="keyword">import</span> lowess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下方的图，此处计算了 spearman 相关系数并拟合了一次项的直线</span></span><br><span class="line"><span class="comment"># **kwargs 是为了让绘图函数能接受任意关键字参数避免 sns 传入其他参数时报错。</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">regres_scatter</span>(<span class="params">x, y, nhc=<span class="string">'black'</span>, **kwargs</span>):</span><br><span class="line"></span><br><span class="line">    m, b = np.polyfit(x, y, <span class="number">1</span>)</span><br><span class="line">    y_fit = m*x + b</span><br><span class="line">    rho, p_value = spearmanr(x, y)</span><br><span class="line"></span><br><span class="line">    plt.scatter(x, y, color=<span class="string">'#C9DCEB'</span>, edgecolors=<span class="string">'black'</span>)</span><br><span class="line">    plt.plot(x, y_fit, color=nhc, lw=<span class="number">2</span>)</span><br><span class="line">    ax = plt.gca()</span><br><span class="line">    ax.text(<span class="number">1.5</span>*x.<span class="built_in">min</span>(), <span class="number">0.9</span>*y.<span class="built_in">max</span>(), </span><br><span class="line">            <span class="string">f"Spearman R: <span class="subst">{rho:<span class="number">.2</span>f}</span>\np-value: <span class="subst">{p_value:<span class="number">.3</span>f}</span>"</span>,</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上方的图，此处使用 hexbin 而非 scatter 并且拟合了 lowess 曲线</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lowess_scatter</span>(<span class="params">x, y, gridsize=<span class="number">30</span>, **kwargs</span>):</span><br><span class="line"></span><br><span class="line">    result = lowess(y, x)</span><br><span class="line">    x_fit = result[:, <span class="number">0</span>]</span><br><span class="line">    y_fit = result[:, <span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line">    plt.hexbin(x, y, gridsize=gridsize, cmap=<span class="string">'Blues'</span>)</span><br><span class="line">    plt.plot(x_fit, y_fit, color=<span class="string">'red'</span>, lw=<span class="number">2</span>)</span><br></pre></td></tr></tbody></table></figure><p>自定义好函数以后，使用 <code>sns.PairGrid</code> 进行构造：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 传入数据</span></span><br><span class="line">pgp = sns.PairGrid(df, diag_sharey=<span class="literal">False</span>)</span><br><span class="line"><span class="comment"># 对不同部分进行绘图，可以传入参数也可以选择不传入</span></span><br><span class="line">pgp.map_lower(<span class="keyword">lambda</span> x, y, **kwargs: regres_scatter(x, y, nhc=<span class="string">'red'</span>))</span><br><span class="line">pgp.map_diag(sns.kdeplot, shade=<span class="literal">True</span>, shade_lowest=<span class="literal">False</span>)</span><br><span class="line">pgp.map_upper(lowess_scatter)</span><br></pre></td></tr></tbody></table></figure><p><img src="/pic2/sns3.png"></p><p>能看到每一部分的图都依据自己定义或选择的绘图函数进行了绘制，可以看出在绘制多变量图时 <code>sns.PairGrid</code> 比 <code>sns.pairplot</code> 会更加灵活，上限也能拉的更高。</p></body></html>]]></content>
+    
+    
+    <summary type="html">sns.pairplot 的进阶使用，一起摆脱固有参数的桎梏。</summary>
+    
+    
+    
+    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="绘图" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%BB%98%E5%9B%BE/"/>
+    
+    
+    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    
+    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>关于人类基因组注释中起始和终止位点相同的现象</title>
@@ -472,33 +497,6 @@
     
     <category term="杂项" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>基于 Cytoscape 的富集网络图绘制</title>
-    <link href="https://jusetiz.github.io/2023/03/02/%E5%9F%BA%E4%BA%8E%20Cytoscape%20%E7%9A%84%E5%AF%8C%E9%9B%86%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%BB%98%E5%88%B6/"/>
-    <id>https://jusetiz.github.io/2023/03/02/%E5%9F%BA%E4%BA%8E%20Cytoscape%20%E7%9A%84%E5%AF%8C%E9%9B%86%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%BB%98%E5%88%B6/</id>
-    <published>2023-03-02T05:30:00.000Z</published>
-    <updated>2023-10-09T02:01:58.531Z</updated>
-    
-    <content type="html"><![CDATA[<html><head></head><body><h2 id="所需文件"><a href="#所需文件" class="headerlink" title="所需文件"></a>所需文件</h2><p>需要准备的文件：通过 <strong>David</strong> 得到的富集分析结果表格。</p><p>软件的下载方式请自寻，请支持正版。</p><p>注意，本文着重的是无参转录组富集分析结果的网络图绘制，如果是有参基因组请移步它处。</p><h2 id="绘图过程"><a href="#绘图过程" class="headerlink" title="绘图过程"></a>绘图过程</h2><p>首先我们需要通过 David 分析得到富集分析结果文件。</p><p>DAVID 富集分析教程可见：<a href="https://jusetiz.github.io/2022/12/19/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90%EF%BC%88%E5%85%AD%EF%BC%89%E2%80%94%E2%80%94%20GO%20%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/">比较转录组分析（六）</a>。</p><p>注意，这里对我来说仅选择 GO 的结果是不够的，因为这样会导致富集网络图中的节点数量过少（因为富集的 GO term 过少），因此我选择了更多的项（DAVID 的所有默认项）来进行富集结果的输出，可以根据个人的情况进行相应的调整。</p><p>得到表格以后可以直接输入 Cytoscape 进行绘制。</p><p>首先在 <code>Apps</code> 一栏中选择 <code>App Manager</code> 并下载以下两个插件：</p><ul><li>Enrichment Map</li><li>WordCloud</li></ul><p><img src="/pic/cyto2.png"></p><p>此后打开 <code>Apps</code> 中的 <code>Enrichment Map</code> ，会跳出一个窗口，操作步骤如下图所示：</p><p><img src="/pic/cyto3.png"></p><p>在这里可以输入多个表格（例如分别输入上调基因和下调基因的富集分析表格）。此外，在输入了表达量文件后左下角部分还可对基因进行表达量过滤，右下角可以通过调整参数来调节节点的聚集程度和连接程度等。勾选 Show advanced options 后还可进行更加细节的调整（例如设置 p 值和 FDR 值阈值、调整节点间距离计算方式等），这些都可以看个人的需要和偏好进行尝试和更改。</p><p>这里我输入了两份文件（一个是上调基因的富集分析结果，另一个是下调基因的富集分析结果），然后略微调整了下下面的参数等。</p><p><img src="/pic/cyto4.png"></p><p><img src="/pic/cyto5.png"></p><p>也可以多尝试几个参数看一看哪一种情况最好，然后选择觉得最不错的用于后续处理。</p><p>此后的一些操作网络的基本方式：</p><ul><li>左 <code>Ctrl</code> 键 + 长按鼠标左键选择要拖动的节点进行布局。</li><li>选中节点后可以用右键进行各种编辑（删除、绑定成组、甚至乎寻找对应的 GO 描述或通路描述等）。</li></ul><p>如果想要给一块聚在一起的基因集进行注释以说明它们代表着哪些功能，方式有以下两种：</p><p>①、选中目标节点，然后右键选择 <code>Apps</code> 中的 <code>AutoAnnotate</code>。</p><p><img src="/pic/cyto6.png"></p><p><img src="/pic/cyto7.png"></p><p>但上述方法从效果上来说显然是不太好的，因此为了追求更好的效果可以选择下一种方式：</p><p>②、选中目标节点，然后右键选择 <code>Apps</code> 中的 <code>Create Cloud</code>。此时会出来一个词云图，展示了各种词的词频大小等。</p><p><img src="/pic/cyto8.png"></p><p>知道关键词 Hsp 以后，选择左侧栏中的 Annotation ，选择栏目中上方第三个图案，拖拽至指定位置并作调整，此后用第一个添加文字注释，效果如下：</p><p><img src="/pic/cyto9.png"></p><p>通过这种方法，划分不同区块基因集，同时利用注释图案的颜色分别标注出上调和下调基因，同时拖拽节点到合适位置，就能造出一个有模有样的富集网络图了：</p><p><img src="/pic/cyto10.png"></p><p>另外如果觉得这种点的样式太丑也可以自己在左侧的 style 中进行详细的修改等。</p><p><img src="/pic/cyto11.png"></p><p>更多进阶的知识可以查看 Enrichment Map 的官方 tutorial ：<a href="https://enrichmentmap.readthedocs.io/en/latest/">EnrichmentMap Cytoscape App 3.5 — EnrichmentMap 3.5 documentation</a></p><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>Cytoscape 的功能很强大，里面还有许多的插件可以用来做富集网络图，比如说 ClueGO 就是一个很好的选择。</p><p>此外它还可以绘制共表达网络图等类型的图，只需要下载相应的插件即可。</p></body></html>]]></content>
-    
-    
-    <summary type="html">使用 Cytoscape 绘制富集网络图并添加 Group。</summary>
-    
-    
-    
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="绘图" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%BB%98%E5%9B%BE/"/>
-    
-    
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
-    
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
-    
-    <category term="富集网络图" scheme="https://jusetiz.github.io/tags/%E5%AF%8C%E9%9B%86%E7%BD%91%E7%BB%9C%E5%9B%BE/"/>
     
   </entry>
   
