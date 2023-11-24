@@ -6,7 +6,7 @@
   <link href="https://jusetiz.github.io/atom.xml" rel="self"/>
   
   <link href="https://jusetiz.github.io/"/>
-  <updated>2023-11-22T13:10:21.171Z</updated>
+  <updated>2023-11-24T14:57:41.961Z</updated>
   <id>https://jusetiz.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DNA 语言模型 GPN 在突变效应预测中的应用及表现</title>
+    <link href="https://jusetiz.github.io/2023/11/24/DNA%20%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%20GPN%20%E5%9C%A8%E7%AA%81%E5%8F%98%E6%95%88%E5%BA%94%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8F%8A%E8%A1%A8%E7%8E%B0/"/>
+    <id>https://jusetiz.github.io/2023/11/24/DNA%20%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%20GPN%20%E5%9C%A8%E7%AA%81%E5%8F%98%E6%95%88%E5%BA%94%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8F%8A%E8%A1%A8%E7%8E%B0/</id>
+    <published>2023-11-24T15:00:00.000Z</published>
+    <updated>2023-11-24T14:57:41.961Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><p>众所周知，语言模型已经在诸多领域得到了广泛应用。受深度学习狂潮影响深远的生物学领域里，出色的语言模型应用不断涌出。以 DeepMind 为例，其所开发的 Alphafold、Alphamissense 等都是基于语言模型实现的。</p><p>这篇文章将分享一个最近发表的 DNA 语言模型（GPN，Genomic Pre-trained Network）和它的变体 GPN-MSA，该模型与之前的 DNABERT 等 DNA 语言模型不同，其使用<strong>单个碱基</strong>作为 token 进行训练，并在无监督的突变效应预测中取得了良好的成效。</p><p>相关论文链接见文章结尾，本文章将重点介绍两个模型的设计和它们之间的区别，并写出一些很值得学习的地方。</p><h3 id="GPN"><a href="#GPN" class="headerlink" title="GPN"></a>GPN</h3><p>GPN 是一种自监督训练的 DNA 语言模型，与 GPN-MSA 不同的地方在于，它可以仅依靠未经过比对的数个基因组序列而不使用多序列比对（MSA）进行训练，此外它使用的为单纯的 DNA 序列而未使用到任何功能基因组信息，因此可以说 GPN 的泛用性是非常强大的，因为对于很多类群中的生物来说，获得跨物种的 MSA 和全面的功能基因组数据并不是容易的事情。</p><p>GPN 的模型设计如下：</p><p><img src="/pic2/pnas.2311219120fig01.jpg"></p><p>该模型的训练架构类似于 Transformer，其中 DNA 的输入遵守如下规则：</p><ul><li>在基因组上使用 <code>512bp</code> 的窗口 &amp; <code>256bp</code> 的步长进行采样（类似于滑动窗口），并使用反向互补序列作为数据增强手段（DNA 语言模型中常见的方法）。</li><li>该采样并不针对全基因组，而是着重选择了特定区域（如外显子、启动子）以及和这些区域等量的其他随机窗口。</li><li>对于重复区域进行了损失权重的调整，以改善模型表现。</li></ul><p>对于输入的 DNA，其随机掩码 15% 的碱基，并传入给类 Transformer 模块。值得注意的是，与 Transformer 不同，这里用空洞卷积替代了多头注意力机制，文章的理由如下：</p><ul><li>卷积神经网络比用注意力机制收敛地更快。</li><li>对于该规模的 DNA 序列而言，卷积神经网络的局部模式识别可能较注意力机制的全局模式识别更加有用。</li><li>卷积的线性复杂度对于其向更长序列的推广是有益的。</li></ul><p>对于最后一点，具体来说，如果我们使用的为卷积神经网络，那么不论是处理 512 碱基还是 1k 个碱基，卷积层对每个碱基的计算成本是固定的。所以，处理后者大概需要的计算量是前者的两倍。</p><p>相比之下，注意力机制涉及到序列中所有元素之间的关系，其复杂度是<strong>序列长度的平方</strong>。在处理长序列时，这会导致计算成本急剧增加。为了处理长序列，模型可能需要将序列分成更小的块，并分别对它们进行处理，然后再将结果整合起来。这种分块处理通常需要在块之间有重叠部分，以捕捉块边界处的上下文信息，这使得整个处理过程变得复杂。</p><p><img src="/pic2/006C3FgEgy1gsqyd2q43kj60tj09iwlm02.jpg"></p><p>输入的掩码序列经过 25 个类 Transformer 块后被处理成包含上下文信息的 embedding，该 embedding 则被输入到后续的分类层中计算特定位置上四种碱基的概率，模型的损失函数为预测为正确碱基的概率的负 log 值。</p><p>此后，Benegas 等人利用该模型进行了一系列的分析工作，所得结果大致如下：</p><ul><li>在无监督情况下，模型也能有效识别部分基因组区域。使用 embedding 训练逻辑斯蒂回归分类模型后，在 CDS 上实现了高准确率（96%），但对于 ncRNA 和基因间区，模型的表现较为糟糕（51% 和 67%）。</li></ul><div class="hide-block"><button type="button" class="hide-button" style="">图 2    </button><div class="hide-content"><p><img src="/pic2/pnas.2311219120fig02.jpg"></p></div></div><ul><li>通过单独掩盖基因组上各个位置的碱基，模型鉴定出了一些可以在数据库中匹配到的基序和一些尚未匹配但在其他研究中有被提及或者序列特征较特殊的基序。</li></ul><div class="hide-block"><button type="button" class="hide-button" style="">图 3    </button><div class="hide-content"><p><img src="/pic2/pnas.2311219120fig03.jpg"></p></div></div><ul><li>通过以 <code>P(突变碱基)/P(参考碱基)</code> 的 <code>log</code> 值作为突变效应预测的分数，模型实现了良好的预测性能，对于那些因为与 functional variant 连锁的 neutral variants，模型也能实现有效的判别。</li></ul><div class="hide-block"><button type="button" class="hide-button" style="">图 4 5 6    </button><div class="hide-content"><p><img src="/pic2/fig456.png"></p></div></div><p>可以看出，GPN 的模型设计其实也并不复杂，但这里采取的一些方法令人较为受益。例如，不同于以往的研究，GPN 将注意力机制换为传统的卷积层并在单个基因组上取得了良好的学习效果。此外 GPN 使用了一种巧妙的无监督方法，将预测的不同碱基概率之比巧妙地转换为 variant effect 的 score。虽然这些想法来源自不同的研究，但具体的实现也要研究者巧妙地把它们组合起来。</p><h3 id="GPN-MSA"><a href="#GPN-MSA" class="headerlink" title="GPN-MSA"></a>GPN-MSA</h3><p>如果说 GPN 是一个轻巧的、适用于多数非模式物种的工具，那么 GPN-MSA 就是专门设计用于人类基因组的语言模型。与 GPN 不同，GPN-MSA 舍弃了卷积层重回正统的 Transformer 架构，同时它的输入数据也由单个基因组变成了九十种脊椎动物的 MSA。</p><p><img src="/pic2/F1.large.jpg"></p><p>它的数据处理大致如下：</p><ul><li>MSA 处理，其首先下载了一百种脊椎动物的多序列比对，对其进行一定处理后，去除了与人类亲缘关系最接近的十种灵长类动物。</li><li>训练输入的数据为长度 <code>128bp</code> 步长 <code>64bp</code> 的窗口，与 GPN 相同，这里有选择性地对窗口进行了选择：①、专注于功能重要的区域，通过保守性分数 PhastCons 选择所有窗口中平均保守性分数最高的 5% 和剩余窗口随机选择 0.1%；②、降低了重复序列的权重并提高保守序列的权重（同样通过 PhastCons 进行）。</li><li>该模型同样使用反向互补序列作为数据增强手段，同样掩码 15% 的核苷酸进行训练。与 GPN 不同的是，该模型在数据增强中，还将非保守区域的参考碱基随机替换为其他碱基（在计算 loss 时），此外该模型使用 21 号染色体作为早停法的测试 loss 参考，且保留 22 号染色体作为进一步的测试（但在论文中并未使用到）。</li></ul><p>去除灵长类动物的原因文章并没有详细提及，但是可能原因也较好理解。首先这些生物与人类的基因组序列相似性可能很高，因此它们可能没法突出那些更广泛进化范围内保守的区域。此外，高度的相似性也意味着数据的冗余信息可能较多，因此去除将有利于模型更有效地提取特征。</p><p>另外，文章还进行了消融实验，以确定不同的模型架构对于最终模型表现的影响，具体的尝试可见论文的方法部分，此处贴出原文内容：</p><blockquote><ul><li>w/o MSA: the model is only trained on the human sequence, without access to other species.</li><li>MSA frequency: variants are scored using the log-likelihood ratio of observed frequencies in the MSA column, with a pseudocount of 1.</li><li>Train on 50% most conserved: expand the training region from the smaller 5% most conserved to a larger set with less overall conservation.</li><li>Include closest primates: do not filter out from the MSA the 10 primates closest to human.</li><li>Don’t upweight conserved: do not upweight the loss function on conserved elements.</li><li>Don’t replace non-conserved: do not replace the reference in non-conserved positions with random nucleotides when computing the loss function.</li></ul><p>Modeling the single human sequence instead of the MSA has by far the biggest impact. Using the column-wide MSA frequencies as predictor also shows a large decrease in performance. Including primate species close to human, or training on less conserved regions, have a moderate impact on performance. Finally, of relatively minor impact are removing the upweighting of conserved elements or removing the data augmentation procedure of replacing nucleotides in non-conserved positions.</p></blockquote><p>目前 Biorxiv 论文上研究人员仅将该模型在疾病预测中的表现进行了展示，在突变致病性预测中，GPN-MSA 超越了基于功能基因组数据的 CADD 以及保守性分数 PhyloP，在多个数据集（Clinvar、COSMIC）里取得了 SOTA。</p><p><img src="/pic2/F2.large.jpg"></p><p>当然，GPN-MSA 在利用多序列比对信息的同时，也失去了其在比对质量较差的非编码区上的表现机会，在文章的最后作者提到了一些未来的方向：</p><ul><li>整合群体遗传变异信息，而非依靠单个基因组。</li><li>整合 DNA 序列和功能基因组学信息。</li></ul><p>最后，我个人认为这个工作对我的启发还是非常大的，归根结底这个模型设计其实并不算非常复杂，但是很多思路缺一不可。此外这个架构还可以用在多个其他领域的下游分析中，它还有很多利用价值等待我们挖掘……</p><hr><p>文章链接如下：</p><blockquote><p>DNA language models are powerful predictors of genome-wide variant effects</p><p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10622914/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10622914/</a></p><p>GPN-MSA: an alignment-based DNA language model for genome-wide variant effect prediction</p><p><a href="https://www.biorxiv.org/content/10.1101/2023.10.10.561776v1.full">https://www.biorxiv.org/content/10.1101/2023.10.10.561776v1.full</a></p></blockquote></body></html>]]></content>
+    
+    
+    <summary type="html">继蛋白质语言模型之后，DNA 语言模型也来了！</summary>
+    
+    
+    
+    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="文献阅读" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"/>
+    
+    
+    <category term="文献" scheme="https://jusetiz.github.io/tags/%E6%96%87%E7%8C%AE/"/>
+    
+    <category term="基因组学" scheme="https://jusetiz.github.io/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>深度学习 loss 追踪器（用于追踪 loss 变化）</title>
@@ -451,11 +476,11 @@
   </entry>
   
   <entry>
-    <title>文献分享篇（一）—— 系统发育转录组学是否靠谱？</title>
+    <title>系统发育转录组学是否靠谱？</title>
     <link href="https://jusetiz.github.io/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/"/>
     <id>https://jusetiz.github.io/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/</id>
     <published>2023-04-06T07:00:00.000Z</published>
-    <updated>2023-10-09T02:00:14.000Z</updated>
+    <updated>2023-11-23T12:10:26.374Z</updated>
     
     <content type="html"><![CDATA[<html><head></head><body><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我一直认为，阅读文献应该是带着明确的目的去读，要么是想要从中学习到什么东西，要么是想通过它解答一些问题。</p><p>作为开篇，我先来分享一下对我正在研究的东西有支持性的文章：</p><blockquote><p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7743905/#:~:text=However%2C%20whether%20phylotranscriptomics%20is%20as%20reliable%20as%20phylogenomics,sequences%20of%20all%20genes%20encoded%20by%20a%20genome.">Is Phylotranscriptomics as Reliable as Phylogenomics?</a></p><p>from <em>Mol Biol Evol</em></p></blockquote><p>事实上，很久之前我认为用转录组找出来的 ortholog 并不可靠，里面有太多的不确定因素会干扰结果的准确性，这也是它和基因组最大的区别所在。所以我有一段时间一度在怀疑自己这么做到底是不是对的<del>（菜鸟就是年轻气盛啊！）</del>。</p><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>首先，研究者肯定了基因组在系统发育分析中的优越性，但也指出其成本依然昂贵，相比之下相当便宜的转录组已经成为更多研究者的选择，不过转录组依然具有以下缺点：</p><ul><li>基因表达在组织间具有差异性（例如脑组织和肌肉组织所表达的基因可能有所不同）。</li><li>基因表达在物种间具有差异性（例如不同物种的同一基因可能具有不同的表达）。</li><li>高表达基因往往进化较为缓慢，而这一类基因在转录组中是大量出现的（也有其他观点认为相较于整个基因组背景而言这些编码序列进化速度更快，因为可能包括正在快速进化如经历正选择的基因）。</li></ul><p>文章提到的这三个缺点：①、导致不知道使用哪一种组织会有更好的系统发育分析性能；②、会阻碍直系同源基因的鉴定；③、数据不完整，有很多的基因并没有被挖掘；④、进化缓慢的基因对于研究系统发育关系近的物种而言分辨率低。</p><p>考虑到这些问题，为了评估系统发育转录组的性能，研究者选择了 22 种哺乳动物和 15 种植物的转录组数据进行分析，通过比较 PT (Phylotranscriptomics) 树和 PG (Phylogenomics) 树的拓扑结构，结果表明<strong>只要直系同源基因的鉴定足够严谨</strong>，那么 PT 树和 PG 树基本一致。</p><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>PG 树的构建方法：使用 OrthoMCL 从基因组序列中寻找一对一直系同源基因，比对修剪串联后使用 RAxML 推断 ML 树。</p><p>PT 树的构建方法：分成三种，分别是</p><ul><li>使用 HaMStR 构建核心直系同源基因并寻找目标物种的直系同源基因，然后挑选那些含有至少 50% 物种的一对一直系同源基因。</li><li>基于基因树的直系同源基因推理方法。本文使用了两种方法，一种是由 Yang &amp; Smith 提出的经验性方法（YS），一种是 PhyloPypruner。</li><li>Orthograph 寻找（相当于是 pHMMs 的最优双向命中）。</li></ul><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>在哺乳动物中，HaMStR 和 YS 方法得到了不同的树，其中后者在拓扑结构上与 PG 树高度相似，前者就有较多的错误。基于拓扑距离得到的结论一致。</p><p>这可能是因为直系同源基因的错误识别，其中 PG 方法中错误识别的比例最小（1.9%），YS 方法的较高（5.5%），HaMStR 方法最高（28.0%）。</p><p>此外，HaMStR 鉴定得到的直系同源基因比对之后具有更高的碱基位点比例。</p><p><img src="/pic/msaa181f1.jpg"></p><center>PG 树</center><p><img src="/pic/msaa181f2.jpg"></p><center>AB 是 HaMStR 结果，CD 是 YS 结果</center><p>此外研究也发现使用不同的组织并不会显著降低 Phylotranscriptomics 的准确性。</p><p>为了验证这些结论的普适性，继续对植物进行了相同的操作。这次 YS 方法得到的树拓扑结构与 PG 树一致，HaMStR 树中有一个物种的位置出错。</p><p><img src="/pic/msaa181f4.jpg"></p><center>从上到下依次是 PG、HaMStR、YS</center><p>此后，为了验证结果的稳健性，使用 PhyloPypruner 和 Orthograph 进行了 PT 树构建，并且将上述操作中 OrthoMCL 进行的部分替换成 Orthofinder 又进行了一次。结果有：</p><ul><li>PhyloPypruner 得到了与 YS 方法几乎相同的结果（都和 PG 树很像）。Orthograph 的表现则不佳，甚至表现的还不如 HaMStR。</li><li>使用 Orthofinder 得到的结果和 OrthoMCL 没有太大出入。</li><li>不同的建树方法似乎能让某些情况下 PT 树和 PG 树的差异变小（将 RAxML 替换成 IQ-TREE 后有三个组织的 PT 树和 PG 树更像了）。</li><li>推断物种树的方法变换后结果依旧是相似的（串联建树 and ASTRAL-III）。</li></ul><h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><p>总之，本研究发现 Phylotranscriptomics 和 Phylogenomics 是一样可靠的，这有望解决以下问题：</p><p>尽管基因组数据越来越多，但是一些基于基因组的研究却也得出了相互矛盾的结果，这时更广泛的物种采样可能会有所帮助。采用 Phylotranscriptomics 时，每个物种成本的降低有助于更大规模采样的进行，这可以帮助解释一些比较有争议的树。</p><p>但是有以下那么些点需要注意：</p><ul><li>Phylotranscriptomics 的结果可靠性非常依赖于严格精确的直系同源基因鉴定，虽然 YS 方法鉴定的直系同源基因比 HaMStR 少一个数量级，但是显然前者的结果要可靠许多。</li><li>可用于系统发育推断的直系同源基因数量将随着物种数的增加而减少，这也会影响到结果的精准性。例如研究分析了 22 种哺乳动物的两个子集，它们分别包含了 14 和 7 个物种，最后得到的直系同源基因数量则依次为 235 个、705 个和 1991 个，而与 PG 树的拓扑距离则分别为 4、6 和 0。</li><li>HaMStR 的直系同源基因识别受到所用核心直系同源基因的影响，因此使用与目标物种匹配的核心直系同源基因可能更有利于精确的系统发育推断。</li></ul><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>最后再做一些补充吧：</p><ul><li>HaMStR 是 RBH (reciprocal best blast hit) 方法的改进版，它的大体操作是先从核心物种中提取直系同源基因并构建隐马尔可夫模型，然后据此搜索目标物种，如果目标物种有序列能够被搜索到，那么该序列会被用来进行验证，验证的方法就是通过 RBH 看它的最佳 blast 命中是否为该直系同源基因家族中的成员，如此就能整合出包含多个物种的直系同源基因集。当然它的准确率也比单纯的 RBH 要高。</li><li>如果用的是 <code>Orthofinder + PhyloPypruner</code> 的话，就算物种数很大只要跑的时间够长也是能凑出几百个直系同源基因的，不过有可能部分物种的 gap 率会比较高。</li><li>PhyloPypruner 性能和 YS 方法差不多，但是操作上要更简单。</li></ul></body></html>]]></content>
     
@@ -472,27 +497,6 @@
     <category term="文献" scheme="https://jusetiz.github.io/tags/%E6%96%87%E7%8C%AE/"/>
     
     <category term="比较转录组" scheme="https://jusetiz.github.io/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于 mamba install 时会出现的两个错误解决方案</title>
-    <link href="https://jusetiz.github.io/2023/03/27/%E5%85%B3%E4%BA%8E%20mamba%20install%20%E6%97%B6%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>https://jusetiz.github.io/2023/03/27/%E5%85%B3%E4%BA%8E%20mamba%20install%20%E6%97%B6%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
-    <published>2023-03-27T08:00:00.000Z</published>
-    <updated>2023-10-09T02:03:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<html><head></head><body><p>工欲善其事必先利其器篇堂堂连载！这篇文分享一下使用 mamba 进行安装时遇到报错该怎么解决。</p><p>一般来说错误有这么两个：</p><ul><li>File not valid: file size doesn’t match expectation</li><li>RuntimeError: Multi-download failed.</li></ul><p>这两错误在 mamba github 上已经有人提出来了，并且指出了明确的报错原因：源有问题。</p><p><code>File not valid: file size doesn't match expectation</code> 时说明源网站没有正确识别 mamba 并返回了错误的信息，例如清华的镜像源会把 mamba 当成手机设备因此会先返回一个 “用移动设备下载会消耗过多流量建议改用计算机” 的劝告信息。</p><p><code>RuntimeError: Multi-download failed.</code> 时说明源可能已经不可用，例如中科大的 conda 镜像源已经废弃。</p><p>因此解决办法也是很简单的，那就是把镜像源统统删了，或者是切换可以使用的不会报错的镜像源。</p><p>以下展示如何移除镜像源：</p><p>慢一些的可以用 conda 自带的命令：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda config --remove channels xxxx</span></span><br></pre></td></tr></tbody></table></figure><p>快一些的可以直接编辑源的文件然后在里面操作：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">nano ~/.condarc</span></span><br></pre></td></tr></tbody></table></figure><p>然后剩下这么几个就行了：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - bioconda</span><br><span class="line">  - conda-forge</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: true</span><br><span class="line">channel_priority: flexible</span><br></pre></td></tr></tbody></table></figure><p>如果后续依旧要使用 conda 的话移除镜像源可能会有些麻烦，可以视自身需求选择如何纠错。</p><blockquote><p>Reference site:</p><p><a href="https://github.com/mamba-org/mamba/issues/1641">https://github.com/mamba-org/mamba/issues/1641</a></p><p><a href="https://github.com/mamba-org/mamba/issues/1169">https://github.com/mamba-org/mamba/issues/1169</a></p></blockquote></body></html>]]></content>
-    
-    
-    <summary type="html">mamba install 时 File not valid &amp; RuntimeError 的解决方法。</summary>
-    
-    
-    
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="杂项" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/"/>
-    
     
   </entry>
   
