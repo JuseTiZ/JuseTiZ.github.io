@@ -3,11 +3,11 @@
   <title>Juse&#39;s Blog</title>
   
   <subtitle>积跬步 至千里</subtitle>
-  <link href="https://jusetiz.github.io/atom.xml" rel="self"/>
+  <link href="https://biojuse.com/atom.xml" rel="self"/>
   
-  <link href="https://jusetiz.github.io/"/>
+  <link href="https://biojuse.com/"/>
   <updated>2023-11-27T03:33:25.552Z</updated>
-  <id>https://jusetiz.github.io/</id>
+  <id>https://biojuse.com/</id>
   
   <author>
     <name>Juse</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>DNA 语言模型 GPN 在突变效应预测中的应用及表现</title>
-    <link href="https://jusetiz.github.io/2023/11/24/DNA%20%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%20GPN%20%E5%9C%A8%E7%AA%81%E5%8F%98%E6%95%88%E5%BA%94%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8F%8A%E8%A1%A8%E7%8E%B0/"/>
-    <id>https://jusetiz.github.io/2023/11/24/DNA%20%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%20GPN%20%E5%9C%A8%E7%AA%81%E5%8F%98%E6%95%88%E5%BA%94%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8F%8A%E8%A1%A8%E7%8E%B0/</id>
+    <link href="https://biojuse.com/2023/11/24/DNA%20%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%20GPN%20%E5%9C%A8%E7%AA%81%E5%8F%98%E6%95%88%E5%BA%94%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8F%8A%E8%A1%A8%E7%8E%B0/"/>
+    <id>https://biojuse.com/2023/11/24/DNA%20%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%20GPN%20%E5%9C%A8%E7%AA%81%E5%8F%98%E6%95%88%E5%BA%94%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8F%8A%E8%A1%A8%E7%8E%B0/</id>
     <published>2023-11-24T15:00:00.000Z</published>
     <updated>2023-11-27T03:33:25.552Z</updated>
     
@@ -30,21 +30,21 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="文献阅读" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"/>
+    <category term="文献阅读" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"/>
     
     
-    <category term="文献" scheme="https://jusetiz.github.io/tags/%E6%96%87%E7%8C%AE/"/>
+    <category term="文献" scheme="https://biojuse.com/tags/%E6%96%87%E7%8C%AE/"/>
     
-    <category term="基因组学" scheme="https://jusetiz.github.io/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/"/>
+    <category term="基因组学" scheme="https://biojuse.com/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>深度学习 loss 追踪器（用于追踪 loss 变化）</title>
-    <link href="https://jusetiz.github.io/2023/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20loss%20%E8%BF%BD%E8%B8%AA%E5%99%A8/"/>
-    <id>https://jusetiz.github.io/2023/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20loss%20%E8%BF%BD%E8%B8%AA%E5%99%A8/</id>
+    <link href="https://biojuse.com/2023/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20loss%20%E8%BF%BD%E8%B8%AA%E5%99%A8/"/>
+    <id>https://biojuse.com/2023/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20loss%20%E8%BF%BD%E8%B8%AA%E5%99%A8/</id>
     <published>2023-11-22T12:50:00.000Z</published>
     <updated>2023-11-22T13:10:21.171Z</updated>
     
@@ -55,17 +55,17 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="杂项" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/"/>
+    <category term="杂项" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/"/>
     
     
   </entry>
   
   <entry>
     <title>Python 循环太费时？让多进程解决这个问题（concurrent）</title>
-    <link href="https://jusetiz.github.io/2023/10/29/pythonconcurrent/"/>
-    <id>https://jusetiz.github.io/2023/10/29/pythonconcurrent/</id>
+    <link href="https://biojuse.com/2023/10/29/pythonconcurrent/"/>
+    <id>https://biojuse.com/2023/10/29/pythonconcurrent/</id>
     <published>2023-10-29T12:50:00.000Z</published>
     <updated>2023-11-06T02:55:46.364Z</updated>
     
@@ -76,17 +76,17 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="杂项" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/"/>
+    <category term="杂项" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/"/>
     
     
   </entry>
   
   <entry>
     <title>Python seaborn 绘制复杂多变量图（hexbin + 拟合直线）</title>
-    <link href="https://jusetiz.github.io/2023/10/12/Python%20seaborn%20%E7%BB%98%E5%88%B6%E5%A4%8D%E6%9D%82%E5%A4%9A%E5%8F%98%E9%87%8F%E5%9B%BE%EF%BC%88hexbin%20+%20%E6%8B%9F%E5%90%88%E7%9B%B4%E7%BA%BF%EF%BC%89/"/>
-    <id>https://jusetiz.github.io/2023/10/12/Python%20seaborn%20%E7%BB%98%E5%88%B6%E5%A4%8D%E6%9D%82%E5%A4%9A%E5%8F%98%E9%87%8F%E5%9B%BE%EF%BC%88hexbin%20+%20%E6%8B%9F%E5%90%88%E7%9B%B4%E7%BA%BF%EF%BC%89/</id>
+    <link href="https://biojuse.com/2023/10/12/Python%20seaborn%20%E7%BB%98%E5%88%B6%E5%A4%8D%E6%9D%82%E5%A4%9A%E5%8F%98%E9%87%8F%E5%9B%BE%EF%BC%88hexbin%20+%20%E6%8B%9F%E5%90%88%E7%9B%B4%E7%BA%BF%EF%BC%89/"/>
+    <id>https://biojuse.com/2023/10/12/Python%20seaborn%20%E7%BB%98%E5%88%B6%E5%A4%8D%E6%9D%82%E5%A4%9A%E5%8F%98%E9%87%8F%E5%9B%BE%EF%BC%88hexbin%20+%20%E6%8B%9F%E5%90%88%E7%9B%B4%E7%BA%BF%EF%BC%89/</id>
     <published>2023-10-12T01:35:00.000Z</published>
     <updated>2023-11-06T03:18:11.274Z</updated>
     
@@ -97,21 +97,21 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="绘图" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%BB%98%E5%9B%BE/"/>
+    <category term="绘图" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%BB%98%E5%9B%BE/"/>
     
     
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    <category term="生物信息学" scheme="https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/"/>
     
   </entry>
   
   <entry>
     <title>关于人类基因组注释中起始和终止位点相同的现象</title>
-    <link href="https://jusetiz.github.io/2023/10/05/%E5%85%B3%E4%BA%8E%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%B5%B7%E5%A7%8B%E5%92%8C%E7%BB%88%E6%AD%A2%E4%BD%8D%E7%82%B9%E7%9B%B8%E5%90%8C%E7%9A%84%E7%8E%B0%E8%B1%A1/"/>
-    <id>https://jusetiz.github.io/2023/10/05/%E5%85%B3%E4%BA%8E%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%B5%B7%E5%A7%8B%E5%92%8C%E7%BB%88%E6%AD%A2%E4%BD%8D%E7%82%B9%E7%9B%B8%E5%90%8C%E7%9A%84%E7%8E%B0%E8%B1%A1/</id>
+    <link href="https://biojuse.com/2023/10/05/%E5%85%B3%E4%BA%8E%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%B5%B7%E5%A7%8B%E5%92%8C%E7%BB%88%E6%AD%A2%E4%BD%8D%E7%82%B9%E7%9B%B8%E5%90%8C%E7%9A%84%E7%8E%B0%E8%B1%A1/"/>
+    <id>https://biojuse.com/2023/10/05/%E5%85%B3%E4%BA%8E%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%B5%B7%E5%A7%8B%E5%92%8C%E7%BB%88%E6%AD%A2%E4%BD%8D%E7%82%B9%E7%9B%B8%E5%90%8C%E7%9A%84%E7%8E%B0%E8%B1%A1/</id>
     <published>2023-10-05T06:00:00.000Z</published>
     <updated>2023-10-09T01:45:52.000Z</updated>
     
@@ -122,23 +122,23 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
     
     
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    <category term="生物信息学" scheme="https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/"/>
     
-    <category term="基因组" scheme="https://jusetiz.github.io/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84/"/>
+    <category term="基因组" scheme="https://biojuse.com/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>JuseKit（八） —— 计算转录组组装指标</title>
-    <link href="https://jusetiz.github.io/2023/09/01/JuseKit%EF%BC%88%E5%85%AB%EF%BC%89%20%E2%80%94%E2%80%94%20%E8%AE%A1%E7%AE%97%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BB%84%E8%A3%85%E6%8C%87%E6%A0%87/"/>
-    <id>https://jusetiz.github.io/2023/09/01/JuseKit%EF%BC%88%E5%85%AB%EF%BC%89%20%E2%80%94%E2%80%94%20%E8%AE%A1%E7%AE%97%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BB%84%E8%A3%85%E6%8C%87%E6%A0%87/</id>
+    <link href="https://biojuse.com/2023/09/01/JuseKit%EF%BC%88%E5%85%AB%EF%BC%89%20%E2%80%94%E2%80%94%20%E8%AE%A1%E7%AE%97%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BB%84%E8%A3%85%E6%8C%87%E6%A0%87/"/>
+    <id>https://biojuse.com/2023/09/01/JuseKit%EF%BC%88%E5%85%AB%EF%BC%89%20%E2%80%94%E2%80%94%20%E8%AE%A1%E7%AE%97%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BB%84%E8%A3%85%E6%8C%87%E6%A0%87/</id>
     <published>2023-09-01T08:10:00.000Z</published>
     <updated>2023-10-09T01:53:42.000Z</updated>
     
@@ -149,19 +149,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>基于 js 在系列文章开头设置文章传送门（hexo + butterfly）</title>
-    <link href="https://jusetiz.github.io/2023/08/11/%E5%9F%BA%E4%BA%8E%20js%20%E5%9C%A8%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E4%BC%A0%E9%80%81%E9%97%A8/"/>
-    <id>https://jusetiz.github.io/2023/08/11/%E5%9F%BA%E4%BA%8E%20js%20%E5%9C%A8%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E4%BC%A0%E9%80%81%E9%97%A8/</id>
+    <link href="https://biojuse.com/2023/08/11/%E5%9F%BA%E4%BA%8E%20js%20%E5%9C%A8%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E4%BC%A0%E9%80%81%E9%97%A8/"/>
+    <id>https://biojuse.com/2023/08/11/%E5%9F%BA%E4%BA%8E%20js%20%E5%9C%A8%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E4%BC%A0%E9%80%81%E9%97%A8/</id>
     <published>2023-08-11T05:55:00.000Z</published>
     <updated>2023-10-09T02:34:02.000Z</updated>
     
@@ -172,15 +172,15 @@
     
     
     
-    <category term="博客" scheme="https://jusetiz.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="https://biojuse.com/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
   </entry>
   
   <entry>
     <title>JuseKit（七） —— 绘制 GO 富集分析气泡图</title>
-    <link href="https://jusetiz.github.io/2023/08/04/JuseKit%EF%BC%88%E4%B8%83%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%20GO%20%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E6%B0%94%E6%B3%A1%E5%9B%BE/"/>
-    <id>https://jusetiz.github.io/2023/08/04/JuseKit%EF%BC%88%E4%B8%83%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%20GO%20%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E6%B0%94%E6%B3%A1%E5%9B%BE/</id>
+    <link href="https://biojuse.com/2023/08/04/JuseKit%EF%BC%88%E4%B8%83%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%20GO%20%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E6%B0%94%E6%B3%A1%E5%9B%BE/"/>
+    <id>https://biojuse.com/2023/08/04/JuseKit%EF%BC%88%E4%B8%83%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%20GO%20%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E6%B0%94%E6%B3%A1%E5%9B%BE/</id>
     <published>2023-08-04T06:35:00.000Z</published>
     <updated>2023-10-09T01:57:02.000Z</updated>
     
@@ -191,19 +191,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>DiscoVista 可视化系统发育不一致</title>
-    <link href="https://jusetiz.github.io/2023/07/12/DiscoVista%20%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E4%B8%8D%E4%B8%80%E8%87%B4/"/>
-    <id>https://jusetiz.github.io/2023/07/12/DiscoVista%20%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E4%B8%8D%E4%B8%80%E8%87%B4/</id>
+    <link href="https://biojuse.com/2023/07/12/DiscoVista%20%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E4%B8%8D%E4%B8%80%E8%87%B4/"/>
+    <id>https://biojuse.com/2023/07/12/DiscoVista%20%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E4%B8%8D%E4%B8%80%E8%87%B4/</id>
     <published>2023-07-12T15:00:00.000Z</published>
     <updated>2023-10-09T01:40:22.000Z</updated>
     
@@ -214,23 +214,23 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
     
     
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    <category term="生物信息学" scheme="https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/"/>
     
-    <category term="系统发育分析" scheme="https://jusetiz.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90/"/>
+    <category term="系统发育分析" scheme="https://biojuse.com/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
   <entry>
     <title>使用 IQTREE 计算一致性因子</title>
-    <link href="https://jusetiz.github.io/2023/07/07/%E4%BD%BF%E7%94%A8%20IQTREE%20%E8%AE%A1%E7%AE%97%E4%B8%80%E8%87%B4%E6%80%A7%E5%9B%A0%E5%AD%90/"/>
-    <id>https://jusetiz.github.io/2023/07/07/%E4%BD%BF%E7%94%A8%20IQTREE%20%E8%AE%A1%E7%AE%97%E4%B8%80%E8%87%B4%E6%80%A7%E5%9B%A0%E5%AD%90/</id>
+    <link href="https://biojuse.com/2023/07/07/%E4%BD%BF%E7%94%A8%20IQTREE%20%E8%AE%A1%E7%AE%97%E4%B8%80%E8%87%B4%E6%80%A7%E5%9B%A0%E5%AD%90/"/>
+    <id>https://biojuse.com/2023/07/07/%E4%BD%BF%E7%94%A8%20IQTREE%20%E8%AE%A1%E7%AE%97%E4%B8%80%E8%87%B4%E6%80%A7%E5%9B%A0%E5%AD%90/</id>
     <published>2023-07-07T12:20:00.000Z</published>
     <updated>2023-10-09T02:05:44.000Z</updated>
     
@@ -241,23 +241,23 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
     
     
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    <category term="生物信息学" scheme="https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/"/>
     
-    <category term="IQtree" scheme="https://jusetiz.github.io/tags/IQtree/"/>
+    <category term="IQtree" scheme="https://biojuse.com/tags/IQtree/"/>
     
   </entry>
   
   <entry>
     <title>贝叶斯建树之 Mrbayes 篇</title>
-    <link href="https://jusetiz.github.io/2023/07/06/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%BB%BA%E6%A0%91%E4%B9%8B%20Mrbayes%20%E7%AF%87/"/>
-    <id>https://jusetiz.github.io/2023/07/06/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%BB%BA%E6%A0%91%E4%B9%8B%20Mrbayes%20%E7%AF%87/</id>
+    <link href="https://biojuse.com/2023/07/06/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%BB%BA%E6%A0%91%E4%B9%8B%20Mrbayes%20%E7%AF%87/"/>
+    <id>https://biojuse.com/2023/07/06/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%BB%BA%E6%A0%91%E4%B9%8B%20Mrbayes%20%E7%AF%87/</id>
     <published>2023-07-06T09:30:00.000Z</published>
     <updated>2023-11-08T04:26:52.653Z</updated>
     
@@ -268,25 +268,25 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
     
-    <category term="建树" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/%E5%BB%BA%E6%A0%91/"/>
+    <category term="建树" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/%E5%BB%BA%E6%A0%91/"/>
     
     
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    <category term="生物信息学" scheme="https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/"/>
     
-    <category term="系统发育分析" scheme="https://jusetiz.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90/"/>
+    <category term="系统发育分析" scheme="https://biojuse.com/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
   <entry>
     <title>JuseKit（六） —— 绘制火山图</title>
-    <link href="https://jusetiz.github.io/2023/07/04/JuseKit%EF%BC%88%E5%85%AD%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%E7%81%AB%E5%B1%B1%E5%9B%BE/"/>
-    <id>https://jusetiz.github.io/2023/07/04/JuseKit%EF%BC%88%E5%85%AD%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%E7%81%AB%E5%B1%B1%E5%9B%BE/</id>
+    <link href="https://biojuse.com/2023/07/04/JuseKit%EF%BC%88%E5%85%AD%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%E7%81%AB%E5%B1%B1%E5%9B%BE/"/>
+    <id>https://biojuse.com/2023/07/04/JuseKit%EF%BC%88%E5%85%AD%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%BB%98%E5%88%B6%E7%81%AB%E5%B1%B1%E5%9B%BE/</id>
     <published>2023-07-04T06:35:00.000Z</published>
     <updated>2023-10-09T01:43:36.000Z</updated>
     
@@ -297,19 +297,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>Astral 建树指南</title>
-    <link href="https://jusetiz.github.io/2023/06/23/Astral%20%E5%BB%BA%E6%A0%91%E6%8C%87%E5%8D%97/"/>
-    <id>https://jusetiz.github.io/2023/06/23/Astral%20%E5%BB%BA%E6%A0%91%E6%8C%87%E5%8D%97/</id>
+    <link href="https://biojuse.com/2023/06/23/Astral%20%E5%BB%BA%E6%A0%91%E6%8C%87%E5%8D%97/"/>
+    <id>https://biojuse.com/2023/06/23/Astral%20%E5%BB%BA%E6%A0%91%E6%8C%87%E5%8D%97/</id>
     <published>2023-06-23T11:30:00.000Z</published>
     <updated>2023-11-08T04:24:07.330Z</updated>
     
@@ -320,25 +320,25 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
     
-    <category term="建树" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/%E5%BB%BA%E6%A0%91/"/>
+    <category term="建树" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/%E5%BB%BA%E6%A0%91/"/>
     
     
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    <category term="生物信息学" scheme="https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/"/>
     
-    <category term="系统发育分析" scheme="https://jusetiz.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90/"/>
+    <category term="系统发育分析" scheme="https://biojuse.com/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
   <entry>
     <title>JuseKit（五） —— 用于系统发育分析的序列过滤</title>
-    <link href="https://jusetiz.github.io/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/"/>
-    <id>https://jusetiz.github.io/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/</id>
+    <link href="https://biojuse.com/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/"/>
+    <id>https://biojuse.com/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/</id>
     <published>2023-05-14T08:15:00.000Z</published>
     <updated>2023-10-09T02:29:48.000Z</updated>
     
@@ -349,19 +349,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>关于 PAML 的一二三事</title>
-    <link href="https://jusetiz.github.io/2023/05/04/%E5%85%B3%E4%BA%8E%20PAML%20%E7%9A%84%E4%B8%80%E4%BA%8C%E4%B8%89%E4%BA%8B/"/>
-    <id>https://jusetiz.github.io/2023/05/04/%E5%85%B3%E4%BA%8E%20PAML%20%E7%9A%84%E4%B8%80%E4%BA%8C%E4%B8%89%E4%BA%8B/</id>
+    <link href="https://biojuse.com/2023/05/04/%E5%85%B3%E4%BA%8E%20PAML%20%E7%9A%84%E4%B8%80%E4%BA%8C%E4%B8%89%E4%BA%8B/"/>
+    <id>https://biojuse.com/2023/05/04/%E5%85%B3%E4%BA%8E%20PAML%20%E7%9A%84%E4%B8%80%E4%BA%8C%E4%B8%89%E4%BA%8B/</id>
     <published>2023-05-04T08:00:00.000Z</published>
     <updated>2023-10-09T02:36:38.000Z</updated>
     
@@ -372,21 +372,21 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"/>
     
     
-    <category term="生物信息学" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    <category term="生物信息学" scheme="https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
     
-    <category term="生信" scheme="https://jusetiz.github.io/tags/%E7%94%9F%E4%BF%A1/"/>
+    <category term="生信" scheme="https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/"/>
     
   </entry>
   
   <entry>
     <title>JuseKit（四） —— 序列格式转换以及 Orthogroup 的 cds 提取</title>
-    <link href="https://jusetiz.github.io/2023/04/26/JuseKit%EF%BC%88%E5%9B%9B%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%20Orthogroup%20%E7%9A%84%20cds%20%E6%8F%90%E5%8F%96/"/>
-    <id>https://jusetiz.github.io/2023/04/26/JuseKit%EF%BC%88%E5%9B%9B%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%20Orthogroup%20%E7%9A%84%20cds%20%E6%8F%90%E5%8F%96/</id>
+    <link href="https://biojuse.com/2023/04/26/JuseKit%EF%BC%88%E5%9B%9B%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%20Orthogroup%20%E7%9A%84%20cds%20%E6%8F%90%E5%8F%96/"/>
+    <id>https://biojuse.com/2023/04/26/JuseKit%EF%BC%88%E5%9B%9B%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%20Orthogroup%20%E7%9A%84%20cds%20%E6%8F%90%E5%8F%96/</id>
     <published>2023-04-26T15:00:00.000Z</published>
     <updated>2023-10-09T02:19:50.000Z</updated>
     
@@ -397,19 +397,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>JuseKit（三） —— 串联序列、根据id提取序列、批量修改文件尾缀</title>
-    <link href="https://jusetiz.github.io/2023/04/13/JuseKit%EF%BC%88%E4%B8%89%EF%BC%89%20%E2%80%94%E2%80%94%20%E4%B8%B2%E8%81%94%E5%BA%8F%E5%88%97%E3%80%81%E6%A0%B9%E6%8D%AEid%E6%8F%90%E5%8F%96%E5%BA%8F%E5%88%97%E3%80%81%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%B0%BE%E7%BC%80/"/>
-    <id>https://jusetiz.github.io/2023/04/13/JuseKit%EF%BC%88%E4%B8%89%EF%BC%89%20%E2%80%94%E2%80%94%20%E4%B8%B2%E8%81%94%E5%BA%8F%E5%88%97%E3%80%81%E6%A0%B9%E6%8D%AEid%E6%8F%90%E5%8F%96%E5%BA%8F%E5%88%97%E3%80%81%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%B0%BE%E7%BC%80/</id>
+    <link href="https://biojuse.com/2023/04/13/JuseKit%EF%BC%88%E4%B8%89%EF%BC%89%20%E2%80%94%E2%80%94%20%E4%B8%B2%E8%81%94%E5%BA%8F%E5%88%97%E3%80%81%E6%A0%B9%E6%8D%AEid%E6%8F%90%E5%8F%96%E5%BA%8F%E5%88%97%E3%80%81%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%B0%BE%E7%BC%80/"/>
+    <id>https://biojuse.com/2023/04/13/JuseKit%EF%BC%88%E4%B8%89%EF%BC%89%20%E2%80%94%E2%80%94%20%E4%B8%B2%E8%81%94%E5%BA%8F%E5%88%97%E3%80%81%E6%A0%B9%E6%8D%AEid%E6%8F%90%E5%8F%96%E5%BA%8F%E5%88%97%E3%80%81%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%B0%BE%E7%BC%80/</id>
     <published>2023-04-13T11:30:00.000Z</published>
     <updated>2023-10-09T02:18:38.000Z</updated>
     
@@ -420,19 +420,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>JuseKit（二） —— 序列id简化、加前缀尾缀或转变为物种名</title>
-    <link href="https://jusetiz.github.io/2023/04/09/JuseKit%EF%BC%88%E4%BA%8C%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97id%E7%AE%80%E5%8C%96%E3%80%81%E5%8A%A0%E5%89%8D%E7%BC%80%E5%B0%BE%E7%BC%80%E6%88%96%E8%BD%AC%E5%8F%98%E4%B8%BA%E7%89%A9%E7%A7%8D%E5%90%8D/"/>
-    <id>https://jusetiz.github.io/2023/04/09/JuseKit%EF%BC%88%E4%BA%8C%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97id%E7%AE%80%E5%8C%96%E3%80%81%E5%8A%A0%E5%89%8D%E7%BC%80%E5%B0%BE%E7%BC%80%E6%88%96%E8%BD%AC%E5%8F%98%E4%B8%BA%E7%89%A9%E7%A7%8D%E5%90%8D/</id>
+    <link href="https://biojuse.com/2023/04/09/JuseKit%EF%BC%88%E4%BA%8C%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97id%E7%AE%80%E5%8C%96%E3%80%81%E5%8A%A0%E5%89%8D%E7%BC%80%E5%B0%BE%E7%BC%80%E6%88%96%E8%BD%AC%E5%8F%98%E4%B8%BA%E7%89%A9%E7%A7%8D%E5%90%8D/"/>
+    <id>https://biojuse.com/2023/04/09/JuseKit%EF%BC%88%E4%BA%8C%EF%BC%89%20%E2%80%94%E2%80%94%20%E5%BA%8F%E5%88%97id%E7%AE%80%E5%8C%96%E3%80%81%E5%8A%A0%E5%89%8D%E7%BC%80%E5%B0%BE%E7%BC%80%E6%88%96%E8%BD%AC%E5%8F%98%E4%B8%BA%E7%89%A9%E7%A7%8D%E5%90%8D/</id>
     <published>2023-04-09T06:40:00.000Z</published>
     <updated>2023-10-09T02:33:20.000Z</updated>
     
@@ -443,19 +443,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>JuseKit（一） —— 提取最长转录本</title>
-    <link href="https://jusetiz.github.io/2023/04/08/JuseKit%EF%BC%88%E4%B8%80%EF%BC%89%20%E2%80%94%E2%80%94%20%E6%8F%90%E5%8F%96%E6%9C%80%E9%95%BF%E8%BD%AC%E5%BD%95%E6%9C%AC/"/>
-    <id>https://jusetiz.github.io/2023/04/08/JuseKit%EF%BC%88%E4%B8%80%EF%BC%89%20%E2%80%94%E2%80%94%20%E6%8F%90%E5%8F%96%E6%9C%80%E9%95%BF%E8%BD%AC%E5%BD%95%E6%9C%AC/</id>
+    <link href="https://biojuse.com/2023/04/08/JuseKit%EF%BC%88%E4%B8%80%EF%BC%89%20%E2%80%94%E2%80%94%20%E6%8F%90%E5%8F%96%E6%9C%80%E9%95%BF%E8%BD%AC%E5%BD%95%E6%9C%AC/"/>
+    <id>https://biojuse.com/2023/04/08/JuseKit%EF%BC%88%E4%B8%80%EF%BC%89%20%E2%80%94%E2%80%94%20%E6%8F%90%E5%8F%96%E6%9C%80%E9%95%BF%E8%BD%AC%E5%BD%95%E6%9C%AC/</id>
     <published>2023-04-08T04:00:00.000Z</published>
     <updated>2023-10-10T01:52:54.000Z</updated>
     
@@ -466,19 +466,19 @@
     
     
     
-    <category term="软件开发" scheme="https://jusetiz.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <category term="软件开发" scheme="https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="JuseKit" scheme="https://jusetiz.github.io/tags/JuseKit/"/>
+    <category term="JuseKit" scheme="https://biojuse.com/tags/JuseKit/"/>
     
-    <category term="转录组" scheme="https://jusetiz.github.io/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="转录组" scheme="https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>系统发育转录组学是否靠谱？</title>
-    <link href="https://jusetiz.github.io/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/"/>
-    <id>https://jusetiz.github.io/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/</id>
+    <link href="https://biojuse.com/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/"/>
+    <id>https://biojuse.com/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/</id>
     <published>2023-04-06T07:00:00.000Z</published>
     <updated>2023-11-23T12:10:26.374Z</updated>
     
@@ -489,14 +489,14 @@
     
     
     
-    <category term="学习" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="文献阅读" scheme="https://jusetiz.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"/>
+    <category term="文献阅读" scheme="https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"/>
     
     
-    <category term="文献" scheme="https://jusetiz.github.io/tags/%E6%96%87%E7%8C%AE/"/>
+    <category term="文献" scheme="https://biojuse.com/tags/%E6%96%87%E7%8C%AE/"/>
     
-    <category term="比较转录组" scheme="https://jusetiz.github.io/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
+    <category term="比较转录组" scheme="https://biojuse.com/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84/"/>
     
   </entry>
   
