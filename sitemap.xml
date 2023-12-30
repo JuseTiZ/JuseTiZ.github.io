@@ -13,53 +13,8 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://biojuse.com/archives/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/categories/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/messageboard/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/link/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/myself/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/about/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/talk/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/new/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/paper/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
+  <loc>https://biojuse.com/2023/12/30/dNdS%20%E7%9A%84%E8%AE%A1%E7%AE%97%E5%8F%8A%E5%85%B6%E6%A0%B8%E5%BF%83%E7%90%86%E5%BF%B5/</loc>
+  <lastmod>2023-12-30T20:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -73,32 +28,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E6%96%87%E7%8C%AE/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://biojuse.com/2023/11/22/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20loss%20%E8%BF%BD%E8%B8%AA%E5%99%A8/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/</loc>
   <lastmod>2023-11-24T15:01:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -113,32 +43,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%BB%98%E5%9B%BE/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E7%94%9F%E4%BF%A1/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://biojuse.com/2023/10/05/%E5%85%B3%E4%BA%8E%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%B5%B7%E5%A7%8B%E5%92%8C%E7%BB%88%E6%AD%A2%E4%BD%8D%E7%82%B9%E7%9B%B8%E5%90%8C%E7%9A%84%E7%8E%B0%E8%B1%A1/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84/</loc>
   <lastmod>2023-11-24T15:01:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -148,27 +53,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/JuseKit/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://biojuse.com/2023/08/11/%E5%9F%BA%E4%BA%8E%20js%20%E5%9C%A8%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E4%BC%A0%E9%80%81%E9%97%A8/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/categories/%E5%8D%9A%E5%AE%A2/</loc>
   <lastmod>2023-11-24T15:01:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -221,111 +106,6 @@
   <loc>https://biojuse.com/2023/05/14/JuseKit%EF%BC%88%E4%BA%94%EF%BC%89%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%8F%E5%88%97%E8%BF%87%E6%BB%A4/</loc>
   <lastmod>2023-11-24T15:01:43+00:00</lastmod>
   <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/page/2/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/page/3/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E5%AF%8C%E9%9B%86%E7%BD%91%E7%BB%9C%E5%9B%BE/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E5%B7%AE%E5%BC%82%E8%A1%A8%E8%BE%BE%E5%88%86%E6%9E%90/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E7%81%AB%E5%B1%B1%E5%9B%BE/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/linux/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/GO%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/%E5%BA%8F%E5%88%97%E4%B8%B2%E8%81%94/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/tags/GO-annotation/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/11/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/10/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/09/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/08/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/07/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/06/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/05/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/2023/04/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/page/2/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://biojuse.com/archives/page/4/</loc>
-  <lastmod>2023-11-24T15:01:43+00:00</lastmod>
-  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://biojuse.com/2023/04/06/%E6%96%87%E7%8C%AE%E5%88%86%E4%BA%AB%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%20%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6%E6%98%AF%E5%90%A6%E9%9D%A0%E8%B0%B1%EF%BC%9F/</loc>
