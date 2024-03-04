@@ -29,9 +29,9 @@ function generatePortalLinks(currentArticleId) {
     var relatedlinks = [
         { title: "用于 IQtree 的序列串联方法", url: "https://biojuse.com/2023/01/29/用于 IQtree 的序列串联方法" },
         { title: "关于 PAML 的一二三事", url: "https://biojuse.com/2023/05/04/关于 PAML 的一二三事" },
-        { title: "Astral 建树指南", url: "https://biojuse.com/2023/06/23/Astral 建树指南" }, 
-        { title: "贝叶斯建树之 Mrbayes 篇", url: "https://biojuse.com/2023/07/06/贝叶斯建树之 Mrbayes 篇" }, 
-        { title: "使用 IQTREE 计算一致性因子", url: "https://biojuse.com/2023/07/07/使用 IQTREE 计算一致性因子" }, 
+        { title: "Astral 建树指南", url: "https://biojuse.com/2023/06/23/Astral 建树指南" },
+        { title: "贝叶斯建树之 Mrbayes 篇", url: "https://biojuse.com/2023/07/06/贝叶斯建树之 Mrbayes 篇" },
+        { title: "使用 IQTREE 计算一致性因子", url: "https://biojuse.com/2023/07/07/使用 IQTREE 计算一致性因子" },
         { title: "DiscoVista 可视化系统发育不一致", url: "https://biojuse.com/2023/07/12/DiscoVista 可视化系统发育不一致" },
         { title: "JuseKit 系列文章", url: "https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" }
     ];
@@ -49,6 +49,7 @@ function generatePortalLinks(currentArticleId) {
     html += '<li>根据文章内容进行数据操作前，若相关操作涉及到大量文件，请<strong>选出一个小数据集（文件）</strong>进行试分析以确定是否能够正常运行并产生结果。</li>'
     html += '<li>根据文章内容进行命令执行前，若相关命令涉及到内存、线程等参数（或者是 & 等执行多条命令的操作），请<strong>留意电脑或服务器是否能够承受足够负载（htop）</strong>。</li>'
     html += '<li>文章中涉及到的脚本、命令参数等<strong>需根据实际情况进行修正</strong>，盲目抄代码不可取，重要的是适合自己的流程。</li>'
+    html += '<li>文章内容如有错误，欢迎联系 Juse 或评论留言进行更正，请在看文章的同时<strong>保持批判思维</strong>。</li>'
     html += '</ul></div>';
 
     document.getElementById('portalContainer').innerHTML = html;

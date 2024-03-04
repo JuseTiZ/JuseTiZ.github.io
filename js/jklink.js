@@ -33,7 +33,8 @@ function generatePortalLinks(currentArticleId) {
     html += '<li>根据文章内容进行数据操作前，若相关操作涉及到大量文件，请<strong>选出一个小数据集（文件）</strong>进行试分析以确定是否能够正常运行并产生结果。</li>'
     html += '<li>根据文章内容进行命令执行前，若相关命令涉及到内存、线程等参数（或者是 & 等执行多条命令的操作），请<strong>留意电脑或服务器是否能够承受足够负载（htop）</strong>。</li>'
     html += '<li>文章中涉及到的脚本、命令参数等<strong>需根据实际情况进行修正</strong>，盲目抄代码不可取，重要的是适合自己的流程。</li>'
+    html += '<li>该软件源代码于 Juse github 可见，如有错误或者可优化及改进的地方欢迎提交 PR 或联系 Juse 修改。</li>'
     html += '</ul></div>';
-	html += '<h3><a href = "/pic2/jusekit.gif" target="_blank">🪢🖼️Jusekit v0.8 界面演示🖼️🪢（点击前往）</a></h3>';
+    html += '<h3><a href = "/pic2/jusekit.gif" target="_blank">🪢🖼️Jusekit v0.8 界面演示🖼️🪢（点击前往）</a></h3>';
     document.getElementById('portalContainer').innerHTML = html;
 }
