@@ -6,7 +6,11 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
+<url>
+  <loc>https://biojuse.com/2024/04/16/通过%20bowtie2%20+%20macs3%20分析%20ChIP-Seq%20数据/</loc>
+  <lastmod>2024-04-016T11:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 <url>
   <loc>https://biojuse.com/2024/04/02/远程服务器无%20root%20权限时%20LightGBM%20GPU%20版的安装方法/</loc>
   <lastmod>2024-04-02T14:30:00+00:00</lastmod>
