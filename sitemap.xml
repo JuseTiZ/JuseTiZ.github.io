@@ -6,9 +6,15 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+
+<url>
+  <loc>https://biojuse.com/2024/04/20/bismark%20分析%20Bisulfite-Seq%20数据的流程示例/</loc>
+  <lastmod>2024-04-20T11:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 <url>
   <loc>https://biojuse.com/2024/04/16/通过%20bowtie2%20+%20macs3%20分析%20ChIP-Seq%20数据/</loc>
-  <lastmod>2024-04-016T11:30:00+00:00</lastmod>
+  <lastmod>2024-04-16T11:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
