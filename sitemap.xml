@@ -8,6 +8,11 @@
 
 
 <url>
+  <loc>https://biojuse.com/2024/05/03/提取%20bwa%20比对中唯一比对%20reads（uniquely%20mapped%20reads）的方法/</loc>
+  <lastmod>2024-04-20T11:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://biojuse.com/2024/04/20/bismark%20分析%20Bisulfite-Seq%20数据的流程示例/</loc>
   <lastmod>2024-04-20T11:30:00+00:00</lastmod>
   <priority>0.80</priority>
