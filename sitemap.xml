@@ -8,6 +8,16 @@
 
 
 <url>
+  <loc>https://biojuse.com/2024/06/09/获取基因组上%20intron%20区域及对应链信息的方法/</loc>
+  <lastmod>2024-06-09T11:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://biojuse.com/2024/06/09/Ensembl%20VEP%20plugins%20的使用方法（Alphamissense、dbNSFP%20等）/</loc>
+  <lastmod>2024-06-09T11:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://biojuse.com/2024/05/10/fasterq-dump%20下载%20SRA%20文件时报错的解决方法（err%20cmn_iter）/</loc>
   <lastmod>2024-05-10T11:00:00+00:00</lastmod>
   <priority>0.80</priority>
