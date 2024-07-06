@@ -33,7 +33,8 @@ function generatePortalLinks(currentArticleId) {
         { title: "贝叶斯建树之 Mrbayes 篇", url: "https://biojuse.com/2023/07/06/贝叶斯建树之 Mrbayes 篇" },
         { title: "使用 IQTREE 计算一致性因子", url: "https://biojuse.com/2023/07/07/使用 IQTREE 计算一致性因子" },
         { title: "DiscoVista 可视化系统发育不一致", url: "https://biojuse.com/2023/07/12/DiscoVista 可视化系统发育不一致" },
-        { title: "JuseKit 系列文章", url: "https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" }
+        { title: "JuseKit 系列文章", url: "https://biojuse.com/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" },
+        { title: "Snakemake pipeline 搭建的进阶教程", url: "https://biojuse.com/2024/07/06/Snakemake%20pipeline%20搭建的进阶教程" }
     ];
 
     html += '<div class="rltpt"><h3>🏷️🏷️相关文章传送门🏷️🏷️</h3>';
