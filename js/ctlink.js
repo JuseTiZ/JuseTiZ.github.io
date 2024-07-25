@@ -51,7 +51,7 @@ function generatePortalLinks(currentArticleId) {
     html += '<li>根据文章内容进行命令执行前，若相关命令涉及到内存、线程等参数（或者是 & 等执行多条命令的操作），请<strong>留意电脑或服务器是否能够承受足够负载（htop）</strong>。</li>'
     html += '<li>文章中涉及到的脚本、命令参数等<strong>需根据实际情况进行修正</strong>，盲目抄代码不可取，重要的是适合自己的流程。</li>'
     html += '<li>文章内容如有错误，欢迎联系 Juse 或评论留言进行更正，请在看文章的同时<strong>保持批判思维</strong>。</li>'
-    html += '<li>文中中的部分脚本可能在 Github 上有所更新，但并未同步到文章之中，要获取最新版本请点击<a href="https://github.com/JuseTiZ/PyScript-for-CT">此处</a>前往 Github 搜索。</li>'
+    html += '<li>部分脚本可能在 Github 上有所更新但未同步到文章之中，若有需求点击<a href="https://github.com/JuseTiZ/PyScript-for-CT">此处</a>进行搜索。</li>'
     html += '</ul></div>';
 
     document.getElementById('portalContainer').innerHTML = html;
