@@ -1,0 +1,639 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>博客的更新日志 | Juse's Blog</title><meta name="author" content="Juse"><meta name="copyright" content="Juse"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="注：这是从 2022.12.29 开始记录的，在此之前的更新并未被记录其中。 2024 8-23  发布了新文章（簇突变的类型简介及识别方法（Clustered mutation classification））。 久违地魔改了下博客。 新添夜间初次进入博客是否切换夜间模式的询问（取代先前的默认夜间模式）。    8-15  发布了新文章（rsync 中排除文件的规则详解（rsync –excl">
+<meta property="og:type" content="website">
+<meta property="og:title" content="博客的更新日志">
+<meta property="og:url" content="https://biojuse.com/new/index.html">
+<meta property="og:site_name" content="Juse's Blog">
+<meta property="og:description" content="注：这是从 2022.12.29 开始记录的，在此之前的更新并未被记录其中。 2024 8-23  发布了新文章（簇突变的类型简介及识别方法（Clustered mutation classification））。 久违地魔改了下博客。 新添夜间初次进入博客是否切换夜间模式的询问（取代先前的默认夜间模式）。    8-15  发布了新文章（rsync 中排除文件的规则详解（rsync –excl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://biojuse.com/pic/cover.jpg">
+<meta property="article:published_time" content="2022-10-27T12:19:12.000Z">
+<meta property="article:modified_time" content="2024-08-23T12:56:28.160Z">
+<meta property="article:author" content="Juse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://biojuse.com/pic/cover.jpg"><link rel="shortcut icon" href="/pic/webiron.png"><link rel="canonical" href="https://biojuse.com/new/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '博客的更新日志',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-08-23 20:56:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mycss.css"><link rel="stylesheet" href="/css/bg.css"><link rel="stylesheet" href="/css/hp.css"><script src="https://cdn1.tianli0.top/npm/vue@2.6.14/dist/vue.min.js"></script><script src="https://cdn1.tianli0.top/npm/element-ui@2.15.6/lib/index.js"></script><link rel="stylesheet" href="https://cdn1.tianli0.top/npm/element-ui@2.15.6/packages/theme-chalk/lib/index.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css">
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Juse's Blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/pic/cover.gif" data-original="/pic/gitav.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> 我自己</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-shoe-prints"></i><span> 杂项</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/talk/"><i class="fa-fw fa fa-book"></i><span> 琐碎的日常</span></a></li><li><a class="site-page child" href="/new/"><i class="fa-fw fa fa-bell"></i><span> 更新日志</span></a></li><li><a class="site-page child" href="/paper/"><i class="fa-fw fa fa-sticky-note"></i><span> 文献笔记阁</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('/pic/sygx.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Juse's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> 我自己</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-shoe-prints"></i><span> 杂项</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/talk/"><i class="fa-fw fa fa-book"></i><span> 琐碎的日常</span></a></li><li><a class="site-page child" href="/new/"><i class="fa-fw fa fa-bell"></i><span> 更新日志</span></a></li><li><a class="site-page child" href="/paper/"><i class="fa-fw fa fa-sticky-note"></i><span> 文献笔记阁</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">博客的更新日志</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><hr>
+<p>注：这是从 2022.12.29 开始记录的，<strong>在此之前的更新并未被记录其中</strong>。</p>
+<div class="timeline blue"><div class="timeline-item headline"><div class="timeline-item-title"><div class="item-circle"><p>2024</p>
+</div></div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-23</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（簇突变的类型简介及识别方法（Clustered mutation classification））。</li>
+<li>久违地魔改了下博客。<ul>
+<li>新添夜间初次进入博客是否切换夜间模式的询问（取代先前的默认夜间模式）。</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-15</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（rsync 中排除文件的规则详解（rsync –exclude））。</li>
+<li>更新了文章（dN/dS 的计算及其核心理念）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-26</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（Clash for windows 中让某些域名绕过代理）。<ul>
+<li>补充了如何绕过 web of science。</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-25</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>对文章中的老代码进行了修改，包括但不限于模块化及内容调整，使其更具可读性。<ul>
+<li>部分文章中的代码变动可能未同步，最新版本请见 Github。</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-08</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（Snakemake pipeline 搭建的进阶教程）。</li>
+<li>更新了文章（通过 bowtie2 + macs3 分析 ChIP-Seq 数据）。<ul>
+<li>补充了 ChIP-seq data call peak 的 Snakemake Pipeline。</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-08</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（Snakemake pipeline 搭建的进阶教程）。<ul>
+<li>补充了可拓展点。</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-06</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（Snakemake pipeline 搭建的进阶教程）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-30</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（生信导论）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-29</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（对 bedgraph 文件进行 lowess 平滑操作）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-27</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（fasterq-dump 下载 SRA 文件时报错的解决方法（err: cmn_iter））。<ul>
+<li>添加了 <code>ascp</code> 下载 fastq 文件时可能出现的问题。</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-12</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（fasterq-dump 下载 SRA 文件时报错的解决方法（err: cmn_iter））。<ul>
+<li>添加了 <code>ascp</code> 的替代方案。</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-09</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（获取基因组上 intron 区域及对应链信息的方法）。</li>
+<li>发布了新文章（Ensembl VEP plugins 的使用方法（Alphamissense、dbNSFP 等））。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>5-10</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（fasterq-dump 下载 SRA 文件时报错的解决方法（err: cmn_iter））。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>5-03</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（提取 bwa 比对中唯一比对 reads（uniquely mapped reads）的方法）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-24</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（通过 bowtie2 + macs3 分析 ChIP-Seq 数据）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-20</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（bismark 分析 Bisulfite-Seq 数据的流程示例）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-16</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（通过 bowtie2 + macs3 分析 ChIP-Seq 数据）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-2</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（远程服务器无 root 权限时 LightGBM GPU 版的安装方法）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>3-18</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（全基因组 CpG (or nonCpG) 位点 bed 文件的获取方式）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>3-04</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（比较转录组分析（一）—— 前提及概要）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>2-20</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（Clash for windows 中让某些域名绕过代理）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>1-20</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（通俗易懂的贝叶斯深度神经网络介绍及代码实现）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>1-03</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（当 cmake 遇上 permission denied）。</li>
+</ul>
+</div></div></div>
+
+<div class="timeline blue"><div class="timeline-item headline"><div class="timeline-item-title"><div class="item-circle"><p>2023</p>
+</div></div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>12-30</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（dN/dS 的计算及其核心理念）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>12-13</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（slurm 作业数组的正确使用姿势）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>11-28</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（常见的一些 linux 实用命令）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>11-27</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更正网站规范标签。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>11-24</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（DNA 语言模型 GPN 在突变效应预测中的应用及表现）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>11-22</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（深度学习 loss 追踪器（用于追踪 loss 变化））。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>11-08</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（贝叶斯建树之 Mrbayes 篇）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>10-30</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>因为没梯子访问 Cloudflare 加速的页面（指博客）实在太慢了，所以在有的没的及个人介绍页面添加了梯子链接。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>10-29</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（Python 循环太费时？让多进程解决这个问题（concurrent））。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>10-12</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（Python seaborn 绘制复杂多变量图（hexbin + 拟合直线））。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>10-09 重大更新</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>针对 Bing 的 SEO 报告对所有文章进行了修改以优化搜索引擎扫描。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>10-08 重大更新</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新域名，通过脚本继承旧域名主要页面阅读量。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>10-07</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（贝叶斯建树之 Mrbayes 篇）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>10-05</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（关于人类基因组注释中起始和终止位点相同的现象）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>9-09</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>为 Jusekit 系列文章新增了界面演示超链接。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>9-05</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（DiscoVista 可视化系统发育不一致）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>9-02</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（比较转录组分析（七）—— 系统发育分析）。</li>
+<li>更新了 JuseKit，现在可以通过菜单项快速找到相应教程。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>9-01</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（JuseKit（八） —— 计算转录组组装指标）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-27</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（JuseKit（七） —— 绘制 GO 富集分析气泡图）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-26</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了琐碎的日常。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-19</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（关于 PAML 的一二三事）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-11</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（基于 js 在系列文章开头设置文章传送门（hexo + butterfly））。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-09</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>在系列文章（比较转录组分析 &amp; JuseKit）的开头通过 js 引入了传送门，以实现文章之间的引流。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-04</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（JuseKit（七） —— 绘制 GO 富集分析气泡图）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>8-02</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（比较转录组分析（七）—— 系统发育分析）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-24</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>简化了不必要的 web 元素。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-19</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（关于 PAML 的一二三事）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-16</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（比较转录组分析（七）—— 系统发育分析）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-13</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（常见的一些 linux 实用命令）。</li>
+<li>修改了部分页面布局。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-12</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（DiscoVista 可视化系统发育不一致）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-08</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>精简了部分文章内容。</li>
+<li>修改了部分文章图片大小。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-07</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（常见的一些 linux 实用命令）。</li>
+<li>发布了新文章（使用 IQTREE 计算一致性因子）。</li>
+<li>精简了部分文章内容。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-06</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（贝叶斯建树之 Mrbayes 篇）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-04</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（用于 IQtree 的序列串联方法）。</li>
+<li>发布了新文章（JuseKit（六） —— 绘制火山图）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>7-03</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>解封并更新了文章（单基因 dN、dS 和 ω 的滑动窗口绘制方法）。</li>
+<li>更新了文章（关于 PAML 的一二三事）。</li>
+<li>更新了文章（生信导论）。</li>
+<li>更新了文章（比较转录组分析（一）—— 前提及概要）。</li>
+<li>更新了文章（比较转录组分析（二）—— 原始数据的质控与转录组组装）。</li>
+<li>更新了文章（比较转录组分析（三）—— 组装的质量检测与去冗余）。 </li>
+<li>更新了文章（比较转录组分析（四）—— 组装的注释）。 </li>
+<li>更新了文章（比较转录组分析（五）—— 转录本定量与差异表达分析）。 </li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-26</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>解封并更新了文章（比较转录组分析（六）—— GO 富集分析与可视化）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-24</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（关于 PAML 的一二三事）。</li>
+<li>解封并更新了文章（比较转录组分析（七）—— 系统发育分析）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-23</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（Astral 建树指南）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>6-21</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（关于 PAML 的一二三事）。</li>
+<li>更新了文章 常见的一些 linux 实用命令 。</li>
+<li>更新了文章（JuseKit（三） —— 串联序列、根据id提取序列、批量修改文件尾缀）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>5-20</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章（关于 PAML 的一二三事）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>5-14</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（JuseKit（五） —— 用于系统发育分析的序列过滤）。</li>
+<li>修正了所有 Jusekit 文章中的下载地址。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>5-6</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（关于 PAML 的一二三事）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-26</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（JuseKit（四） —— 序列格式转换以及 Orthogroup 的 cds 提取）。</li>
+<li>更新了文章（比较转录组分析（七）—— 系统发育分析）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-24</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>JuseKit 更新，先行版本已在 github 上发布。</li>
+<li>更新了文章（JuseKit（二） —— 序列id简化、加前缀尾缀或转变为物种名）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-20</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>JuseKit 更新，先行版本已在 github 上发布。</li>
+<li>更新了文章（比较转录组分析（五）—— 转录本定量与差异表达分析）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-13</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（JuseKit（三） —— 串联序列、根据id提取序列、批量修改文件尾缀）。</li>
+<li>更新了文章（JuseKit（二） —— 序列id简化、加前缀尾缀或转变为物种名）。</li>
+<li>对博客的夜间模式页面进行了完善，现在的夜间模式也能正常使用了！</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-9</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（JuseKit（二） —— 序列id简化、加前缀尾缀或转变为物种名）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-8</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（JuseKit（一） —— 提取最长转录本）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-7</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章 用于 IQtree 的序列串联方法。</li>
+<li>更新了杂谈，可以在琐碎的日常里偷窥 Juse 和他伙伴们的抽象大作了。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>4-6</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（文献分享篇（一）—— 系统发育转录组学是否靠谱？）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>3-27</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（关于 mamba install 时会出现的两个错误解决方案）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>3-13</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（单基因 dN、dS 和 ω 的滑动窗口绘制方法）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>3-9</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章 常见的一些 linux 实用命令 。</li>
+<li>发布了新文章（当 cmake 遇上 permission denied）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>3-2</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（基于 Cytoscape 的富集网络图绘制）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>2-23</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了文章 常见的一些 linux 实用命令 。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>2-17</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（比较转录组分析（七）—— 系统发育分析）。</li>
+<li>更新了文章 常见的一些 linux 实用命令 ，更改了其中的部分内容。</li>
+<li>更新了琐碎的日常。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>2-6</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了比较转录组分析（三）文章，修改了更新日志中的 tip。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>1-31</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>修改了部分页面的布局，简化掉了一些花里胡哨的东西（虽然还存在一部分）。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>1-29</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>发布了新文章（用于 IQtree 的序列串联方法）。</li>
+<li>更新了琐碎的日常。</li>
+</ul>
+</div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>1-11</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>更新了比较转录组分析（四）文章，删除了后记的题外话部分，新添了 KEGG 注释的方法。</li>
+</ul>
+</div></div></div>
+
+<div class="timeline blue"><div class="timeline-item headline"><div class="timeline-item-title"><div class="item-circle"><p>2022</p>
+</div></div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>12-29</p>
+</div></div><div class="timeline-item-content"><ul>
+<li>开设了更新日志栏目。</li>
+<li>更新了比较转录组分析（四）文章，新添了 GO 分类柱状图的绘制方法。</li>
+</ul>
+</div></div></div><!-- hexo injector body_end start --> <script data-pjax="">if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://biojuse.com/categories/学习/生信/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Juseの生信分享 (22)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://biojuse.com/categories/学习/绘图/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Juseの绘图经验 (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://biojuse.com/categories/学习/杂项/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🤹 Juseの琐碎教程 (12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://biojuse.com/categories/学习/文献阅读/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📕 Juseの文献笔记 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://biojuse.com/categories/软件开发/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧰 Juseの软件开发 (8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://biojuse.com/categories/博客/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📑 Juseの博客轻改 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  target="_blank" rel="noopener" href="https://jusetiz.github.io/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(33.333333333333336% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax="">
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/09/01/JuseKit（八） —— 计算转录组组装指标/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic2/jusekit.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-09-01</span><a class="blog-slider__title" href="2023/09/01/JuseKit（八） —— 计算转录组组装指标/" alt="">JuseKit（八） —— 计算转录组组装指标</a><div class="blog-slider__text">本次更新新增了计算转录组组装指标的功能，经实测比 Trinity 快且结果一致。</div><a class="blog-slider__button" href="2023/09/01/JuseKit（八） —— 计算转录组组装指标/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/08/04/JuseKit（七） —— 绘制 GO 富集分析气泡图/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic2/jusekit.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-04</span><a class="blog-slider__title" href="2023/08/04/JuseKit（七） —— 绘制 GO 富集分析气泡图/" alt="">JuseKit（七） —— 绘制 GO 富集分析气泡图</a><div class="blog-slider__text">本次更新新增 GO 富集气泡图绘制方法，只需文件一键执行！</div><a class="blog-slider__button" href="2023/08/04/JuseKit（七） —— 绘制 GO 富集分析气泡图/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/07/12/DiscoVista 可视化系统发育不一致/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic/cover4.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-07-12</span><a class="blog-slider__title" href="2023/07/12/DiscoVista 可视化系统发育不一致/" alt="">DiscoVista 可视化系统发育不一致</a><div class="blog-slider__text">使用合适的工具将系统发育的不一致更加清晰地呈现出来。</div><a class="blog-slider__button" href="2023/07/12/DiscoVista 可视化系统发育不一致/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/05/04/关于 PAML 的一二三事/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic/cover4.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-05-04</span><a class="blog-slider__title" href="2023/05/04/关于 PAML 的一二三事/" alt="">关于 PAML 的一二三事</a><div class="blog-slider__text">PAML 进行正选择检测、选择压力分析和物种分歧时间估计的详细介绍，包括诸多需要注意的事项。</div><a class="blog-slider__button" href="2023/05/04/关于 PAML 的一二三事/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/07/04/JuseKit（六） —— 绘制火山图/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic2/jusekit.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-07-04</span><a class="blog-slider__title" href="2023/07/04/JuseKit（六） —— 绘制火山图/" alt="">JuseKit（六） —— 绘制火山图</a><div class="blog-slider__text">此次更新新增了绘制火山图的功能，仅需输入对应格式的文件即可一键绘制火山图。</div><a class="blog-slider__button" href="2023/07/04/JuseKit（六） —— 绘制火山图/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/05/14/JuseKit（五） —— 用于系统发育分析的序列过滤/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic2/jusekit.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-05-14</span><a class="blog-slider__title" href="2023/05/14/JuseKit（五） —— 用于系统发育分析的序列过滤/" alt="">JuseKit（五） —— 用于系统发育分析的序列过滤</a><div class="blog-slider__text">本次更新带来序列过滤功能，可根据序列长度及物种序列数过滤比对。</div><a class="blog-slider__button" href="2023/05/14/JuseKit（五） —— 用于系统发育分析的序列过滤/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/04/06/文献分享篇（一）—— 系统发育转录组学是否靠谱？/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic/wxyd1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-04-06</span><a class="blog-slider__title" href="2023/04/06/文献分享篇（一）—— 系统发育转录组学是否靠谱？/" alt="">系统发育转录组学是否靠谱？</a><div class="blog-slider__text">向来只闻 Phylogenomics，那么 Phylotranscriptomics 又如何呢？</div><a class="blog-slider__button" href="2023/04/06/文献分享篇（一）—— 系统发育转录组学是否靠谱？/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/03/13/单基因-dN、dS-和-ω-的滑动窗口绘制方法/" alt=""><img width="48" height="48" src="/pic/cover.gif" data-original="/pic/slwd.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-03-13</span><a class="blog-slider__title" href="2023/03/13/单基因-dN、dS-和-ω-的滑动窗口绘制方法/" alt="">单基因 dN、dS 和 ω 的滑动窗口绘制方法</a><div class="blog-slider__text">绘制可以观察基因内不同部位选择情况的滑动窗口图，基于 Kaks_calculator 计算。</div><a class="blog-slider__button" href="2023/03/13/单基因-dN、dS-和-ω-的滑动窗口绘制方法/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer="" src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer="" data-pjax="" src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/pic/cover.gif" data-original="/pic/gitav.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">Juse</div><div class="author-info__description">偶尔徒步行进倒也不错</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JuseTiZ"><i class="fab fa-github"></i><span>Follow Juse</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="/qq.html" target="_blank" title=""><i class="fab fa-qq"></i></a><a class="social-icon" href="https://space.bilibili.com/31269335" target="_blank" title=""><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://github.com/JuseTiZ" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="https://steamcommunity.com/id/291195857/" target="_blank" title=""><i class="fab fa-steam"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p align="center"><b>人生是旷野，不是轨道</b><br>⭐⭐🗞️ 新闻速递 📰⭐⭐<br>会萤吗？会萤的！💪</p></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2/"><span class="card-category-list-name">博客</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">学习</span><span class="card-category-list-count">42</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"><span class="card-category-list-name">文献阅读</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">机器学习</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%9D%82%E9%A1%B9/"><span class="card-category-list-name">杂项</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">深度学习</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/"><span class="card-category-list-name">生信</span><span class="card-category-list-count">22</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E4%BF%A1/%E5%BB%BA%E6%A0%91/"><span class="card-category-list-name">建树</span><span class="card-category-list-count">2</span></a></li></ul></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 1.45em; color: rgb(109, 175, 66)">生物信息学</a><a href="/tags/%E7%94%9F%E4%BF%A1/" style="font-size: 1.45em; color: rgb(192, 140, 54)">生信</a><a href="/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E5%88%86%E6%9E%90/" style="font-size: 1.27em; color: rgb(110, 179, 80)">系统发育分析</a><a href="/tags/JuseKit/" style="font-size: 1.33em; color: rgb(76, 102, 24)">JuseKit</a><a href="/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/" style="font-size: 1.39em; color: rgb(135, 108, 20)">转录组</a><a href="/tags/IQtree/" style="font-size: 1.21em; color: rgb(37, 31, 34)">IQtree</a><a href="/tags/%E5%AF%8C%E9%9B%86%E7%BD%91%E7%BB%9C%E5%9B%BE/" style="font-size: 1.15em; color: rgb(28, 128, 156)">富集网络图</a><a href="/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6/" style="font-size: 1.33em; color: rgb(77, 46, 69)">比较转录组学</a><a href="/tags/%E5%B7%AE%E5%BC%82%E8%A1%A8%E8%BE%BE%E5%88%86%E6%9E%90/" style="font-size: 1.21em; color: rgb(133, 154, 193)">差异表达分析</a><a href="/tags/%E7%81%AB%E5%B1%B1%E5%9B%BE/" style="font-size: 1.15em; color: rgb(78, 43, 74)">火山图</a><a href="/tags/linux/" style="font-size: 1.15em; color: rgb(20, 18, 144)">linux</a><a href="/tags/%E6%96%87%E7%8C%AE/" style="font-size: 1.21em; color: rgb(16, 126, 14)">文献</a><a href="/tags/%E6%AF%94%E8%BE%83%E8%BD%AC%E5%BD%95%E7%BB%84/" style="font-size: 1.15em; color: rgb(61, 46, 184)">比较转录组</a><a href="/tags/GO%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" style="font-size: 1.15em; color: rgb(183, 152, 13)">GO富集分析</a><a href="/tags/%E5%BA%8F%E5%88%97%E4%B8%B2%E8%81%94/" style="font-size: 1.15em; color: rgb(148, 119, 49)">序列串联</a><a href="/tags/GO-annotation/" style="font-size: 1.15em; color: rgb(80, 110, 79)">GO annotation</a><a href="/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84/" style="font-size: 1.21em; color: rgb(131, 29, 114)">基因组</a><a href="/tags/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/" style="font-size: 1.15em; color: rgb(182, 42, 132)">基因组学</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">51</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">106.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2024-08-23T12:56:45.627Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">想说的话😉</p><div class="bg-ad"><div>Genes are not destiny. While they play a large role in shaping how we act, how we feel, and how we interact with others, our environment and personal choices have just as much impact on our behavior.</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://habitica.com/static/home">游戏人生不游戏 🎯</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">仙人指路😝</p><ul class="ft-links"><li><a target="_blank" rel="noopener" href="https://www.fomal.cc/">建站参考</a><a target="_blank" rel="noopener" href="https://emojixd.com/">表情大全</a></li><li><a target="_blank" rel="noopener" href="https://jusetiz.github.io/talk/">看看生活</a><a target="_blank" rel="noopener" href="https://jusetiz.github.io/messageboard/">我要留言</a></li><li><a target="_blank" rel="noopener" href="https://jusetiz.github.io/myself/">关于博主</a><a target="_blank" rel="noopener" href="https://jusetiz.github.io/archives/">文章归档</a></li><li><a target="_blank" rel="noopener" href="https://jusetiz.github.io/categories/">文章分类</a><a target="_blank" rel="noopener" href="https://jusetiz.github.io/tags/">文章标签</a></li><li><a target="_blank" rel="noopener" href="https://jusetiz.github.io/about/">有的没的</a><a target="_blank" rel="noopener" href="https://jusetiz.github.io/new/">更新日志</a></li><li><a target="_blank" rel="noopener" href="https://jusetiz.github.io/link/">友情链接</a><a target="_blank" rel="noopener" href="https://jusetiz.github.io/404.html">404页面</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">友人链接🔗</p><div class="ft-img-group"><div class="img-group-item"><a target="_blank" rel="noopener" href="https://linctanny.github.io/"><img src="/pic/cover.gif" data-original="https://linctanny.github.io/img/p7.jpeg" alt=""></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://robust-vase.github.io/"><img src="/pic/cover.gif" data-original="https://robust-vase.github.io/img/John_King.webp" alt=""></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://blog.stariverfeel.eu.org/"><img src="/pic/cover.gif" data-original="https://avatars.githubusercontent.com/u/26035995?v=4" alt=""></a></div></div></div></div><div class="copyright">©2022 - 2024  @ Juse</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo </a><span class="footer-separator">|</span><span> 主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly </a><span class="footer-separator">|</span><span> 部署 </span><a target="_blank" rel="noopener" href="https://github.com/">GitPage </a><span class="footer-separator">|</span><span> 加速 </span><a target="_blank" rel="noopener" href="https://dash.cloudflare.com/">Cloudflare </a><span class="footer-separator">|</span><span> </span><a href="https://icp.gov.moe/?keyword=20232400" target="_blank">萌ICP备20232400号</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="/"><i class="fa fa-home"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://cn.bing.com/search?q=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>必应搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="/about/"><i class="fa fa-sitemap"></i><span>有的没的</span></a><a class="rightMenu-item" href="/new/"><i class="fa fa-bell"></i><span>更新日志</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ORERCz6nkgV8OYWw8FovgBhQ-gzGzoHsz',
+      appKey: 'BNxukaAtCZZ0K6TZldZpkY9e',
+      avatar: 'mp',
+      placeholder: '🐕温馨提示本站不具有邮件提示功能，Juse每隔一段时间会在后台检查评论并回复',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script type="text/javascript" src="/js/txmap.js"></script><script type="text/javascript" src="/js/copy12.js"></script><script type="text/javascript" src="/js/ldex.js"></script><script type="text/javascript" src="/js/runtime.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
