@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>获取 vcf 文件中每个个体携带的突变数量</title>
+      <link href="/2024/10/10/%E8%8E%B7%E5%8F%96%20vcf%20%E6%96%87%E4%BB%B6%E4%B8%AD%E6%AF%8F%E4%B8%AA%E4%B8%AA%E4%BD%93%E6%90%BA%E5%B8%A6%E7%9A%84%E7%AA%81%E5%8F%98%E6%95%B0%E9%87%8F/"/>
+      <url>/2024/10/10/%E8%8E%B7%E5%8F%96%20vcf%20%E6%96%87%E4%BB%B6%E4%B8%AD%E6%AF%8F%E4%B8%AA%E4%B8%AA%E4%BD%93%E6%90%BA%E5%B8%A6%E7%9A%84%E7%AA%81%E5%8F%98%E6%95%B0%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[<html><head></head><body><p>最近的工作涉及到处理大量种群数据，其中有个分析需要统计每个个体携带的突变数量，在网上搜寻了诸多方法后确定了一些比较高效的策略，固有此文记录。</p><blockquote><p>本文的部分流程参考源：</p><p><a href="https://www.biostars.org/p/336206/">BioStars "how to count variants par sample per chromosome in a vcf file?"</a></p></blockquote><h2 id="提取每个个体携带的突变数量"><a href="#提取每个个体携带的突变数量" class="headerlink" title="提取每个个体携带的突变数量"></a>提取每个个体携带的突变数量</h2><p>该流程主要通过 plink2 实现：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plink2 --vcf [vcf file] --out [plink output1]</span><br><span class="line">plink2 --pfile [plink output1] --sample-counts --out [plink output2]</span><br></pre></td></tr></tbody></table></figure><ul><li><code>[vcf file]</code>：此处填入 vcf 文件的路径。</li><li><code>[plink output1]</code>：此处填入 plink2 输出的文件前缀。</li><li><code>[plink output2]</code>：此处填入 plink2 输出的文件前缀。</li></ul><p>运行结束后，可以得到以 <code>.scount</code> 结尾的文件，其中各列的含义如下：</p><ol><li><strong>#IID</strong>：标识每个样本的编号。</li><li><strong>HOM_REF_CT</strong>：纯合参考基因型计数，个体纯合参考基因型的位点数量。</li><li><strong>HOM_ALT_SNP_CT</strong>：纯合变异基因型计数，个体纯合变异基因型的单核苷酸多态性（SNP）数量。</li><li><strong>HET_SNP_CT</strong>：杂合基因型计数，个体在该位点上是杂合基因型的SNP数量（一条染色体是参考基因型，另一条是变异基因型）。</li><li><strong>DIPLOID_TRANSITION_CT</strong>：二倍体转换变异的数量（转换：嘌呤与嘌呤或嘧啶与嘧啶之间的替换）。</li><li><strong>DIPLOID_TRANSVERSION_CT</strong>：二倍体颠换变异的数量（颠换：嘌呤与嘧啶之间的替换）。</li><li><strong>DIPLOID_NONSNP_NONSYMBOLIC_CT</strong>：二倍体非SNP非符号变异计数。包括一些插入、缺失（INDELs）等。</li><li><strong>DIPLOID_SINGLETON_CT</strong>：二倍体单例变异计数，表示在整个样本集中只出现在该个体中的变异数量。</li><li><strong>HAP_REF_INCL_FEMALE_Y_CT</strong>：单倍体参考基因型计数，即在单倍体区域（Y 染色体）的参考等位基因数量。</li><li><strong>HAP_ALT_INCL_FEMALE_Y_CT</strong>：单倍体变异基因型计数，在单倍体区域中出现的变异等位基因的数量。</li><li><strong>MISSING_INCL_FEMALE_Y_CT</strong>：缺失基因型计数，在样本中缺失的基因型数据计数。</li></ol><p>更多可输出列的详细信息可见：<a href="https://www.cog-genomics.org/plink/2.0/formats#scount">https://www.cog-genomics.org/plink/2.0/formats#scount</a></p><p>具体参数的用法可见：<a href="https://www.cog-genomics.org/plink/2.0/basic_stats#sample_counts">https://www.cog-genomics.org/plink/2.0/basic_stats#sample_counts</a></p><p>通过 <code>HOM_ALT_SNP_CT</code> <code>HET_SNP_CT</code> <code>DIPLOID_NONSNP_NONSYMBOLIC_CT</code> 计算每个个体携带的突变数量。</p><h2 id="提取每个突变对应的携带者信息"><a href="#提取每个突变对应的携带者信息" class="headerlink" title="提取每个突变对应的携带者信息"></a>提取每个突变对应的携带者信息</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcftools norm -m -any [vcf file] | bcftools query -i 'GT="alt"' -f '%CHROM\t%POS\t%REF\t%ALT[\t%SAMPLE:%GT]\n' - &gt; [output]</span><br></pre></td></tr></tbody></table></figure><ul><li><code>[vcf file]</code>：此处填入 vcf 文件的路径。</li><li> <code>[output]</code>：此处填入输出文件的路径。</li></ul><p>此处通过 <code>bcftools norm -m -any</code> 对多等位基因进行了拆分，可视自身需求去除该部分，此处 <code>GT="alt"</code> 将所有携带替代等位基因的个体提取出并打印。</p><p>输出结果示例：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chr1    228424930       G       A       4922792:0/1     4884261:0/1     3988378:0/1     2479308:0/1     4414951:0/1     3862053:0/1</span><br></pre></td></tr></tbody></table></figure><p>前四列用于表示特定突变（分别指示染色体编号、位置、ref 和 alt），后续以制表符分隔记录该突变的携带者及基因型。</p></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 杂项 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vscode 在远程服务器上通过 jupyter notebook 使用 R</title>
       <link href="/2024/09/19/vscode%20%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%80%9A%E8%BF%87%20jupyter%20notebook%20%E4%BD%BF%E7%94%A8%20R/"/>
       <url>/2024/09/19/vscode%20%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%80%9A%E8%BF%87%20jupyter%20notebook%20%E4%BD%BF%E7%94%A8%20R/</url>
