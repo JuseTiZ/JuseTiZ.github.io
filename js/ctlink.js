@@ -52,6 +52,7 @@ function generatePortalLinks(currentArticleId) {
     html += '<li>文章中涉及到的脚本、命令参数等<strong>需根据实际情况进行修正</strong>，盲目抄代码不可取，重要的是适合自己的流程。</li>'
     html += '<li>文章内容如有错误，欢迎联系 Juse 或评论留言进行更正，请在看文章的同时<strong>保持批判思维</strong>。</li>'
     html += '<li>部分脚本可能在 Github 上有所更新但未同步到文章之中，若有需求点击<a href="https://github.com/JuseTiZ/PyScript-for-CT">此处</a>进行搜索。</li>'
+    html += '<li>世界是运动的，文章中的部分内容会由于版本变动问题**在某个时候变得过时或不正确**，此时可尝试按照官网文档进行。</li>'
     html += '</ul></div>';
 
     document.getElementById('portalContainer').innerHTML = html;
