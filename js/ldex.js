@@ -1,13 +1,7 @@
-function recordThemeChoice(newTheme = null) {
+function recordThemeChoice() {
   const html = document.documentElement;
   const currentTheme = html.getAttribute('data-theme');
-
-  // 如果传入了新主题，则使用新主题，否则切换主题
-  const themeToSet = newTheme || (currentTheme === 'light' ? 'dark' : 'light');
-  // 将新主题存储在localStorage中
-  localStorage.setItem('userTheme', themeToSet);
-  // 应用新主题
-  html.setAttribute('data-theme', themeToSet);
+  localStorage.setItem('userTheme', currentTheme === 'light' ? 'dark' : 'light');
 }
 
 function setThemeBasedOnTime() {
@@ -26,11 +20,13 @@ function setThemeBasedOnTime() {
 
     // 如果自动设置为 dark 模式，弹出窗口询问是否要切换回 light 模式
     if (!isDayTime) {
-      const switchToLight = confirm("根据您的本地时间将设定主题为夜间模式\n您要切换回白天模式吗（当前背景）？");
+      const switchToLight = confirm("根据您的本地时间将设定主题为夜间模式\n您要切换回白天模式吗（当前背景）？\n（右下角小齿轮处设置主题模式）");
       if (switchToLight) {
-        recordThemeChoice('light');
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('userTheme', 'light');
       } else {
-        recordThemeChoice('dark');
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('userTheme', 'dark');
       }
     }
   }
