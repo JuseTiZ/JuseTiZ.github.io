@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>bedtools merge 不合并相邻区间（仅合并重叠区间）</title>
+      <link href="/2024/12/28/bedtools%20merge%20%E4%B8%8D%E5%90%88%E5%B9%B6%E7%9B%B8%E9%82%BB%E5%8C%BA%E9%97%B4%EF%BC%88%E4%BB%85%E5%90%88%E5%B9%B6%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4%EF%BC%89/"/>
+      <url>/2024/12/28/bedtools%20merge%20%E4%B8%8D%E5%90%88%E5%B9%B6%E7%9B%B8%E9%82%BB%E5%8C%BA%E9%97%B4%EF%BC%88%E4%BB%85%E5%90%88%E5%B9%B6%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<html><head></head><body><p>关于 bedtools merge 的详细参数设定可见：</p><p>bedtools merge documentation：</p><p><a href="https://bedtools.readthedocs.io/en/latest/content/tools/merge.html">https://bedtools.readthedocs.io/en/latest/content/tools/merge.html</a></p><img src="https://bedtools.readthedocs.io/en/latest/_images/merge-glyph.png" height="300px"><p>默认情况下，bedtools merge 会对所有重叠区间及相邻区间进行合并，例如：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行前</span></span><br><span class="line">chr11000010001</span><br><span class="line">chr11000110002</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行后</span></span><br><span class="line">chr11000010002</span><br></pre></td></tr></tbody></table></figure><p>但在最近遇到的分析场景中，我仅想合并重叠的点并对它们的值求平均，并不想将它们与相邻的点合并起来，例如：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chr110000100010.1</span><br><span class="line">chr110000100010.2</span><br><span class="line">chr110001100020.3</span><br></pre></td></tr></tbody></table></figure><p>这里我仅想在 <code>chr1:10000-10001</code> 上进行合并且求平均，但此时使用 <code>bedtools merge -c 4 -o mean</code> 会输出以下结果：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chr1    10000   10002   0.2</span><br></pre></td></tr></tbody></table></figure><p>这并不符合我的预期工作情况，在查阅参数说明后，发现了以下关键参数：</p><ul><li><code>-d</code>：Maximum distance between features allowed for features to be merged. Default is 0. That is, overlapping and/or features are merged.</li></ul><p>这里的 <code>-d</code> 默认值为 0，说明中提到<strong>该值会将重叠的以及首尾相接的区间合并到一起</strong>，于是乎我尝试了将该参数改为 <strong>-1</strong>：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">bedtools merge -i test.bed -d -1 -c 4 -o mean</span></span><br><span class="line">chr1    10000   10001   0.15</span><br><span class="line">chr1    10001   10002   0.3</span><br></pre></td></tr></tbody></table></figure><p>在设置为 -1 后，bedtools merge 仅对重叠区间进行合并，以下是一个测试：</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行前</span></span><br><span class="line">chr110000100010.1</span><br><span class="line">chr110000100010.2</span><br><span class="line">chr110001100090.3</span><br><span class="line">chr110008100200.4</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行后</span></span><br><span class="line">chr1    10000   10001   0.15</span><br><span class="line">chr1    10001   10020   0.35</span><br></pre></td></tr></tbody></table></figure></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 生信 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于 US-align 计算两个蛋白结构之间的 RMSD 和 TM-score</title>
       <link href="/2024/12/18/%E5%9F%BA%E4%BA%8E%20US-align%20%E8%AE%A1%E7%AE%97%E4%B8%A4%E4%B8%AA%E8%9B%8B%E7%99%BD%E7%BB%93%E6%9E%84%E4%B9%8B%E9%97%B4%E7%9A%84%20RMSD%20%E5%92%8C%20TM-score/"/>
       <url>/2024/12/18/%E5%9F%BA%E4%BA%8E%20US-align%20%E8%AE%A1%E7%AE%97%E4%B8%A4%E4%B8%AA%E8%9B%8B%E7%99%BD%E7%BB%93%E6%9E%84%E4%B9%8B%E9%97%B4%E7%9A%84%20RMSD%20%E5%92%8C%20TM-score/</url>

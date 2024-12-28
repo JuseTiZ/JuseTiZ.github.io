@@ -8,6 +8,11 @@
 
 
 <url>
+  <loc>https://biojuse.com/2024/12/28/bedtools%20merge%20不合并相邻区间（仅合并重叠区间）/</loc>
+  <lastmod>2024-12-27T17:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://biojuse.com/2024/12/18/基于%20US-align%20计算两个蛋白结构之间的%20RMSD%20和%20TM-score/</loc>
   <lastmod>2024-12-17T17:00:00+00:00</lastmod>
   <priority>0.80</priority>
