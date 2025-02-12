@@ -8,6 +8,11 @@
 
 
 <url>
+  <loc>https://biojuse.com/2025/02/12/VCF%20文件转坐标的方法汇总及注意事项/</loc>
+  <lastmod>2025-02-11T17:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://biojuse.com/2024/12/28/bedtools%20merge%20不合并相邻区间（仅合并重叠区间）/</loc>
   <lastmod>2024-12-27T17:00:00+00:00</lastmod>
   <priority>0.80</priority>
