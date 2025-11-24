@@ -1,4 +1,26 @@
-<html><head></head><body>/* 滚动条 */
+<html><head></head><body>/* 第一个失效，献祭 */
+#content-inner.layout h1:hover, #content-inner.layout h2:hover, #content-inner.layout h3:hover, #content-inner.layout h4:hover, #content-inner.layout h5:hover, #content-inner.layout h6:hover {
+    color: #49b1f5 ;
+}
+
+/* 鼠标覆盖变色 */
+#content-inner.layout h1:hover, #content-inner.layout h2:hover, #content-inner.layout h3:hover, #content-inner.layout h4:hover, #content-inner.layout h5:hover, #content-inner.layout h6:hover {
+    color: #49b1f5 ;
+}
+
+/* 添加 emoji 前缀 */
+#content-inner.layout h1::before,
+#content-inner.layout h2::before,
+#content-inner.layout h3::before,
+#content-inner.layout h4::before,
+#content-inner.layout h5::before,
+#content-inner.layout h6::before {
+  content: "\1F517";  /* 🔗 */
+  margin-right: 8px;
+  font-size: 0.9em;
+}
+
+/* 滚动条 */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

@@ -209,7 +209,7 @@
 </ul>
 <p>不过需要注意，<code>ascp</code> 下载的数据有时会出现问题，进而导致下游分析如 <code>trim_galore</code> 在过滤 reads 时出错，以下是一些报错示例：</p>
 <blockquote>
-<p>cutadapt: error: Line xxx in FASTQ file is expected to start with ‘xxx’, but found ‘xxx’</p>
+<p>cutadapt: error: Line xxx in FASTQ file is expected to start with 'xxx', but found 'xxx'</p>
 </blockquote>
 <p>可以通过 <code>gunzip</code> 命令检查是否是由于 fastq 文件存在问题：</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gunzip -t SRRxxx.fastq.gz</span></span><br><span class="line"></span><br><span class="line">gzip: SRRxxx.fastq.gz: invalid compressed data--crc error</span><br><span class="line"></span><br><span class="line">gzip: SRRxxx.fastq.gz: invalid compressed data--length error</span><br></pre></td></tr></tbody></table></figure>
