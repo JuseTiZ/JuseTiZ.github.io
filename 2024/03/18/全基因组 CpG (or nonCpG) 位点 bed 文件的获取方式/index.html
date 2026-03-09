@@ -231,7 +231,7 @@ window.addEventListener('load',preloader.endLoading())</script><div class="js-pj
   function insertCSS () {
     const link = document.createElement("link")
     link.rel = "stylesheet"
-    link.href = "https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css"
+    link.href = "https://cdn.jsdelivr.net/npm/@waline/client@2/dist/waline.min.css"
     document.head.appendChild(link)
   }
 
@@ -249,7 +249,7 @@ window.addEventListener('load',preloader.endLoading())</script><div class="js-pj
   if (typeof Waline === 'function') initWaline()
   else {
     insertCSS()
-    getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js').then(initWaline)
+    getScript('https://cdn.jsdelivr.net/npm/@waline/client@2/dist/waline.min.js').then(initWaline)
   }
 }
 
