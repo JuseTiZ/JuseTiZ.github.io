@@ -1,8 +1,8 @@
-<html><head></head><body>.content-inner&gt;#post {
+.content-inner>#post {
     background: rgba(255,255,255,1);
 }
 
-[data-theme="dark"] .content-inner&gt;#post {
+[data-theme="dark"] .content-inner>#post {
     background: rgba(0,0,0,1);
 }
 
@@ -247,4 +247,4 @@
 
 .juseimg:hover {
     transform: scale(1.5);
-}</body></html>
+}

@@ -1,4 +1,4 @@
-<html><head></head><body>/* 第一个失效，献祭 */
+/* 第一个失效，献祭 */
 #content-inner.layout h1:hover, #content-inner.layout h2:hover, #content-inner.layout h3:hover, #content-inner.layout h4:hover, #content-inner.layout h5:hover, #content-inner.layout h6:hover {
     color: #49b1f5 ;
 }
@@ -241,4 +241,3 @@ blockquote {
     border-left: 3px solid #49b1f5;
     border-radius: 3px;
 }
-</body></html>

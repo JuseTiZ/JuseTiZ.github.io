@@ -1,4 +1,4 @@
-<html><head></head><body>.text-module {
+.text-module {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,4 +32,4 @@
     filter: blur(0);
     border-radius: 15px;
     border: 2px solid #888888;;
-}</body></html>
+}
